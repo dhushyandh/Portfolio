@@ -12,15 +12,15 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="home" className="scroll-mt-24 px-6 pt-40 pb-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+    <section id="home" className="scroll-mt-24 px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:gap-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             Available for opportunities
           </span>
 
-          <h1 className="mt-8 text-6xl font-extrabold leading-[1.05] text-foreground sm:text-7xl">
+          <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] text-foreground sm:mt-8 sm:text-6xl lg:text-7xl">
             Hi, I&apos;m
             <br />
             Dhushyandh.
@@ -28,7 +28,7 @@ export function Hero() {
 
           <p
             key={index}
-            className="mt-6 font-display text-3xl font-bold text-primary transition-opacity duration-500"
+            className="mt-5 font-display text-2xl font-bold text-primary transition-opacity duration-500 sm:mt-6 sm:text-3xl"
           >
             {ROLES[index]}
           </p>
@@ -36,22 +36,22 @@ export function Hero() {
           <p className="mt-6 text-lg font-medium text-foreground/90">
             Building scalable software with modern technologies.
           </p>
-          <p className="mt-4 max-w-xl text-[17px] leading-8 text-muted-foreground">
+          <p className="mt-4 max-w-xl text-[16px] leading-7 text-muted-foreground sm:text-[17px] sm:leading-8">
             I enjoy transforming ideas into reliable, scalable, and user-focused software. My
             interests span full-stack development, cloud computing, AI-powered applications, and
             system design.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-[15px] font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-display text-[15px] font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:opacity-90 sm:px-6"
             >
               View Projects <ArrowRight size={16} />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 font-display text-[15px] font-semibold text-foreground transition-colors hover:bg-accent"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 font-display text-[15px] font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent sm:px-6"
             >
               <FileText size={16} /> Download Resume
             </a>
@@ -69,7 +69,7 @@ export function Hero() {
             <img
               src={profile.url}
               alt="Portrait of Dhushyandh"
-              className="h-64 w-64 rounded-full object-cover sm:h-80 sm:w-80"
+              className="h-48 w-48 rounded-full object-cover sm:h-64 sm:w-64 lg:h-80 lg:w-80"
             />
           </div>
         </div>

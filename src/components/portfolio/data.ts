@@ -24,6 +24,7 @@ export const STATS = [
 
 export const PROJECTS = [
   {
+    slug: "project-workspace-management",
     title: "Project Workspace Management",
     description:
       "Enterprise-style workspace collaboration platform with authentication, role management, and project organization.",
@@ -32,6 +33,7 @@ export const PROJECTS = [
     github: "https://github.com/dhushyandh",
   },
   {
+    slug: "smartmart",
     title: "SmartMart",
     description:
       "Full-stack e-commerce application featuring authentication, payments, image uploads, and admin dashboard.",
@@ -40,6 +42,7 @@ export const PROJECTS = [
     github: "https://github.com/dhushyandh",
   },
   {
+    slug: "ai-blog-platform",
     title: "AI Blog Platform",
     description:
       "Blogging platform with AI-assisted writing, rich text editing, and content moderation built on a modern stack.",
@@ -48,6 +51,7 @@ export const PROJECTS = [
     github: "https://github.com/dhushyandh",
   },
   {
+    slug: "ai-interview-platform",
     title: "AI Interview Platform",
     description:
       "Mock interview experience with AI-generated questions, real-time feedback, and performance tracking.",

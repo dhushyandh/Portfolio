@@ -1,4 +1,5 @@
 import { FileText, Github } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Section } from "./Section";
 import { PROJECTS } from "./data";
 
@@ -10,11 +11,11 @@ export function Projects() {
       title="Featured Projects"
       intro="A selection of projects that demonstrate my approach to building scalable, production-grade software."
     >
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
         {PROJECTS.map((p) => (
-          <article key={p.title} className="surface-card overflow-hidden">
+          <article key={p.title} className="surface-card card-hover overflow-hidden">
             <div
-              className="flex h-52 items-center justify-center"
+              className="flex h-40 items-center justify-center sm:h-52"
               style={{
                 background: `linear-gradient(150deg, ${p.tint}, oklch(0.17 0 0))`,
               }}
@@ -23,12 +24,12 @@ export function Projects() {
                 {p.title}
               </span>
             </div>
-            <div className="border-t border-border p-7">
+            <div className="border-t border-border p-6 sm:p-7">
               <h3 className="text-lg font-bold text-foreground">{p.title}</h3>
               <p className="mt-3 text-[15px] leading-7 text-muted-foreground">{p.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
-                  <span key={t} className="chip">
+                  <span key={t} className="chip chip-hover">
                     {t}
                   </span>
                 ))}
@@ -38,18 +39,17 @@ export function Projects() {
                   href={p.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/50 hover:bg-accent hover:text-primary"
                 >
                   <Github size={15} /> GitHub
                 </a>
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: p.slug }}
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/50 hover:bg-accent hover:text-primary"
                 >
                   <FileText size={15} /> Case Study
-                </a>
+                </Link>
               </div>
             </div>
           </article>
