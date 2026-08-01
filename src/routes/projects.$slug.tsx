@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Github } from "lucide-react";
 import { Nav } from "@/components/portfolio/Nav";
+import type { CaseStudy } from "@/components/portfolio/case-studies";
 import { CASE_STUDIES, getCaseStudy, getNextCaseStudy } from "@/components/portfolio/case-studies";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -53,7 +54,7 @@ function CaseStudyMissing() {
 }
 
 function CaseStudyPage() {
-  const { study, next } = Route.useLoaderData();
+  const { study, next } = Route.useLoaderData() as { study: CaseStudy; next: CaseStudy };
 
   const meta = [
     { label: "Year", value: study.year },
