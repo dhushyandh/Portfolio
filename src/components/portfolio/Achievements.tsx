@@ -14,11 +14,11 @@ const ICONS = {
 export function Achievements() {
   return (
     <Section id="achievements" eyebrow="Recognition" title="Achievements & Certifications">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {ACHIEVEMENTS.map((a) => {
           const Icon = ICONS[a.icon];
           return (
-            <div key={a.title} className="surface-card p-7">
+            <div key={a.title} className="surface-card card-hover p-6 sm:p-7">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
                 <Icon size={18} />
               </div>
