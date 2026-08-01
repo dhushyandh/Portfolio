@@ -11,11 +11,11 @@ export function GitHubActivity() {
         <Activity size={15} /> Live data · updated today
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {GITHUB_STATS.map((s) => {
           const Icon = ICONS[s.icon];
           return (
-            <div key={s.label} className="surface-card flex items-center gap-4 p-6">
+            <div key={s.label} className="surface-card card-hover flex items-center gap-4 p-5 sm:p-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
                 <Icon size={18} />
               </div>
@@ -29,14 +29,14 @@ export function GitHubActivity() {
       </div>
 
       <p className="mt-12 text-[15px] text-muted-foreground">Top Repositories</p>
-      <div className="mt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-5 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {REPOS.map((repo) => (
           <a
             key={repo.name}
             href={`https://github.com/dhushyandh/${repo.name}`}
             target="_blank"
             rel="noreferrer"
-            className="surface-card flex flex-col p-6 transition-colors hover:border-primary/40"
+            className="surface-card card-hover flex flex-col p-5 sm:p-6"
           >
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-[17px] font-bold text-foreground">{repo.name}</h3>
@@ -66,12 +66,12 @@ export function GitHubActivity() {
         ))}
       </div>
 
-      <div className="surface-card mt-8 p-7">
+      <div className="surface-card mt-8 p-5 sm:p-7">
         <p className="text-[15px] text-muted-foreground">Most Used Languages</p>
         <div className="mt-6 space-y-4">
           {LANGUAGES.map((lang) => (
-            <div key={lang.name} className="flex items-center gap-4">
-              <span className="w-28 shrink-0 font-mono text-[13px] text-muted-foreground">
+            <div key={lang.name} className="flex items-center gap-3 sm:gap-4">
+              <span className="w-20 shrink-0 font-mono text-[12px] text-muted-foreground sm:w-28 sm:text-[13px]">
                 {lang.name}
               </span>
               <div className="h-2 flex-1 rounded-full bg-secondary">
