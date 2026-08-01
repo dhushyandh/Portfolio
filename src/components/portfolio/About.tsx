@@ -8,7 +8,7 @@ export function About() {
         <img
           src={profile.url}
           alt="Dhushyandh, full stack developer"
-          className="w-full max-w-md rounded-2xl border border-border object-cover"
+          className="max-h-72 w-full max-w-md rounded-2xl border border-border object-cover object-top sm:max-h-96 lg:max-h-none"
         />
 
         <div>
