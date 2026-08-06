@@ -1,4 +1,4 @@
-import { defineMcp, type ToolDefinition } from "@lovable.dev/mcp-js";
+import { defineMcp } from "@lovable.dev/mcp-js";
 import listProjectsTool from "./tools/list-projects";
 import getCaseStudyTool from "./tools/get-case-study";
 import getResumeTool from "./tools/get-resume";
@@ -15,5 +15,5 @@ export default defineMcp({
     getCaseStudyTool,
     getResumeTool,
     getContactTool,
-  ] as unknown as ToolDefinition[],
+  ],
 });
