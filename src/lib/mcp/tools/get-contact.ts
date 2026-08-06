@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 
 const CONTACT = {
   name: "Dhushyandh",
@@ -14,6 +15,14 @@ export default defineTool({
   title: "Get contact details",
   description: "Get Dhushyandh's public contact links: email, LinkedIn, GitHub and portfolio.",
   inputSchema: {},
+  outputSchema: {
+    name: z.string(),
+    role: z.string(),
+    email: z.string(),
+    linkedin: z.string(),
+    github: z.string(),
+    portfolio: z.string(),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({
     content: [{ type: "text", text: JSON.stringify(CONTACT, null, 2) }],

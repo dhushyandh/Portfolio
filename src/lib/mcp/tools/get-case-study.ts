@@ -10,6 +10,7 @@ export default defineTool({
   inputSchema: {
     slug: z.string().describe("Project slug, e.g. \"smartmart\"."),
   },
+  outputSchema: { caseStudy: z.unknown() },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ slug }) => {
     const study = CASE_STUDIES.find((c) => c.slug === slug);

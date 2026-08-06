@@ -26,7 +26,19 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "projects": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "projects"
+          ]
+        }
       },
       {
         "name": "get_case_study",
@@ -50,7 +62,16 @@
             "slug"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "caseStudy": {}
+          },
+          "required": [
+            "caseStudy"
+          ]
+        }
       },
       {
         "name": "get_resume",
@@ -66,7 +87,34 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "stats": {
+              "type": "array",
+              "items": {}
+            },
+            "skills": {
+              "type": "array",
+              "items": {}
+            },
+            "timeline": {
+              "type": "array",
+              "items": {}
+            },
+            "achievements": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "stats",
+            "skills",
+            "timeline",
+            "achievements"
+          ]
+        }
       },
       {
         "name": "get_contact",
@@ -82,7 +130,38 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "linkedin": {
+              "type": "string"
+            },
+            "github": {
+              "type": "string"
+            },
+            "portfolio": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "role",
+            "email",
+            "linkedin",
+            "github",
+            "portfolio"
+          ]
+        }
       }
     ]
   }

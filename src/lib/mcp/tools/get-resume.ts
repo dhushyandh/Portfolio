@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { ACHIEVEMENTS, SKILL_GROUPS, STATS, TIMELINE } from "@/components/portfolio/data";
 
 export default defineTool({
@@ -7,6 +8,12 @@ export default defineTool({
   description:
     "Get Dhushyandh's skills by category, experience/education timeline, achievements and headline stats.",
   inputSchema: {},
+  outputSchema: {
+    stats: z.array(z.unknown()),
+    skills: z.array(z.unknown()),
+    timeline: z.array(z.unknown()),
+    achievements: z.array(z.unknown()),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const resume = {

@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { PROJECTS } from "@/components/portfolio/data";
 
 export default defineTool({
@@ -7,6 +8,7 @@ export default defineTool({
   description:
     "List Dhushyandh's portfolio projects with their slug, title, short description and tech tags.",
   inputSchema: {},
+  outputSchema: { projects: z.array(z.unknown()) },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const projects = PROJECTS.map((p) => ({
