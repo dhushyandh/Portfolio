@@ -12,16 +12,72 @@ import { Contact } from "@/components/portfolio/Contact";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dhushyandh — Full Stack Developer Portfolio" },
+      { title: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
       {
         name: "description",
         content:
-          "Full stack developer building scalable software with React, Node.js, cloud infrastructure and AI. Projects, experience, skills and contact.",
+          "Dhushyandh is a full stack developer specialising in React, Node.js, MongoDB, PostgreSQL, AWS and AI-powered apps. Explore 8 projects, case studies, skills and hire me.",
       },
-      { property: "og:title", content: "Dhushyandh — Full Stack Developer Portfolio" },
+      {
+        name: "keywords",
+        content:
+          "Dhushyandh, full stack developer, MERN stack developer, React developer, Node.js developer, cloud engineer, AI developer portfolio, hire full stack developer",
+      },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:title", content: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
       {
         property: "og:description",
-        content: "Projects, experience and skills of Dhushyandh, full stack developer.",
+        content:
+          "Full stack developer building scalable React, Node.js and cloud applications. Projects, case studies, experience and contact.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Dhushyandh Portfolio" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
+      {
+        name: "twitter:description",
+        content:
+          "Full stack developer building scalable React, Node.js and cloud applications.",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Person",
+              name: "Dhushyandh Neduncheziyan",
+              alternateName: "Dhushyandh",
+              jobTitle: "Full Stack Developer",
+              email: "mailto:dhushyandhneduncheziyan4896@gmail.com",
+              description:
+                "Full stack developer building scalable software with React, Node.js, cloud infrastructure and AI.",
+              knowsAbout: [
+                "React",
+                "Next.js",
+                "Node.js",
+                "TypeScript",
+                "MongoDB",
+                "PostgreSQL",
+                "AWS",
+                "Docker",
+                "Artificial Intelligence",
+              ],
+              sameAs: [
+                "https://github.com/dhushyandh",
+                "https://linkedin.com/in/dhushyandh",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              name: "Dhushyandh Portfolio",
+              inLanguage: "en",
+              about: { "@type": "Person", name: "Dhushyandh Neduncheziyan" },
+            },
+          ],
+        }),
       },
     ],
   }),
