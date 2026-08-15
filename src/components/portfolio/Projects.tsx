@@ -1,9 +1,16 @@
-import { FileText, Github } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, ChevronUp, ExternalLink, FileText, Github } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Section } from "./Section";
 import { PROJECTS } from "./data";
 
+const VISIBLE = 4;
+
 export function Projects() {
+  const [expanded, setExpanded] = useState(false);
+  const shown = expanded ? PROJECTS : PROJECTS.slice(0, VISIBLE);
+  const hidden = PROJECTS.length - VISIBLE;
+
   return (
     <Section
       id="projects"
@@ -12,7 +19,7 @@ export function Projects() {
       intro="A selection of projects that demonstrate my approach to building scalable, production-grade software."
     >
       <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-        {PROJECTS.map((p) => (
+        {shown.map((p) => (
           <article key={p.title} className="surface-card card-hover overflow-hidden">
             <div
               className="flex h-40 items-center justify-center sm:h-52"
@@ -35,6 +42,16 @@ export function Projects() {
                 ))}
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:opacity-90"
+                  >
+                    <ExternalLink size={15} /> Live
+                  </a>
+                )}
                 <a
                   href={p.github}
                   target="_blank"
@@ -55,6 +72,27 @@ export function Projects() {
           </article>
         ))}
       </div>
+
+      {hidden > 0 && (
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 font-display text-[15px] font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent"
+          >
+            {expanded ? (
+              <>
+                Show Less <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                Show {hidden} More Projects <ChevronDown size={16} />
+              </>
+            )}
+          </button>
+        </div>
+      )}
     </Section>
   );
 }
