@@ -7,6 +7,7 @@ export type CaseStudy = {
   status: string;
   tint: string;
   github: string;
+  live?: string;
   overview: string;
   stack: string[];
   features: { title: string; description: string }[];
@@ -210,6 +211,99 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Designing reliable AI evaluation prompts that produce consistent, structured scoring was the hardest part. I built a prompt engineering layer with few-shot examples and JSON schema enforcement to ensure the AI always returns parseable, comparable scores.",
     learnings:
       "This project taught me a lot about prompt engineering, OpenAI's function calling API, and how to build AI features that are reliable enough for production use. I also gained experience with Docker multi-stage builds and container orchestration.",
+  },
+  {
+    slug: "todo-list",
+    title: "Todo List (MERN)",
+    tagline: "Task manager with auth, priorities and persistent state",
+    year: "2024",
+    role: "Full Stack Developer",
+    status: "Completed",
+    tint: "oklch(0.28 0.09 200)",
+    github: "https://github.com/dhushyandh/Todo-List",
+    overview:
+      "A clean, fast task manager built to learn the MERN stack end to end. Users sign up, create lists, set priorities and due dates, and everything persists to MongoDB through an Express REST API.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    features: [
+      { title: "Authenticated Lists", description: "Each user gets private lists secured with JWT sessions." },
+      { title: "Priorities & Due Dates", description: "Sort and filter tasks by priority, due date, or completion state." },
+      { title: "Optimistic UI", description: "Updates render instantly and reconcile with the API response." },
+      { title: "REST API", description: "Express routes with validation, error handling, and Mongoose models." },
+    ],
+    challenges:
+      "Keeping the UI instant while staying consistent with the server was tricky. I added optimistic updates with rollback on failure so the list never drifts out of sync.",
+    learnings:
+      "This was my foundation project for REST design, Mongoose schemas, and structuring React state around server data.",
+  },
+  {
+    slug: "ecommerce-website",
+    title: "Ecommerce Website",
+    tagline: "Storefront with catalog, cart, checkout and order history",
+    year: "2024",
+    role: "Full Stack Developer",
+    status: "Completed",
+    tint: "oklch(0.28 0.09 30)",
+    github: "https://github.com/dhushyandh/Ecommerce-Website",
+    overview:
+      "A complete shopping flow — browse products, filter by category, manage a persistent cart, check out, and review past orders. Built to practise modelling real commercial data and multi-step user flows.",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    features: [
+      { title: "Product Catalog", description: "Category filters, search, and detail pages served from a paginated API." },
+      { title: "Persistent Cart", description: "Cart state survives reloads and syncs to the account after login." },
+      { title: "Checkout Flow", description: "Address capture, order summary, and order confirmation with stored receipts." },
+      { title: "Order History", description: "Per-user order list with statuses and line-item breakdowns." },
+    ],
+    challenges:
+      "Cart merging between guest and logged-in sessions caused duplicates. I solved it with a deterministic merge keyed on product id that sums quantities on login.",
+    learnings:
+      "I learned how much of e-commerce is state reconciliation rather than UI, and how to design APIs around transactional flows.",
+  },
+  {
+    slug: "auth-system",
+    title: "MERN Authentication System",
+    tagline: "Reusable auth service with JWT, verification and password reset",
+    year: "2024",
+    role: "Backend Developer",
+    status: "Completed",
+    tint: "oklch(0.28 0.09 110)",
+    github: "https://github.com/dhushyandh/Authentication",
+    overview:
+      "A drop-in authentication service I reuse across projects: registration, email verification, login with refresh-token rotation, password reset, and protected route middleware.",
+    stack: ["Node.js", "Express", "MongoDB", "JWT", "Nodemailer"],
+    features: [
+      { title: "Refresh Token Rotation", description: "Short-lived access tokens with rotating refresh tokens stored httpOnly." },
+      { title: "Email Verification", description: "Signed, expiring verification links delivered through Nodemailer." },
+      { title: "Password Reset", description: "Single-use reset tokens with rate limiting to block abuse." },
+      { title: "Route Middleware", description: "Composable guards for authentication and role checks." },
+    ],
+    challenges:
+      "Getting token rotation right without logging users out on race conditions took several iterations; a short grace window on the previous refresh token fixed it.",
+    learnings:
+      "Deep practical understanding of session security, hashing, token lifetimes, and why auth is worth getting right once and reusing.",
+  },
+  {
+    slug: "developer-portfolio",
+    title: "Developer Portfolio",
+    tagline: "Fast, SEO-optimised portfolio with scroll motion and case studies",
+    year: "2026",
+    role: "Designer & Developer",
+    status: "Live",
+    tint: "oklch(0.28 0.09 290)",
+    github: "https://github.com/dhushyandh/dhushyandh",
+    live: "https://dhushyandh.dev",
+    overview:
+      "The site you are reading. A server-rendered portfolio with a dark design system, scroll-triggered motion, per-project case studies, structured data for search engines, and a fully responsive layout.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "TanStack Router", "SSR"],
+    features: [
+      { title: "Scroll Motion", description: "IntersectionObserver-driven reveals that respect reduced-motion preferences." },
+      { title: "SEO Foundation", description: "Per-route metadata, canonical URLs, JSON-LD structured data, and a generated sitemap." },
+      { title: "Case Study Routes", description: "Every project has its own indexable page with unique title and description." },
+      { title: "Responsive Design", description: "Mobile-first layout tuned from 360px through ultrawide displays." },
+    ],
+    challenges:
+      "Balancing rich motion with performance and accessibility — animations are CSS-driven and disabled entirely under prefers-reduced-motion.",
+    learnings:
+      "Sharpened my eye for typography, spacing, and how technical SEO decisions like structured data and canonical URLs affect discoverability.",
   },
 ];
 

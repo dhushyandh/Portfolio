@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Github } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Nav } from "@/components/portfolio/Nav";
 import type { CaseStudy } from "@/components/portfolio/case-studies";
 import { CASE_STUDIES, getCaseStudy, getNextCaseStudy } from "@/components/portfolio/case-studies";
@@ -22,10 +22,32 @@ export const Route = createFileRoute("/projects/$slug")({
       meta: [
         { title },
         { name: "description", content: study.tagline },
+        {
+          name: "keywords",
+          content: `${study.title}, ${study.stack.join(", ")}, Dhushyandh case study`,
+        },
+        { name: "robots", content: "index, follow, max-image-preview:large" },
         { property: "og:title", content: title },
         { property: "og:description", content: study.tagline },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: study.title,
+            headline: study.title,
+            description: study.tagline,
+            dateCreated: study.year,
+            keywords: study.stack.join(", "),
+            author: { "@type": "Person", name: "Dhushyandh Neduncheziyan" },
+            ...(study.live ? { url: study.live } : {}),
+            codeRepository: study.github,
+          }),
+        },
       ],
     };
   },
@@ -136,14 +158,26 @@ function CaseStudyPage() {
           </section>
         </div>
 
-        <a
-          href={study.github}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-12 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-[15px] font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 hover:opacity-90"
-        >
-          <Github size={16} /> View on GitHub
-        </a>
+        <div className="mt-12 flex flex-wrap gap-3">
+          {study.live && (
+            <a
+              href={study.live}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-[15px] font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 hover:opacity-90"
+            >
+              <ExternalLink size={16} /> View Live
+            </a>
+          )}
+          <a
+            href={study.github}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 font-display text-[15px] font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent"
+          >
+            <Github size={16} /> View on GitHub
+          </a>
+        </div>
 
         <Link
           to="/projects/$slug"

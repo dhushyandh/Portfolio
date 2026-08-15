@@ -22,7 +22,18 @@ export const STATS = [
   { value: "1", label: "Degree in Progress" },
 ];
 
-export const PROJECTS = [
+export type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  tags: string[];
+  tint: string;
+  github: string;
+  /** Live deployment URL. Leave empty to hide the Live button. */
+  live?: string;
+};
+
+export const PROJECTS: Project[] = [
   {
     slug: "project-workspace-management",
     title: "Project Workspace Management",
@@ -58,6 +69,43 @@ export const PROJECTS = [
     tags: ["React", "Node.js", "MongoDB", "Gemini API"],
     tint: "oklch(0.28 0.09 70)",
     github: "https://github.com/dhushyandh",
+  },
+  {
+    slug: "todo-list",
+    title: "Todo List (MERN)",
+    description:
+      "Task manager with authentication, CRUD todos, priorities, and persistent state built on the MERN stack.",
+    tags: ["React", "Node.js", "Express", "MongoDB"],
+    tint: "oklch(0.28 0.09 200)",
+    github: "https://github.com/dhushyandh/Todo-List",
+  },
+  {
+    slug: "ecommerce-website",
+    title: "Ecommerce Website",
+    description:
+      "Storefront with product catalog, cart, checkout flow, and order history powered by a REST API.",
+    tags: ["React", "Node.js", "Express", "MongoDB"],
+    tint: "oklch(0.28 0.09 30)",
+    github: "https://github.com/dhushyandh/Ecommerce-Website",
+  },
+  {
+    slug: "auth-system",
+    title: "MERN Authentication System",
+    description:
+      "Reusable auth service with JWT sessions, refresh tokens, email verification, and password reset flows.",
+    tags: ["Node.js", "Express", "MongoDB", "JWT"],
+    tint: "oklch(0.28 0.09 110)",
+    github: "https://github.com/dhushyandh/Authentication",
+  },
+  {
+    slug: "developer-portfolio",
+    title: "Developer Portfolio",
+    description:
+      "This portfolio — a fast, SEO-optimised, fully responsive site with scroll motion and case studies.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "SEO"],
+    tint: "oklch(0.28 0.09 290)",
+    github: "https://github.com/dhushyandh/dhushyandh",
+    live: "https://dhushyandh.dev",
   },
 ];
 
