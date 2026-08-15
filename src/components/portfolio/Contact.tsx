@@ -7,8 +7,8 @@ const LINKS = [
   {
     icon: Mail,
     label: "Email",
-    value: "dhushyandh@gmail.com",
-    href: "mailto:dhushyandh@gmail.com",
+    value: "dhushyandhneduncheziyan4896@gmail.com",
+    href: "mailto:dhushyandhneduncheziyan4896@gmail.com",
   },
   {
     icon: Linkedin,
@@ -32,7 +32,7 @@ export function Contact() {
     e.preventDefault();
     const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
     const subject = encodeURIComponent(form.subject || "Portfolio enquiry");
-    window.location.href = `mailto:dhushyandh@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:dhushyandhneduncheziyan4896@gmail.com?subject=${subject}&body=${body}`;
     toast.success("Opening your email client…");
   }
 
