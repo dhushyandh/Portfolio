@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, FileText } from "lucide-react";
 import profile from "@/assets/profile-img.png.asset.json";
 import { ROLES } from "./data";
+import { Reveal } from "./Reveal";
 
 export function Hero() {
   const [index, setIndex] = useState(0);
@@ -14,7 +15,7 @@ export function Hero() {
   return (
     <section id="home" className="scroll-mt-24 px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28">
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
+        <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             Available for opportunities
@@ -62,17 +63,18 @@ export function Hero() {
               Contact Me
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex justify-center lg:justify-end">
+        <Reveal delay={150} className="flex justify-center lg:justify-end">
           <div className="rounded-full border-[6px] border-surface p-1 ring-1 ring-border">
             <img
               src={profile.url}
               alt="Portrait of Dhushyandh"
+              loading="eager"
               className="h-48 w-48 rounded-full object-cover sm:h-64 sm:w-64 lg:h-80 lg:w-80"
             />
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
