@@ -8,6 +8,9 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Achievements } from "@/components/portfolio/Achievements";
 import { GitHubActivity } from "@/components/portfolio/GitHubActivity";
 import { Contact } from "@/components/portfolio/Contact";
+import { Footer } from "@/components/portfolio/Footer";
+import { ChatWidget } from "@/components/portfolio/ChatWidget";
+import { CursorGlow } from "@/components/portfolio/CursorGlow";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,6 +90,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
+      <CursorGlow />
       <Nav />
       <main>
         <Hero />
@@ -98,11 +102,8 @@ function Index() {
         <GitHubActivity />
         <Contact />
       </main>
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-6xl px-6 text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Dhushyandh. Built with care.
-        </div>
-      </footer>
+      <Footer />
+      <ChatWidget />
     </div>
   );
 }
