@@ -26,7 +26,7 @@ export function CursorGlow() {
       mouseY = e.clientY;
       const target = e.target as HTMLElement | null;
       const interactive = Boolean(target?.closest("a, button, input, textarea, [role='button']"));
-      if (dotRef.current) dotRef.current.dataset.hot = interactive ? "true" : "false";
+      if (dotRef.current) dotRef.current.dataset["hot"] = interactive ? "true" : "false";
     };
 
     const loop = () => {
