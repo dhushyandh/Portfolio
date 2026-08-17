@@ -78,21 +78,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dhushyandh — Full Stack Developer" },
+      { title: "Dhushyandh | MERN Stack Developer" },
       {
         name: "description",
         content:
-          "Portfolio of Dhushyandh, a full stack developer building scalable software with React, Node.js, cloud and AI.",
+          "Dhushyandh is a MERN Stack Developer specializing in React, Node.js, Express, MongoDB, and modern web applications. View projects and get in touch.",
       },
       { name: "author", content: "Dhushyandh" },
-      { property: "og:title", content: "Dhushyandh — Full Stack Developer" },
+      { name: "creator", content: "Dhushyandh" },
+      { name: "publisher", content: "Dhushyandh" },
+      {
+        name: "googlebot",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      { property: "og:title", content: "Dhushyandh | MERN Stack Developer" },
       {
         property: "og:description",
-        content: "Building scalable software with modern technologies.",
+        content:
+          "Modern full-stack web applications built using React, Next.js, Node.js, Express & MongoDB.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Dhushyandh" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -100,6 +108,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
