@@ -18,34 +18,66 @@ export const Route = createFileRoute("/projects/$slug")({
     }
     const { study } = loaderData;
     const title = `${study.title} — Case Study | Dhushyandh`;
+    const url = `https://dhushyandh.in/projects/${study.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: study.tagline },
         {
           name: "keywords",
-          content: `${study.title}, ${study.stack.join(", ")}, Dhushyandh case study`,
+          content: `${study.title}, ${study.stack.join(", ")}, Dhushyandh, MERN Stack Developer, case study`,
         },
-        { name: "robots", content: "index, follow, max-image-preview:large" },
+        {
+          name: "robots",
+          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        },
         { property: "og:title", content: title },
         { property: "og:description", content: study.tagline },
         { property: "og:type", content: "article" },
+        { property: "og:site_name", content: "Dhushyandh" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: study.tagline },
+        { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
       ],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
+            "@graph": [
+              {
+                "@type": "CreativeWork",
             name: study.title,
             headline: study.title,
             description: study.tagline,
             dateCreated: study.year,
             keywords: study.stack.join(", "),
-            author: { "@type": "Person", name: "Dhushyandh Neduncheziyan" },
-            ...(study.live ? { url: study.live } : {}),
+                author: {
+                  "@type": "Person",
+                  name: "Dhushyandh Neduncheziyan",
+                  url: "https://dhushyandh.in",
+                },
+                ...(study.live ? { sameAs: study.live } : {}),
+                url,
             codeRepository: study.github,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://dhushyandh.in/",
+                  },
+                  { "@type": "ListItem", position: 2, name: study.title, item: url },
+                ],
+              },
+            ],
           }),
         },
       ],

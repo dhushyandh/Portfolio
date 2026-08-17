@@ -15,34 +15,44 @@ import { CursorGlow } from "@/components/portfolio/CursorGlow";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
+      { title: "Dhushyandh | MERN Stack Developer" },
       {
         name: "description",
         content:
-          "Dhushyandh is a full stack developer specialising in React, Node.js, MongoDB, PostgreSQL, AWS and AI-powered apps. Explore 8 projects, case studies, skills and hire me.",
+          "Dhushyandh is a MERN Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB and modern web applications. Explore 8 projects, case studies, skills and get in touch.",
       },
       {
         name: "keywords",
         content:
-          "Dhushyandh, full stack developer, MERN stack developer, React developer, Node.js developer, cloud engineer, AI developer portfolio, hire full stack developer",
+          "Dhushyandh, dhushyandh n, dhushy, dhushyanth, CAHCET, cahcet, MERN Stack Developer, React Developer, Next.js Developer, Node.js Developer, Express.js, MongoDB, JavaScript, Full Stack Developer, Portfolio, India, Software Engineer, Web Portfolio, React Portfolio, Next.js Portfolio, Frontend Developer, Backend Developer, Open Source",
       },
-      { name: "robots", content: "index, follow, max-image-preview:large" },
-      { property: "og:title", content: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      { property: "og:title", content: "Dhushyandh | MERN Stack Developer" },
       {
         property: "og:description",
         content:
-          "Full stack developer building scalable React, Node.js and cloud applications. Projects, case studies, experience and contact.",
+          "Modern full-stack web applications built using React, Next.js, Node.js, Express & MongoDB. Projects, case studies, experience and contact.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Dhushyandh Portfolio" },
+      { property: "og:site_name", content: "Dhushyandh" },
+      { property: "og:url", content: "https://dhushyandh.in/" },
+      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Dhushyandh Portfolio" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dhushyandh | Full Stack Developer & Cloud Engineer" },
+      { name: "twitter:title", content: "Dhushyandh | MERN Stack Developer" },
       {
         name: "twitter:description",
         content:
-          "Full stack developer building scalable React, Node.js and cloud applications.",
+          "Modern full-stack web applications built using React, Next.js, Node.js, Express & MongoDB.",
       },
+      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
     ],
+    links: [{ rel: "canonical", href: "https://dhushyandh.in/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -53,17 +63,21 @@ export const Route = createFileRoute("/")({
               "@type": "Person",
               name: "Dhushyandh Neduncheziyan",
               alternateName: "Dhushyandh",
-              jobTitle: "Full Stack Developer",
+              jobTitle: "MERN Stack Developer",
+              url: "https://dhushyandh.in",
+              image: "https://dhushyandh.in/images/profile-img.png",
               email: "mailto:dhushyandhneduncheziyan4896@gmail.com",
               description:
-                "Full stack developer building scalable software with React, Node.js, cloud infrastructure and AI.",
+                "MERN Stack Developer specializing in React, Next.js, Node.js, Express.js and MongoDB.",
               knowsAbout: [
                 "React",
                 "Next.js",
                 "Node.js",
+                "Express.js",
                 "TypeScript",
                 "MongoDB",
                 "PostgreSQL",
+                "Tailwind CSS",
                 "AWS",
                 "Docker",
                 "Artificial Intelligence",
@@ -75,7 +89,8 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "WebSite",
-              name: "Dhushyandh Portfolio",
+              name: "Dhushyandh",
+              url: "https://dhushyandh.in",
               inLanguage: "en",
               about: { "@type": "Person", name: "Dhushyandh Neduncheziyan" },
             },
