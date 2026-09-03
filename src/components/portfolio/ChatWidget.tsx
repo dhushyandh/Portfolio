@@ -16,13 +16,13 @@ const ChatPanel = lazy(() => {
 });
 
 class ChatPanelErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
-  state = { hasError: false };
+  override state = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       return (
         <div className="fixed inset-x-3 bottom-3 z-50 surface-card p-5 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[400px]">
