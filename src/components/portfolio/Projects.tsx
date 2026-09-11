@@ -18,7 +18,7 @@ export function Projects() {
       title="Featured Projects"
       intro="A selection of projects that demonstrate my approach to building scalable, production-grade software."
     >
-      <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+      <div className="grid min-w-0 gap-6 sm:gap-8 md:grid-cols-2">
         {shown.map((p) => (
           <article key={p.title} className="surface-card card-hover overflow-hidden">
             <div
@@ -41,7 +41,7 @@ export function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex min-w-0 flex-wrap gap-3">
                 {p.live && (
                   <a
                     href={p.live}

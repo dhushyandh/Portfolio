@@ -30,10 +30,10 @@ export function Nav() {
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-xl">
-      <nav className="mx-auto flex h-[64px] max-w-6xl items-center justify-between px-5 sm:h-[76px] sm:px-6">
-        <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
+      <nav className="mx-auto grid h-[64px] max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:flex sm:h-[76px] sm:justify-between sm:px-6">
+        <Link to="/" className="flex min-w-0 items-center gap-3 transition-opacity hover:opacity-80">
           <img src={logo.url} alt="Dhushyandh logo" className="h-7 w-7 rounded-full" />
-          <span className="font-display text-[17px] font-bold text-foreground">Dhushyandh</span>
+          <span className="truncate font-display text-[17px] font-bold text-foreground">Dhushyandh</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -54,6 +54,7 @@ export function Nav() {
 
         <button
           aria-label="Toggle menu"
+          type="button"
           onClick={() => setOpen((v) => !v)}
           className="text-muted-foreground transition-colors hover:text-foreground md:hidden"
         >

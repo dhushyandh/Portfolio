@@ -11,7 +11,7 @@ export function GitHubActivity() {
         <Activity size={15} /> Live data · updated today
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+      <div className="grid min-w-0 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {GITHUB_STATS.map((s) => {
           const Icon = ICONS[s.icon];
           return (
@@ -36,10 +36,10 @@ export function GitHubActivity() {
             href={`https://github.com/dhushyandh/${repo.name}`}
             target="_blank"
             rel="noreferrer"
-            className="surface-card card-hover flex flex-col p-5 sm:p-6"
+            className="surface-card card-hover flex min-w-0 flex-col p-5 sm:p-6"
           >
             <div className="flex items-start justify-between gap-3">
-              <h3 className="text-[17px] font-bold text-foreground">{repo.name}</h3>
+              <h3 className="min-w-0 break-words text-[17px] font-bold text-foreground">{repo.name}</h3>
               <ExternalLink size={15} className="mt-1 shrink-0 text-muted-foreground" />
             </div>
             {repo.description && (
@@ -47,7 +47,7 @@ export function GitHubActivity() {
                 {repo.description}
               </p>
             )}
-            <div className="mt-auto flex items-center gap-4 pt-6 font-mono text-[13px] text-muted-foreground">
+            <div className="mt-auto flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 pt-6 font-mono text-[13px] text-muted-foreground">
               {repo.language && (
                 <span className="flex items-center gap-2">
                   <span
@@ -80,7 +80,7 @@ export function GitHubActivity() {
                   style={{ width: `${lang.percent}%`, backgroundColor: lang.color }}
                 />
               </div>
-              <span className="w-10 shrink-0 text-right font-mono text-[13px] text-muted-foreground">
+              <span className="ml-auto w-10 shrink-0 text-right font-mono text-[13px] text-muted-foreground">
                 {lang.percent}%
               </span>
             </div>
