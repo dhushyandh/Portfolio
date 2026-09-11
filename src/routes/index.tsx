@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import profile from "@/assets/profile-img.png";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
@@ -61,11 +62,11 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "Person",
-              name: "Dhushyandh Neduncheziyan",
+              name: "Dhushyandh N",
               alternateName: "Dhushyandh",
               jobTitle: "MERN Stack Developer",
               url: "https://dhushyandh.in",
-              image: "https://dhushyandh.in/images/profile-img.png",
+              image: profile,
               email: "mailto:dhushyandhneduncheziyan4896@gmail.com",
               description:
                 "MERN Stack Developer specializing in React, Next.js, Node.js, Express.js and MongoDB.",
@@ -92,7 +93,7 @@ export const Route = createFileRoute("/")({
               name: "Dhushyandh",
               url: "https://dhushyandh.in",
               inLanguage: "en",
-              about: { "@type": "Person", name: "Dhushyandh Neduncheziyan" },
+              about: { "@type": "Person", name: "Dhushyandh N" },
             },
           ],
         }),

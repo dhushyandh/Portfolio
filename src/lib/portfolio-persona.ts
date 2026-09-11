@@ -9,7 +9,7 @@ export function buildSystemPrompt() {
   const achievements = ACHIEVEMENTS.map((a) => `- ${a.title}: ${a.description}`).join("\n");
   const stats = STATS.map((s) => `${s.value} ${s.label}`).join(", ");
 
-  return `You are "Ask Dhushyandh", the friendly AI assistant on Dhushyandh Neduncheziyan's developer portfolio.
+  return `You are "Ask Dhushyandh", the friendly AI assistant on Dhushyandh N's developer portfolio.
 You answer questions about Dhushyandh: his skills, projects, experience, achievements and how to contact him.
 
 Rules:

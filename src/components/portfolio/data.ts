@@ -1,111 +1,77 @@
 export const NAV = [
   { id: "home", label: "Home" },
+  { id: "projects", label: "Work" },
   { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
-  { id: "achievements", label: "Achievements" },
+  { id: "skills", label: "Stack" },
+  { id: "achievements", label: "Credentials" },
   { id: "contact", label: "Contact" },
 ];
 
 export const ROLES = [
-  "Full Stack Developer.",
-  "Cloud Engineer.",
-  "AI Enthusiast.",
-  "Problem Solver.",
+  "Full Stack Developer",
+  "Freelance Web Developer",
+  "AI & Cloud Enthusiast",
 ];
 
 export const STATS = [
-  { value: "4+", label: "Projects Built" },
-  { value: "10+", label: "Technologies" },
-  { value: "2+", label: "Years Coding" },
-  { value: "1", label: "Degree in Progress" },
+  { value: "4", label: "Featured projects" },
+  { value: "2+", label: "Client projects" },
+  { value: "2023", label: "Started engineering" },
+  { value: "∞", label: "Things to build" },
 ];
 
 export type Project = {
   slug: string;
   title: string;
   description: string;
+  category: string;
   tags: string[];
   tint: string;
   github: string;
-  /** Live deployment URL. Leave empty to hide the Live button. */
   live?: string;
 };
 
 export const PROJECTS: Project[] = [
   {
-    slug: "project-workspace-management",
-    title: "Project Workspace Management",
+    slug: "device-kart",
+    title: "Device-Kart",
+    category: "Product · Full Stack",
     description:
-      "Enterprise-style workspace collaboration platform with authentication, role management, and project organization.",
-    tags: ["React", "Node.js", "Express", "PostgreSQL", "Prisma", "Clerk"],
-    tint: "oklch(0.28 0.09 264)",
+      "A product-focused marketplace experience for refurbished devices, built around real-world commerce flows, responsive UX, and a mobile-ready architecture.",
+    tags: ["Full Stack", "E-commerce", "Responsive", "Product"],
+    tint: "oklch(0.31 0.10 290)",
     github: "https://github.com/dhushyandh",
   },
   {
-    slug: "smartmart",
-    title: "SmartMart",
+    slug: "sri-guru-coaching-centre",
+    title: "Sri Guru Coaching Centre",
+    category: "Client · Freelance",
     description:
-      "Full-stack e-commerce application featuring authentication, payments, image uploads, and admin dashboard.",
-    tags: ["React", "Node.js", "MongoDB", "Stripe", "Cloudinary"],
-    tint: "oklch(0.28 0.09 150)",
+      "A real client website created to give an educational coaching centre a professional digital presence with clear information architecture and responsive presentation.",
+    tags: ["Client Work", "Web Design", "Responsive", "SEO"],
+    tint: "oklch(0.31 0.09 205)",
     github: "https://github.com/dhushyandh",
   },
   {
-    slug: "ai-blog-platform",
-    title: "AI Blog Platform",
+    slug: "nalanda-study-circle",
+    title: "Nalanda Study Circle",
+    category: "Client · Freelance",
     description:
-      "Blogging platform with AI-assisted writing, rich text editing, and content moderation built on a modern stack.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "OpenAI"],
-    tint: "oklch(0.27 0.09 320)",
+      "A professional educational website focused on presenting programmes, information, and contact pathways through a clean, accessible, responsive experience.",
+    tags: ["Client Work", "UI", "Responsive", "SEO"],
+    tint: "oklch(0.31 0.09 155)",
     github: "https://github.com/dhushyandh",
   },
   {
-    slug: "ai-interview-platform",
-    title: "AI Interview Platform",
+    slug: "ai-budget-utilization-monitoring",
+    title: "AI-Based Budget Utilization Monitoring System",
+    category: "Academic · AI",
     description:
-      "Mock interview experience with AI-generated questions, real-time feedback, and performance tracking.",
-    tags: ["React", "Node.js", "MongoDB", "Gemini API"],
-    tint: "oklch(0.28 0.09 70)",
+      "An AI-oriented monitoring system for analysing budget-utilization data and presenting useful insights through a web-based interface.",
+    tags: ["AI", "Data", "Analytics", "Web App"],
+    tint: "oklch(0.31 0.10 70)",
     github: "https://github.com/dhushyandh",
-  },
-  {
-    slug: "todo-list",
-    title: "Todo List (MERN)",
-    description:
-      "Task manager with authentication, CRUD todos, priorities, and persistent state built on the MERN stack.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
-    tint: "oklch(0.28 0.09 200)",
-    github: "https://github.com/dhushyandh/Todo-List",
-  },
-  {
-    slug: "ecommerce-website",
-    title: "Ecommerce Website",
-    description:
-      "Storefront with product catalog, cart, checkout flow, and order history powered by a REST API.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
-    tint: "oklch(0.28 0.09 30)",
-    github: "https://github.com/dhushyandh/Ecommerce-Website",
-  },
-  {
-    slug: "auth-system",
-    title: "MERN Authentication System",
-    description:
-      "Reusable auth service with JWT sessions, refresh tokens, email verification, and password reset flows.",
-    tags: ["Node.js", "Express", "MongoDB", "JWT"],
-    tint: "oklch(0.28 0.09 110)",
-    github: "https://github.com/dhushyandh/Authentication",
-  },
-  {
-    slug: "developer-portfolio",
-    title: "Developer Portfolio",
-    description:
-      "This portfolio — a fast, SEO-optimised, fully responsive site with scroll motion and case studies.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "SEO"],
-    tint: "oklch(0.28 0.09 290)",
-    github: "https://github.com/dhushyandh/dhushyandh",
-    live: "https://dhushyandh.dev",
   },
 ];
 
@@ -121,38 +87,72 @@ export const SKILL_GROUPS = [
   { label: "Tools", icon: "wrench", items: ["Git", "GitHub", "Postman", "VS Code", "Figma"] },
 ] as const;
 
-export const TIMELINE = [
+export type ExperienceItem = {
+  slug: string;
+  icon: "briefcase" | "git" | "cap";
+  title: string;
+  org: string;
+  period: string;
+  description: string;
+  type: "Freelance" | "Internship" | "Development" | "Education";
+  tint: string;
+};
+
+export const TIMELINE: ExperienceItem[] = [
   {
+    slug: "freelance-full-stack-developer",
     icon: "briefcase",
-    title: "Full Stack Development Intern",
-    org: "Tech Company",
-    period: "Jan 2025 — Present",
+    title: "Freelance Full Stack Developer",
+    org: "Independent",
+    period: "Aug 2026 — Present",
+    type: "Freelance",
+    tint: "oklch(0.31 0.10 290)",
     description:
-      "Developed and maintained full-stack web applications using React, Node.js, and PostgreSQL. Collaborated with cross-functional teams to deliver scalable features.",
+      "Building and delivering real client websites and product-oriented applications, handling requirements, UI development, full-stack implementation, deployment, and iteration.",
   },
   {
+    slug: "unified-mentor-full-stack-internship",
+    icon: "briefcase",
+    title: "Full Stack Developer Intern",
+    org: "Unified Mentor Pvt. Ltd.",
+    period: "Aug 2026 — Oct 2026",
+    type: "Internship",
+    tint: "oklch(0.31 0.09 205)",
+    description:
+      "A 3-month full-stack development internship focused on practical application development and strengthening frontend, backend, database, API, and deployment workflows.",
+  },
+  {
+    slug: "codec-technologies-mern-internship",
+    icon: "briefcase",
+    title: "MERN Stack Developer Intern",
+    org: "Codec Technologies",
+    period: "Feb 2026 — Mar 2026",
+    type: "Internship",
+    tint: "oklch(0.31 0.09 155)",
+    description:
+      "Worked as a MERN stack development intern, gaining practical experience across React, Node.js, Express, MongoDB, API development, and full-stack application workflows.",
+  },
+  {
+    slug: "project-based-software-development",
     icon: "git",
-    title: "Open Source Contributions",
-    org: "GitHub",
-    period: "Ongoing",
+    title: "Project-Based Software Development",
+    org: "Independent",
+    period: "2025 — Present",
+    type: "Development",
+    tint: "oklch(0.31 0.10 70)",
     description:
-      "Active contributor to open-source projects. Submitted pull requests, reported issues, and collaborated with global developer communities.",
+      "Built and explored full-stack applications across modern frontend development, backend APIs, databases, authentication, cloud technologies, and AI-assisted workflows.",
   },
   {
-    icon: "book",
-    title: "Major Academic Projects",
-    org: "University",
-    period: "2023 — 2025",
-    description:
-      "Led and contributed to multiple full-stack projects covering AI integration, cloud deployment, and enterprise-grade architecture patterns.",
-  },
-  {
+    slug: "be-computer-science-engineering",
     icon: "cap",
-    title: "Bachelor of Engineering",
-    org: "Computer Science Engineering",
-    period: "2022 — 2026",
+    title: "B.E. Computer Science Engineering",
+    org: "C. Abdul Hakeem College of Engineering and Technology · Anna University",
+    period: "2023 — 2027",
+    type: "Education",
+    tint: "oklch(0.31 0.09 250)",
     description:
-      "Studying core computer science with a focus on software engineering, data structures, systems design, and cloud computing.",
+      "Pursuing Computer Science Engineering alongside continuous project-based learning in software engineering, web development, systems, cloud technologies, and application development.",
   },
 ] as const;
 
@@ -160,34 +160,27 @@ export const ACHIEVEMENTS = [
   {
     icon: "github",
     title: "GitHub Student Developer Pack",
-    description: "Access to 100+ developer tools and resources through GitHub Education.",
+    description: "Developer resources and tools through GitHub Education.",
   },
   {
     icon: "cloud",
-    title: "AWS Learning",
-    description: "Completed AWS cloud practitioner learning paths and hands-on labs.",
+    title: "AWS Technical Essentials",
+    description: "Cloud fundamentals and AWS learning experience.",
   },
   {
     icon: "award",
-    title: "IBM Certifications",
-    description: "Earned IBM professional certifications in cloud and AI technologies.",
+    title: "IBM Web Development",
+    description: "IBM learning covering HTML, CSS, and JavaScript fundamentals.",
   },
   {
     icon: "book",
-    title: "Microsoft Learn",
-    description: "Completed Microsoft Learn paths covering Azure, AI, and development.",
+    title: "Amazon Full Stack Web Development",
+    description: "Full-stack web development learning and project work.",
   },
   {
     icon: "trophy",
-    title: "Hackathons",
-    description:
-      "Participated in multiple hackathons, building innovative solutions under time constraints.",
-  },
-  {
-    icon: "users",
-    title: "Technical Workshops",
-    description:
-      "Attended and facilitated technical workshops on modern web technologies.",
+    title: "Oracle Cloud Infrastructure",
+    description: "Cloud infrastructure learning through Oracle.",
   },
 ] as const;
 
@@ -200,41 +193,26 @@ export const GITHUB_STATS = [
 export const REPOS = [
   {
     name: "ProjectManagement",
-    description:
-      "A modern full-stack Project Management Platform that helps teams organize projects, manage tasks, and collaborate.",
+    description: "A full-stack project management platform.",
     language: "JavaScript",
     stars: 6,
-    updated: "13 days ago",
+    updated: "May 2026",
   },
-  { name: "dhushyandh", description: "", language: null, stars: 4, updated: "20 days ago" },
   {
-    name: "Todo-List",
-    description: "Todo-List Using Mern Stack",
-    language: "JavaScript",
+    name: "AIResumeAnalyser",
+    description: "AI-powered resume analysis tool.",
+    language: "TypeScript",
     stars: 4,
-    updated: "28 days ago",
+    updated: "July 2026",
   },
   {
     name: "Ecommerce-Website",
-    description: "Ecommerce Website using Mern Stack",
+    description: "MERN e-commerce application.",
     language: "JavaScript",
     stars: 4,
-    updated: "28 days ago",
+    updated: "Jan 2026",
   },
-  {
-    name: "SmartMart",
-    description: "Ecommerce Webiste Using Mern Stack",
-    language: "JavaScript",
-    stars: 4,
-    updated: "28 days ago",
-  },
-  {
-    name: "Authentication",
-    description: "Authentication using MERN stack",
-    language: "JavaScript",
-    stars: 4,
-    updated: "28 days ago",
-  },
+  
 ];
 
 export const LANGUAGES = [

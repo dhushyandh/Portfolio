@@ -25,7 +25,7 @@ class ChatPanelErrorBoundary extends Component<{ children: ReactNode }, { hasErr
   override render() {
     if (this.state.hasError) {
       return (
-        <div className="fixed inset-x-3 bottom-3 z-50 surface-card p-5 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[400px]">
+        <div className="fixed inset-x-3 bottom-3 z-50 surface-card p-5 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-100">
           <p className="font-display text-sm font-bold text-foreground">Assistant unavailable</p>
           <p className="mt-1 text-sm text-muted-foreground">
             The assistant could not load right now. Refresh the page to try again.
@@ -58,7 +58,7 @@ export function ChatWidget() {
           void chatPanelPromise.catch(() => undefined);
         }}
         aria-label="Open AI assistant"
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-[0_18px_40px_-16px_oklch(0_0_0/70%)] transition-transform hover:scale-105 sm:bottom-6 sm:right-6"
+        className="fixed bottom-24 right-4 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-[0_18px_40px_-16px_oklch(0_0_0/70%)] transition-transform hover:scale-105 sm:bottom-6 sm:right-6"
       >
         <Sparkles size={18} />
         <span className="hidden sm:inline">Ask about me</span>

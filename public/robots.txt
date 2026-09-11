@@ -1,16 +1,11 @@
-User-agent: Googlebot
-Allow: /
+export const dynamic = "force-static";
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
-
-Sitemap: https://dhushyandh.in/sitemap.xml
+export default function robots() {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: "https://dhushyandh.in/sitemap.xml",
+  };
+}

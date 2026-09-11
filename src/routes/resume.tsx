@@ -38,7 +38,7 @@ export const Route = createFileRoute("/resume")({
           "@graph": [
             {
               "@type": "Person",
-              name: "Dhushyandh Neduncheziyan",
+              name: "Dhushyandh N",
               alternateName: "Dhushyandh N",
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,

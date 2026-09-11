@@ -1,6 +1,4 @@
-import resumeFile from "@/assets/Dhushyandh_Resume.pdf.asset.json";
-
-export const RESUME_URL = resumeFile.url;
+export const RESUME_URL = "/Dhushyandh_Resume.pdf";
 
 export const RESUME = {
   name: "Dhushyandh N",

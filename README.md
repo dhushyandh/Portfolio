@@ -1,24 +1,10 @@
-# AI Story Weaver
-
-https://airo.ai/share/NTB5YWZsbWxwMjpjNDA6U1Qybkludk90VThz
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8a66594b-3a3c-49fa-bec1-437ea601233d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+# Dhushyandh Portfolio
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+The optional portfolio assistant uses the OpenAI-compatible API. Set `OPENAI_API_KEY` before starting the server if you want to use it. `OPENAI_BASE_URL` can be used with another compatible provider.
