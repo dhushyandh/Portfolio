@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Download, Mail, MapPin, Phone } from "lucide-react";
-import { RESUME, RESUME_URL } from "@/components/portfolio/resume-data";
+import {
+  CERTIFICATE_SLUGS,
+  RESUME,
+  RESUME_URL,
+} from "@/components/portfolio/resume-data";
 
 const DESCRIPTION =
   "Resume of Dhushyandh N — Full Stack Developer (MERN) from Vellore, India. B.E Computer Science 2023-2027, AWS/Google/IBM/Oracle certifications, React, Node.js, PostgreSQL and AI projects. Download the PDF.";
@@ -185,8 +189,14 @@ function ResumePage() {
           <h2 className="font-display text-2xl font-bold text-foreground">Certifications</h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {RESUME.certificates.map((c) => (
-              <li key={c} className="surface-card card-hover p-4 text-sm text-muted-foreground">
-                {c}
+              <li key={c} className="surface-card card-hover p-4">
+                <Link
+                  to="/credentials/$slug"
+                  params={{ slug: CERTIFICATE_SLUGS[c as keyof typeof CERTIFICATE_SLUGS] }}
+                  className="block text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {c}
+                </Link>
               </li>
             ))}
           </ul>

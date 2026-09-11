@@ -39,7 +39,7 @@ export function Projects() {
     <Section
       id="projects"
       eyebrow="01 / Selected work"
-      title="Less noise. More proof."
+      title="Freelance and personal projects"
       intro="The featured list is intentionally small: real client work, a serious product build, and a technical AI project."
     >
       <div className="space-y-6">
@@ -80,13 +80,16 @@ export function Projects() {
                     <Link to="/projects/$slug" params={{ slug: project.slug }} className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-xs font-semibold text-muted-foreground hover:bg-accent hover:text-foreground">
                       Case study <ArrowUpRight size={14} />
                     </Link>
-                    <Link
-                      to="/projects/$slug"
-                      params={{ slug: project.slug }}
-                      className="inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-xs font-bold text-background"
-                    >
-                      View project <ExternalLink size={14} />
-                    </Link>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-xs font-bold text-background"
+                      >
+                        View project <ExternalLink size={14} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

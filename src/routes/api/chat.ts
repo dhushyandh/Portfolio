@@ -43,8 +43,8 @@ Built and explored full-stack applications across modern frontend development, b
 
 PROJECTS
 
-1. Device-Kart
-Category: Product · Full Stack
+1. RenewX Crew
+Category: Product · Client Project
 
 A product-focused marketplace experience for refurbished devices, built around real-world commerce flows, responsive UX, and a mobile-ready architecture.
 
@@ -53,8 +53,8 @@ Category: Client · Freelance
 
 A real client website created to give an educational coaching centre a professional digital presence with clear information architecture and responsive presentation.
 
-3. Nalanda Study Circle
-Category: Client · Freelance
+3. Project Management App
+Category: Personal · Full Stack
 
 A professional educational website focused on presenting programmes, information, and contact pathways through a clean, accessible, responsive experience.
 

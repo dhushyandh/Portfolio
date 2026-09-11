@@ -1,5 +1,14 @@
 export const RESUME_URL = "/Dhushyandh_Resume.pdf";
 
+export const CERTIFICATE_SLUGS = {
+  "IBM — Introduction to HTML, CSS, JavaScript": "ibm-web-development",
+  "Amazon — Full Stack Web Development": "amazon-full-stack-web-development",
+  "Google — Cloud Cybersecurity Certificate": "google-cloud-cybersecurity",
+  "AWS — Technical Essentials": "aws-technical-essentials",
+  "MERN Stack Development": "mern-stack-development",
+  "Oracle — Cloud Infrastructure 2025": "oracle-cloud-infrastructure",
+} as const;
+
 export const RESUME = {
   name: "Dhushyandh N",
   title: "Full Stack Developer",

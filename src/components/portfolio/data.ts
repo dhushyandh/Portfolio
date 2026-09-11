@@ -34,14 +34,15 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    slug: "device-kart",
-    title: "Device-Kart",
-    category: "Product · Full Stack",
+    slug: "renewx-crew",
+    title: "RenewX Crew",
+    category: "Product · Client Project",
     description:
       "A product-focused marketplace experience for refurbished devices, built around real-world commerce flows, responsive UX, and a mobile-ready architecture.",
     tags: ["Full Stack", "E-commerce", "Responsive", "Product"],
     tint: "oklch(0.31 0.10 290)",
-    github: "https://github.com/dhushyandh",
+    github: "https://github.com/dhushyandh/RenewXCrew",
+    live: "https://renewx.dhushyandh.in",
   },
   {
     slug: "sri-guru-coaching-centre",
@@ -51,17 +52,19 @@ export const PROJECTS: Project[] = [
       "A real client website created to give an educational coaching centre a professional digital presence with clear information architecture and responsive presentation.",
     tags: ["Client Work", "Web Design", "Responsive", "SEO"],
     tint: "oklch(0.31 0.09 205)",
-    github: "https://github.com/dhushyandh",
+    github: "https://github.com/dhushyandh/SriGuruCoachingCentre",
+    live: "https://srigurucoaching.in",
   },
   {
-    slug: "nalanda-study-circle",
-    title: "Nalanda Study Circle",
-    category: "Client · Freelance",
+    slug: "project-management-app",
+    title: "Project Management App",
+    category: "Personal · Full Stack",
     description:
-      "A professional educational website focused on presenting programmes, information, and contact pathways through a clean, accessible, responsive experience.",
-    tags: ["Client Work", "UI", "Responsive", "SEO"],
+      "A personal project to explore full-stack development and create a simple project management application.",
+    tags: ["Personal", "UI", "Responsive", "Full Stack"],
     tint: "oklch(0.31 0.09 155)",
-    github: "https://github.com/dhushyandh",
+    github: "https://github.com/dhushyandh/ProjectManagement",
+    live: "https://projectmanage.dhushyandh.me",
   },
   {
     slug: "ai-budget-utilization-monitoring",
@@ -158,29 +161,46 @@ export const TIMELINE: ExperienceItem[] = [
 
 export const ACHIEVEMENTS = [
   {
-    icon: "github",
-    title: "GitHub Student Developer Pack",
-    description: "Developer resources and tools through GitHub Education.",
-  },
-  {
+    slug: "aws-technical-essentials",
     icon: "cloud",
     title: "AWS Technical Essentials",
-    description: "Cloud fundamentals and AWS learning experience.",
+    description:
+      "Cloud fundamentals and AWS learning experience.",
   },
   {
+    slug: "ibm-web-development",
     icon: "award",
     title: "IBM Web Development",
-    description: "IBM learning covering HTML, CSS, and JavaScript fundamentals.",
+    description:
+      "IBM learning covering HTML, CSS, and JavaScript fundamentals.",
   },
   {
+    slug: "amazon-full-stack-web-development",
     icon: "book",
     title: "Amazon Full Stack Web Development",
-    description: "Full-stack web development learning and project work.",
+    description:
+      "Full-stack web development learning and project work.",
   },
   {
+    slug: "oracle-cloud-infrastructure",
     icon: "trophy",
     title: "Oracle Cloud Infrastructure",
-    description: "Cloud infrastructure learning through Oracle.",
+    description:
+      "Cloud infrastructure learning through Oracle.",
+  },
+  {
+    slug: "google-cloud-cybersecurity",
+    icon: "cloud",
+    title: "Google Cloud Cybersecurity Certificate",
+    description:
+      "Cybersecurity foundations and cloud security learning through Google.",
+  },
+  {
+    slug: "mern-stack-development",
+    icon: "award",
+    title: "MERN Stack Development",
+    description:
+      "Full-stack JavaScript development across MongoDB, Express, React, and Node.js.",
   },
 ] as const;
 
@@ -212,7 +232,7 @@ export const REPOS = [
     stars: 4,
     updated: "Jan 2026",
   },
-  
+
 ];
 
 export const LANGUAGES = [

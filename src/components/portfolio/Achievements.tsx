@@ -1,11 +1,12 @@
 import {
+  ArrowUpRight,
   Award,
   BookOpen,
   Cloud,
   Github,
-  GraduationCap,
   Trophy,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Section } from "./Section";
 import { ACHIEVEMENTS } from "./data";
 import { Reveal } from "./Reveal";
@@ -31,11 +32,8 @@ export function Achievements() {
           const Icon = ICONS[achievement.icon];
 
           return (
-            <Reveal
-              key={achievement.title}
-              delay={index * 80}
-            >
-              <article className="group relative h-full overflow-hidden rounded-[1.5rem] border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_70px_-45px_oklch(0_0_0/90%)]">
+            <Reveal key={achievement.slug} delay={index * 80}>
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_70px_-45px_oklch(0_0_0/90%)]">
                 {/* subtle glow */}
                 <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/5 blur-2xl transition-all duration-500 group-hover:bg-primary/10" />
 
@@ -63,12 +61,23 @@ export function Achievements() {
                   </div>
 
                   {/* Bottom */}
-                  <div className="mt-7 flex items-center gap-2 border-t border-border pt-5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  <div className="mt-7 flex items-center justify-between gap-4 border-t border-border pt-5">
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
 
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-                      Credential
-                    </span>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                        Credential
+                      </span>
+                    </div>
+
+                    <Link
+                      to="/credentials/$slug"
+                      params={{ slug: achievement.slug }}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-all duration-200 hover:gap-2"
+                    >
+                      Know more
+                      <ArrowUpRight size={14} />
+                    </Link>
                   </div>
                 </div>
               </article>
