@@ -46,8 +46,8 @@ export function Contact() {
       title="Get In Touch"
       intro="I'm open to full-time roles, internships, freelance projects, and interesting collaborations. Let's build something great together."
     >
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+      <div className="grid min-w-0 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-1">
           {LINKS.map((link) => {
             const Icon = link.icon;
             return (
@@ -56,7 +56,7 @@ export function Contact() {
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
-                className="surface-card card-hover flex items-center gap-4 p-5 sm:p-6"
+                className="surface-card card-hover flex min-w-0 items-center gap-4 p-5 sm:p-6"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
                   <Icon size={18} />
@@ -72,7 +72,7 @@ export function Contact() {
           })}
         </div>
 
-        <form onSubmit={onSubmit} className="surface-card space-y-4 p-6 sm:p-8">
+        <form onSubmit={onSubmit} className="surface-card min-w-0 space-y-4 p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="text-sm text-muted-foreground">
