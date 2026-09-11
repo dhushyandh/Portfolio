@@ -20,12 +20,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dhushyandh is a MERN Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB and modern web applications. Explore 4 featured projects, case studies, skills and get in touch.",
+          "Dhushyandh is a MERN Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB and modern web applications. Explore projects, case studies, skills, experience and get in touch.",
       },
       {
         name: "keywords",
         content:
-          "Dhushyandh, dhushyandh n, dhushy, dhushyanth, CAHCET, cahcet, MERN Stack Developer, React Developer, Next.js Developer, Node.js Developer, Express.js, MongoDB, JavaScript, Full Stack Developer, Portfolio, India, Software Engineer, Web Portfolio, React Portfolio, Next.js Portfolio, Frontend Developer, Backend Developer, Open Source",
+          "dhushyandh,Dhushyandh,dhushyandh n, dhushy, dhushyanth, CAHCET, cahcet, MERN Stack Developer, React Developer, Next.js Developer, Node.js Developer, Express.js, MongoDB, JavaScript, Full Stack Developer, Portfolio, India, Software Engineer, Web Portfolio, React Portfolio, Next.js Portfolio, Frontend Developer, Backend Developer, Open Source",
       },
       {
         name: "robots",
