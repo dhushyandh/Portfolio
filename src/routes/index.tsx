@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dhushyandh is a MERN Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB and modern web applications. Explore 8 projects, case studies, skills and get in touch.",
+          "Dhushyandh is a MERN Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB and modern web applications. Explore 4 featured projects, case studies, skills and get in touch.",
       },
       {
         name: "keywords",

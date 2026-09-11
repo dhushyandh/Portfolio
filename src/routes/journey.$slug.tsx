@@ -161,6 +161,91 @@ export const Route = createFileRoute("/journey/$slug")({
       next,
     };
   },
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [{ title: "Journey Not Found" }, { name: "robots", content: "noindex" }],
+      };
+    }
+    const { item, details } = loaderData;
+    const title = `${item.title} — ${item.org} | Journey & Experience — Dhushyandh`;
+    const url = `https://dhushyandh.in/journey/${item.slug}`;
+    const description = `${item.title} at ${item.org} (${item.period}). ${details.tagline} ${item.description}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        {
+          name: "keywords",
+          content: `${item.title}, ${item.org}, ${item.type}, Dhushyandh, career timeline, developer experience, MERN Stack`,
+        },
+        {
+          name: "robots",
+          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:site_name", content: "Dhushyandh" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "AboutPage",
+                name: item.title,
+                description,
+                url,
+                mainEntity: {
+                  "@type": "Person",
+                  name: "Dhushyandh N",
+                  jobTitle: item.title,
+                  worksFor: {
+                    "@type": "Organization",
+                    name: item.org,
+                  },
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://dhushyandh.in/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Experience",
+                    item: "https://dhushyandh.in/#experience",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: item.title,
+                    item: url,
+                  },
+                ],
+              },
+            ],
+          }),
+        },
+      ],
+    };
+  },
 
   notFoundComponent: JourneyMissing,
 

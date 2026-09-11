@@ -167,6 +167,91 @@ export const Route = createFileRoute("/credentials/$slug")({
       next: getNextCredential(params.slug),
     };
   },
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [{ title: "Credential Not Found" }, { name: "robots", content: "noindex" }],
+      };
+    }
+    const { credential } = loaderData;
+    const title = `${credential.title} (${credential.provider}) — Credentials | Dhushyandh`;
+    const url = `https://dhushyandh.in/credentials/${credential.slug}`;
+    const description = `${credential.title} credential from ${credential.provider}. ${credential.description}`;
+    const imageUrl = credential.image
+      ? `https://dhushyandh.in${credential.image}`
+      : "https://dhushyandh.in/og-image.png";
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        {
+          name: "keywords",
+          content: `${credential.title}, ${credential.provider}, ${credential.category}, Dhushyandh, certifications, credentials, MERN Stack Developer`,
+        },
+        {
+          name: "robots",
+          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:site_name", content: "Dhushyandh" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: imageUrl },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: imageUrl },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "EducationalOccupationalCredential",
+                name: credential.title,
+                credentialCategory: credential.category,
+                description: credential.overview,
+                recognizedBy: {
+                  "@type": "Organization",
+                  name: credential.provider,
+                },
+                url,
+                image: imageUrl,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://dhushyandh.in/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Credentials",
+                    item: "https://dhushyandh.in/#achievements",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: credential.title,
+                    item: url,
+                  },
+                ],
+              },
+            ],
+          }),
+        },
+      ],
+    };
+  },
 
   component: CredentialPage,
 });
@@ -248,6 +333,8 @@ function CredentialPage() {
             <img
               src={credential.image}
               alt={`${credential.title} certificate`}
+              loading="lazy"
+              decoding="async"
               className="mx-auto h-auto max-h-[620px] w-full object-contain"
             />
             <figcaption className="mt-3 text-center text-xs text-muted-foreground">

@@ -81,6 +81,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Dhushyandh is a MERN Stack Developer specializing in React, Node.js, Express, MongoDB, and modern web applications. View projects and get in touch.",
       },
+      { name: "theme-color", content: "#0a0a0c" },
+      { name: "color-scheme", content: "dark" },
       { name: "author", content: "Dhushyandh" },
       { name: "creator", content: "Dhushyandh" },
       { name: "publisher", content: "Dhushyandh" },
@@ -107,6 +109,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: favicon, type: "image/png" },
       { rel: "shortcut icon", href: favicon, type: "image/png" },
       { rel: "apple-touch-icon", href: favicon },
+      { rel: "manifest", href: "/manifest.json" },
+      { rel: "dns-prefetch", href: "https://fonts.googleapis.com" },
+      { rel: "dns-prefetch", href: "https://fonts.gstatic.com" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

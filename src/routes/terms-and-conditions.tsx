@@ -12,6 +12,61 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/terms-and-conditions")({
+  head: () => ({
+    meta: [
+      { title: "Terms & Conditions — Dhushyandh | MERN Stack Developer" },
+      {
+        name: "description",
+        content:
+          "Terms and Conditions for using Dhushyandh's developer portfolio website, AI assistant, and project showcase materials.",
+      },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1",
+      },
+      { property: "og:title", content: "Terms & Conditions — Dhushyandh" },
+      {
+        property: "og:description",
+        content:
+          "Terms and Conditions for using Dhushyandh's developer portfolio website, AI assistant, and project showcase materials.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://dhushyandh.in/terms-and-conditions" },
+      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Terms & Conditions — Dhushyandh" },
+      {
+        name: "twitter:description",
+        content:
+          "Terms and Conditions for using Dhushyandh's developer portfolio website, AI assistant, and project showcase materials.",
+      },
+      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
+    ],
+    links: [{ rel: "canonical", href: "https://dhushyandh.in/terms-and-conditions" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://dhushyandh.in/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Terms & Conditions",
+              item: "https://dhushyandh.in/terms-and-conditions",
+            },
+          ],
+        }),
+      },
+    ],
+  }),
   component: TermsAndConditions,
 });
 

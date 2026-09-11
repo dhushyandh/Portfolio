@@ -14,6 +14,61 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/privacy-policy")({
+  head: () => ({
+    meta: [
+      { title: "Privacy Policy — Dhushyandh | MERN Stack Developer" },
+      {
+        name: "description",
+        content:
+          "Privacy Policy for Dhushyandh's portfolio website. Explains information handling, contact submissions, and AI assistant privacy practices.",
+      },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1",
+      },
+      { property: "og:title", content: "Privacy Policy — Dhushyandh" },
+      {
+        property: "og:description",
+        content:
+          "Privacy Policy for Dhushyandh's portfolio website. Explains information handling, contact submissions, and AI assistant privacy practices.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://dhushyandh.in/privacy-policy" },
+      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Privacy Policy — Dhushyandh" },
+      {
+        name: "twitter:description",
+        content:
+          "Privacy Policy for Dhushyandh's portfolio website. Explains information handling, contact submissions, and AI assistant privacy practices.",
+      },
+      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
+    ],
+    links: [{ rel: "canonical", href: "https://dhushyandh.in/privacy-policy" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://dhushyandh.in/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Privacy Policy",
+              item: "https://dhushyandh.in/privacy-policy",
+            },
+          ],
+        }),
+      },
+    ],
+  }),
   component: PrivacyPolicy,
 });
 

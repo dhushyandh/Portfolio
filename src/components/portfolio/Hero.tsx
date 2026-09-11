@@ -72,7 +72,11 @@ export function Hero() {
             <img
               src={profile}
               alt="Portrait of Dhushyandh"
+              width={320}
+              height={320}
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="h-48 w-48 rounded-full object-cover sm:h-64 sm:w-64 lg:h-80 lg:w-80"
             />
           </div>

@@ -1,11 +1,4 @@
-export const dynamic = "force-static";
+User-agent: *
+Allow: /
 
-export default function robots() {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: "https://dhushyandh.in/sitemap.xml",
-  };
-}
+Sitemap: https://dhushyandh.in/sitemap.xml
