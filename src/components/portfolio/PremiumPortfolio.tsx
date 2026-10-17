@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, ArrowUp, Download, Code2, Globe, Smartphone, ShoppingBag, Github, Linkedin, Mail, MessageCircle, Plus, Minus } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, ArrowUp, Download, Code2, Globe, Smartphone, ShoppingBag, Github, Linkedin, Mail, MessageCircle, Plus, Minus, BriefcaseBusiness, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profile from '@/assets/profile-img.png';
 import { RESUME, RESUME_URL, CERTIFICATES } from './resume-data';
 import { PORTFOLIO_PROJECTS, PROCESS, SERVICES, TECHNOLOGIES, PORTFOLIO_FAQS } from './premium-data';
+import { TIMELINE } from './data';
 import { Nav } from './Nav';
 import { Contact } from './Contact';
 import { PortfolioMotion } from './PortfolioMotion';
@@ -34,7 +35,7 @@ export function PremiumPortfolio() {
 
       <section id="about" className="editorial-section page-width">
         <SectionLabel number="01">A little about me</SectionLabel>
-        <div className="about-layout"><div data-enter="left" className="about-photo"><img src={profile} alt="N. Dhushyandh, web and mobile app developer" width="800" height="1000" loading="lazy" decoding="async" /><span className="photo-caption">N. Dhushyandh / Developer & builder</span></div><div data-enter="right"><h2 className="section-heading">Curiosity first.<br />Code follows.</h2><p className="large-copy mt-8">I’m a full-stack developer who enjoys turning a good idea into something people can actually use.</p><p className="body-copy mt-5">From a business’s first website to a connected commerce platform or an AI-powered tool, I care about both how a product works and how it feels. My work spans React, Node.js, databases and mobile development.</p><p className="body-copy mt-5">Based in Vellore, Tamil Nadu, I’m pursuing {RESUME.education.degree} at {RESUME.education.school} ({RESUME.education.period}). Always learning. Always building.</p><Button asChild variant="link" className="mt-6 h-auto p-0 text-base"><Link to="/resume">More about my journey <ArrowUpRight /></Link></Button><div className="about-tags"><span>Full-stack thinking</span><span>Design-conscious</span><span>Continuous learner</span></div></div></div>
+        <div className="about-layout"><div data-enter="left" className="about-photo"><img src={profile} alt="N. Dhushyandh, web and mobile app developer" width="800" height="1000" loading="lazy" decoding="async" /><span className="photo-caption">N. Dhushyandh / Developer & builder</span></div><div data-enter="right"><h2 className="section-heading">Curiosity first.<br />Code follows.</h2><p className="large-copy mt-8">I’m a full-stack developer who enjoys turning a good idea into something people can actually use.</p><p className="body-copy mt-5">From a business’s first website to a connected commerce platform or an AI-powered tool, I care about both how a product works and how it feels. My work spans React, Node.js, databases and mobile development.</p><p className="body-copy mt-5">Based in Vellore, Tamil Nadu, I’m pursuing {RESUME.education.degree} at {RESUME.education.school} ({RESUME.education.period}). Always learning. Always building.</p><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild variant="link" className="h-auto p-0 text-base"><a href="#experience">Explore journey & timeline <ArrowUpRight /></a></Button><span className="text-muted-foreground">·</span><Button asChild variant="link" className="h-auto p-0 text-base"><Link to="/resume">Full resume <ArrowUpRight /></Link></Button></div><div className="about-tags"><span>Full-stack thinking</span><span>Design-conscious</span><span>Continuous learner</span></div></div></div>
       </section>
 
       <section id="projects" className="editorial-section page-width">
@@ -90,8 +91,82 @@ export function PremiumPortfolio() {
         <ClientWorkCarousel />
       </section>
 
+      <section id="experience" className="editorial-section page-width border-t border-border">
+        <div className="section-header">
+          <SectionLabel number="06">Experience & Milestones</SectionLabel>
+          <div className="flex items-center gap-3">
+            <Button asChild variant="outline" size="sm">
+              <Link to="/resume">Full resume <ArrowUpRight size={14} /></Link>
+            </Button>
+          </div>
+        </div>
+        <h2 data-enter="up" className="section-heading mb-4">
+          Where I’ve built.<br /><span className="text-primary">Where I’m heading.</span>
+        </h2>
+        <p className="body-copy max-w-2xl mb-12">
+          From practical engineering education and full-stack internships to real client delivery and product-oriented software development.
+        </p>
+
+        <div className="space-y-6">
+          {TIMELINE.map((item, index) => {
+            const Icon = { briefcase: BriefcaseBusiness, git: Code2, cap: GraduationCap }[item.icon];
+            return (
+              <article
+                key={item.slug}
+                data-enter="up"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-6 sm:p-8 transition-all hover:border-primary/50 hover:bg-card/70 hover:shadow-lg"
+              >
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                      <Icon size={18} />
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className="font-mono text-xs uppercase tracking-wider text-primary">
+                          {item.period}
+                        </span>
+                        <span className="rounded-full border border-border bg-background/80 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                          {item.type}
+                        </span>
+                      </div>
+                      <h3 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-sm font-medium text-muted-foreground">
+                        {item.org}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="hidden font-mono text-xs text-muted-foreground sm:inline-block">
+                    /0{index + 1}
+                  </span>
+                </div>
+
+                <p className="body-copy mt-5 max-w-3xl text-sm sm:text-base leading-relaxed">
+                  {item.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-5">
+                  <span className="text-xs text-muted-foreground">
+                    Verified milestone
+                  </span>
+                  <Button asChild variant="outline" size="sm" className="rounded-full gap-2 border-border/80 hover:border-primary hover:bg-primary/10 text-xs font-semibold">
+                    <Link to="/journey/$slug" params={{ slug: item.slug }}>
+                      <span>View journey details</span>
+                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  </Button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
       <section id="achievements" className="certificates-section page-width">
-        <SectionLabel number="06">Learning never stops</SectionLabel>
+        <SectionLabel number="07">Learning never stops</SectionLabel>
         <div className="section-header">
           <h2 className="section-heading text-3xl sm:text-4xl">Credentials & curiosity.</h2>
           <div className="flex items-center gap-3">
@@ -124,7 +199,7 @@ export function PremiumPortfolio() {
       </section>
 
       <section id="faq" className="editorial-section page-width border-t border-border">
-        <SectionLabel number="07">Got questions?</SectionLabel>
+        <SectionLabel number="08">Got questions?</SectionLabel>
         <div className="section-header">
           <h2 className="section-heading">Frequently asked<br /><span className="text-primary">questions.</span></h2>
           <p className="body-copy max-w-md hidden md:block">
@@ -153,6 +228,6 @@ export function PremiumPortfolio() {
 
       <Contact />
     </main>
-    <footer className="premium-footer page-width"><div className="footer-main"><div><Link to="/" className="footer-brand">N. Dhushyandh<span className="text-primary">↗</span></Link><p className="body-copy mt-3">Thoughtful websites. Connected apps. Real possibilities.</p></div><div className="footer-socials">{[{ Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' }, { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' }, { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` }, { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' }].map(({ Icon, label, href }) => <Button asChild key={label} variant="outline" size="icon"><a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}><Icon /></a></Button>)}</div></div><div className="footer-resources"><a href="#projects">Featured projects</a><Link to="/resume">Resume</Link><a href={RESUME_URL} download="Dhushyandh_Resume.pdf">Download PDF</a><Link to="/certificates">Certifications</Link><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#home" className="ml-auto flex items-center gap-2">Back to top <ArrowUp size={14} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} N. Dhushyandh</span><span>Built with React · TypeScript · TanStack Start</span><span>Made with intention.</span></div></footer>
+    <footer className="premium-footer page-width"><div className="footer-main"><div><Link to="/" className="footer-brand">N. Dhushyandh<span className="text-primary">↗</span></Link><p className="body-copy mt-3">Thoughtful websites. Connected apps. Real possibilities.</p></div><div className="footer-socials">{[{ Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' }, { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' }, { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` }, { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' }].map(({ Icon, label, href }) => <Button asChild key={label} variant="outline" size="icon"><a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}><Icon /></a></Button>)}</div></div><div className="footer-resources"><a href="#projects">Featured projects</a><a href="#experience">Journey & Experience</a><Link to="/resume">Resume</Link><a href={RESUME_URL} download="Dhushyandh_Resume.pdf">Download PDF</a><Link to="/certificates">Certifications</Link><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#home" className="ml-auto flex items-center gap-2">Back to top <ArrowUp size={14} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} N. Dhushyandh</span><span>Built with React · TypeScript · TanStack Start</span><span>Made with intention.</span></div></footer>
   </div>;
 }

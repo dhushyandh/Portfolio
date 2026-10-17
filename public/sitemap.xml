@@ -73,6 +73,16 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://dhushyandh.in/journey/project-based-software-development</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dhushyandh.in/journey/be-computer-science-engineering</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://dhushyandh.in/credentials/aws-technical-essentials</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

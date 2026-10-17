@@ -4,7 +4,13 @@ import { Menu, X, ArrowUpRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/dhushyandh-mark.png';
 import { RESUME_URL } from './resume-data';
-const ITEMS = [{ id: 'about', label: 'About' }, { id: 'projects', label: 'Work' }, { id: 'services', label: 'Services' }, { id: 'process', label: 'Process' }];
+const ITEMS = [
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Work' },
+  { id: 'services', label: 'Services' },
+  { id: 'experience', label: 'Journey' },
+  { id: 'process', label: 'Process' },
+];
 export function Nav() {
  const [open, setOpen] = useState(false);
  const home = useRouterState({ select: s => s.location.pathname === '/' });

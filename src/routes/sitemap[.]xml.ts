@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CASE_STUDIES } from "@/components/portfolio/case-studies";
+import { TIMELINE } from "@/components/portfolio/data";
 
 const BASE_URL = process.env.VITE_SITE_URL || "https://dhushyandh.in";
 
@@ -14,6 +15,10 @@ export const Route = createFileRoute("/sitemap.xml")({
           ...CASE_STUDIES.map((c) => ({
             loc: `${BASE_URL}/projects/${c.slug}`,
             priority: "0.8",
+          })),
+          ...TIMELINE.map((t) => ({
+            loc: `${BASE_URL}/journey/${t.slug}`,
+            priority: "0.6",
           })),
         ];
         const xml = `<?xml version="1.0" encoding="UTF-8"?>

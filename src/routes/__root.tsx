@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
-import { ChatwayWidget } from "@/components/portfolio/ChatwayWidget";
+import { ChatWidget } from "@/components/portfolio/ChatWidget";
 import { FloatingContactButtons } from "@/components/portfolio/FloatingContactButtons";
 
 function NotFoundComponent() {
@@ -177,7 +177,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
-      <ChatwayWidget />
+      <ChatWidget />
       <FloatingContactButtons />
     </QueryClientProvider>
   );

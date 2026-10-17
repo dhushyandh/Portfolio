@@ -58,10 +58,11 @@ export function ChatWidget() {
           void chatPanelPromise.catch(() => undefined);
         }}
         aria-label="Open AI assistant"
-        className="fixed bottom-24 right-4 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-[0_18px_40px_-16px_oklch(0_0_0/70%)] transition-transform hover:scale-105 sm:bottom-6 sm:right-6"
+        title="Chat with AI Assistant"
+        className="fixed bottom-[74px] right-[18px] sm:bottom-[88px] sm:right-[24px] z-50 flex h-12 w-12 sm:h-[50px] sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-0 sm:px-4 text-primary-foreground shadow-[0_10px_25px_-4px_rgba(0,0,0,0.5),0_4px_6px_-2px_rgba(0,0,0,0.3)] transition-all hover:scale-105 active:scale-95 group"
       >
-        <Sparkles size={18} />
-        <span className="hidden sm:inline">Ask about me</span>
+        <Sparkles size={18} className="transition-transform group-hover:rotate-12" />
+        <span className="hidden sm:inline text-xs sm:text-sm font-semibold tracking-wide">Ask AI</span>
       </button>
     );
   }
