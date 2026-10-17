@@ -1,21 +1,62 @@
 {
-  "name": "Dhushyandh Portfolio",
+  "id": "https://dhushyandh.in/",
+  "name": "N. Dhushyandh — Full Stack & Mobile App Developer",
   "short_name": "Dhushyandh",
-  "description": "MERN Stack Developer Portfolio",
+  "description": "Portfolio of N. Dhushyandh — Full Stack Web & Mobile App Developer specializing in React, Next.js, React Native, Node.js, and modern cloud architectures.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#111827",
+  "orientation": "portrait-primary",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "categories": ["portfolio", "technology", "productivity", "utilities"],
   "icons": [
     {
       "src": "/favicon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Resume",
+      "short_name": "Resume",
+      "description": "View credentials, experience and education",
+      "url": "/resume",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Certifications",
+      "short_name": "Certs",
+      "description": "View industry and cloud certifications",
+      "url": "/certificates",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Get in Touch",
+      "short_name": "Contact",
+      "description": "Contact Dhushyandh directly",
+      "url": "/#contact",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
     }
   ]
 }
