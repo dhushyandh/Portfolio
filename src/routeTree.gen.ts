@@ -15,7 +15,6 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
-import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as CredentialsSlugRouteImport } from './routes/credentials.$slug'
 import { Route as JourneySlugRouteImport } from './routes/journey.$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
@@ -50,11 +49,6 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiChatRoute = ApiChatRouteImport.update({
-  id: '/api/chat',
-  path: '/api/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CredentialsSlugRoute = CredentialsSlugRouteImport.update({
   id: '/credentials/$slug',
   path: '/credentials/$slug',
@@ -78,7 +72,6 @@ export interface FileRoutesByFullPath {
   '/resume': typeof ResumeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
-  '/api/chat': typeof ApiChatRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
   '/journey/$slug': typeof JourneySlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -90,7 +83,6 @@ export interface FileRoutesByTo {
   '/resume': typeof ResumeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
-  '/api/chat': typeof ApiChatRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
   '/journey/$slug': typeof JourneySlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -103,7 +95,6 @@ export interface FileRoutesById {
   '/resume': typeof ResumeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
-  '/api/chat': typeof ApiChatRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
   '/journey/$slug': typeof JourneySlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -117,7 +108,6 @@ export interface FileRouteTypes {
     | '/resume'
     | '/sitemap.xml'
     | '/terms-and-conditions'
-    | '/api/chat'
     | '/credentials/$slug'
     | '/journey/$slug'
     | '/projects/$slug'
@@ -129,7 +119,6 @@ export interface FileRouteTypes {
     | '/resume'
     | '/sitemap.xml'
     | '/terms-and-conditions'
-    | '/api/chat'
     | '/credentials/$slug'
     | '/journey/$slug'
     | '/projects/$slug'
@@ -141,7 +130,6 @@ export interface FileRouteTypes {
     | '/resume'
     | '/sitemap.xml'
     | '/terms-and-conditions'
-    | '/api/chat'
     | '/credentials/$slug'
     | '/journey/$slug'
     | '/projects/$slug'
@@ -154,7 +142,6 @@ export interface RootRouteChildren {
   ResumeRoute: typeof ResumeRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
-  ApiChatRoute: typeof ApiChatRoute
   CredentialsSlugRoute: typeof CredentialsSlugRoute
   JourneySlugRoute: typeof JourneySlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -204,13 +191,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/chat': {
-      id: '/api/chat'
-      path: '/api/chat'
-      fullPath: '/api/chat'
-      preLoaderRoute: typeof ApiChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/credentials/$slug': {
       id: '/credentials/$slug'
       path: '/credentials/$slug'
@@ -242,7 +222,6 @@ const rootRouteChildren: RootRouteChildren = {
   ResumeRoute: ResumeRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
-  ApiChatRoute: ApiChatRoute,
   CredentialsSlugRoute: CredentialsSlugRoute,
   JourneySlugRoute: JourneySlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
