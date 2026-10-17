@@ -1,5 +1,7 @@
 import cvpilot from '@/assets/cvpilot-preview.png.asset.json';
 import smartmart from '@/assets/smartmart-preview.png.asset.json';
+import sriguru from '@/assets/sriguru-preview.png.asset.json';
+import renewx from '@/assets/renewx-preview.png.asset.json';
 
 export type PortfolioProject = {
   slug: string; title: string; category: string; description: string;
@@ -28,15 +30,15 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     slug: 'sri-guru-coaching-centre', title: 'Sri Guru Coaching Centre', category: 'Paid client · Education',
     description: 'An education website and learning-management project for Sri Guru Coaching Centre. Genuine paid client work focused on the centre’s digital presence.',
-    role: 'Website / LMS development', status: 'Details pending', stack: [], features: [],
-    note: 'Project scope provided by Dhushyandh. Delivery status, screenshots and implementation details are awaiting confirmation.',
+    role: 'Website / LMS development', status: 'Website live · LMS unconfirmed', image: sriguru.url, live: 'https://srigurucoaching.in/', stack: [], features: ['Public course information', 'Contact information', 'Student login entry'],
+    note: 'Project scope provided by Dhushyandh. The public education website is verified; LMS functionality and the technology stack are not yet confirmed.',
   },
   {
     slug: 'renewx-crew', title: 'RenewX Crew', category: 'E-commerce · Web & mobile',
-    description: 'An e-commerce web and mobile application project. The public repository is available; the linked deployment currently serves only a backend status page.',
-    role: 'Web & mobile development', status: 'In progress', stack: [], features: [],
+    description: 'An e-commerce web and mobile application project. A refurbished electronics marketplace with a verified public storefront, product discovery and a device-selling entry point.',
+    role: 'Web & mobile development', status: 'Web live · Mobile in progress', image: renewx.url, live: 'https://renewx.dhushyandh.in/', stack: [], features: ['Public marketplace', 'Shop & sell-device entry points', 'Instant quote entry'],
     github: 'https://github.com/dhushyandh/RenewX-Crew',
-    note: 'A customer-facing live demo and project screenshots are not yet verified.',
+    note: 'Public web storefront verified. Mobile delivery and backend implementation details are not yet confirmed.',
   },
   {
     slug: 'seyon-crackers', title: 'Seyon Crackers', category: 'E-commerce · Web & app',
