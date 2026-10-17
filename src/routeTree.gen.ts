@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as CredentialsSlugRouteImport } from './routes/credentials.$slug'
@@ -37,6 +38,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
 const ResumeRoute = ResumeRouteImport.update({
   id: '/resume',
   path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/certificates': typeof CertificatesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/certificates': typeof CertificatesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/certificates': typeof CertificatesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/credentials/$slug': typeof CredentialsSlugRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/privacy-policy'
     | '/resume'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/credentials/$slug'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/privacy-policy'
     | '/resume'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/credentials/$slug'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/privacy-policy'
     | '/resume'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/credentials/$slug'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   CertificatesRoute: typeof CertificatesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ResumeRoute: typeof ResumeRoute
+  SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   CredentialsSlugRoute: typeof CredentialsSlugRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/resume'
       fullPath: '/resume'
       preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   CertificatesRoute: CertificatesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ResumeRoute: ResumeRoute,
+  SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   CredentialsSlugRoute: CredentialsSlugRoute,

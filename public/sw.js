@@ -1,12 +1,17 @@
 // N. Dhushyandh Portfolio — Progressive Web App Service Worker
-const CACHE_NAME = 'dhushyandh-pwa-v1';
+const CACHE_NAME = 'dhushyandh-pwa-v2';
 const PRECACHE_URLS = [
   '/',
   '/resume',
   '/certificates',
   '/manifest.json',
   '/favicon.png',
-  '/assets/logo.png',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
+  '/icons/icon-maskable-192x192.png',
+  '/icons/icon-maskable-512x512.png',
+  '/screenshots/desktop-1280x720.png',
+  '/screenshots/mobile-750x1334.png',
   '/assets/Dhushyandh_Resume.pdf'
 ];
 
@@ -43,7 +48,6 @@ self.addEventListener('fetch', (event) => {
 
   // Do not intercept third-party chat widgets or external CDNs that require dynamic host validation
   if (url.origin !== self.location.origin) {
-    // Optionally cache Google Fonts
     if (url.origin.includes('fonts.googleapis.com') || url.origin.includes('fonts.gstatic.com')) {
       event.respondWith(
         caches.match(req).then((cached) => {
@@ -93,6 +97,63 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       });
+    })
+  );
+});
+
+// Background Sync API support
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-portfolio-data') {
+    event.waitUntil(Promise.resolve());
+  }
+});
+
+// Periodic Background Sync API support
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'update-portfolio-cache') {
+    event.waitUntil(
+      caches.open(CACHE_NAME).then((cache) => {
+        return cache.addAll(['/']);
+      })
+    );
+  }
+});
+
+// Web Push Notifications API support
+self.addEventListener('push', (event) => {
+  let data = { title: 'N. Dhushyandh Portfolio', body: 'New updates available.' };
+  try {
+    if (event.data) {
+      data = event.data.json ? event.data.json() : { ...data, body: event.data.text() };
+    }
+  } catch {
+    // fallback to default
+  }
+
+  const options = {
+    body: data.body,
+    icon: '/icons/icon-192x192.png',
+    badge: '/favicon.png',
+    data: { url: '/' }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      for (const client of windowClients) {
+        if (client.url === '/' && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow('/');
+      }
     })
   );
 });

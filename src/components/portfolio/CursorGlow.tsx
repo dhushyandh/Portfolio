@@ -40,7 +40,7 @@ export function CursorGlow() {
       );
 
       if (dotRef.current) {
-        dotRef.current.dataset.hot = interactive ? "true" : "false";
+        dotRef.current.dataset["hot"] = interactive ? "true" : "false";
       }
     };
 

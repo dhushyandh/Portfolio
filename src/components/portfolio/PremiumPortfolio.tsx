@@ -11,6 +11,7 @@ import { Nav } from './Nav';
 import { Contact } from './Contact';
 import { PortfolioMotion } from './PortfolioMotion';
 import { ClientWorkCarousel } from './ClientWorkCarousel';
+import { TimelineJourney } from './TimelineJourney';
 
 function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return <p className="section-label"><span className="text-primary">/{number}</span>{children}</p>;
@@ -43,27 +44,35 @@ export function PremiumPortfolio() {
         <h2 data-enter="up" className="section-heading mb-14">Client builds.<br /><span className="text-primary">Designed & delivered.</span></h2>
         <div className="featured-projects">{PORTFOLIO_PROJECTS.slice(0, 3).map((project, i) => <article key={project.slug} className={`featured-project ${i % 2 ? 'project-reverse' : ''}`}>
           <div className="project-visual" data-enter={i % 2 ? 'right' : 'left'}>
-            {project.projectType === 'mobile' ? (
-              <div className="mobile-app-preview" data-project-preview>
-                <div className="mobile-app-bar">
-                  <span className="flex items-center gap-1.5"><Smartphone size={12} className="text-primary" /> Mobile App</span>
-                  <span>{project.title.toLowerCase()}</span>
-                  <ArrowUpRight size={12} />
+            <a
+              href={project.live || `/projects/${project.slug}`}
+              target={project.live ? '_blank' : undefined}
+              rel={project.live ? 'noopener noreferrer' : undefined}
+              className="block group/preview cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-transform duration-300 hover:scale-[1.015]"
+              aria-label={`Open ${project.title} live demo in a new tab`}
+            >
+              {project.projectType === 'mobile' ? (
+                <div className="mobile-app-preview transition-all duration-300 group-hover/preview:border-primary/50 group-hover/preview:shadow-[0_16px_40px_-20px_rgba(210,248,56,0.3)]" data-project-preview>
+                  <div className="mobile-app-bar">
+                    <span className="flex items-center gap-1.5"><Smartphone size={12} className="text-primary" /> Mobile App</span>
+                    <span className="group-hover/preview:text-primary transition-colors">{project.title.toLowerCase()}</span>
+                    <ArrowUpRight size={12} className="transition-transform group-hover/preview:translate-x-0.5 group-hover/preview:-translate-y-0.5 text-primary" />
+                  </div>
+                  <div className="mobile-app-screen">
+                    <img src={project.image} alt={`${project.title} Mobile App preview`} loading="lazy" decoding="async" />
+                  </div>
                 </div>
-                <div className="mobile-app-screen">
-                  <img src={project.image} alt={`${project.title} Mobile App preview`} loading="lazy" decoding="async" />
+              ) : (
+                <div className="browser-preview transition-all duration-300 group-hover/preview:border-primary/50 group-hover/preview:shadow-[0_16px_40px_-20px_rgba(210,248,56,0.3)]" data-project-preview>
+                  <div className="browser-bar">
+                    <span className="browser-dots">● ● ●</span>
+                    <span className="group-hover/preview:text-primary transition-colors">{project.title.toLowerCase()} / live project</span>
+                    <ArrowUpRight size={12} className="transition-transform group-hover/preview:translate-x-0.5 group-hover/preview:-translate-y-0.5 text-primary" />
+                  </div>
+                  <img src={project.image} alt={`${project.title} actual website project screenshot`} width="1280" height="900" loading="lazy" decoding="async" />
                 </div>
-              </div>
-            ) : (
-              <div className="browser-preview" data-project-preview>
-                <div className="browser-bar">
-                  <span className="browser-dots">● ● ●</span>
-                  <span>{project.title.toLowerCase()} / website project</span>
-                  <ArrowUpRight size={12} />
-                </div>
-                <img src={project.image} alt={`${project.title} actual website project screenshot`} width="1280" height="900" loading="lazy" decoding="async" />
-              </div>
-            )}
+              )}
+            </a>
             <span className="preview-caption">{project.category}<span>0{i + 1} / 2026</span></span>
           </div>
           <div className="project-information" data-enter={i % 2 ? 'left' : 'right'}><div className="project-kicker"><span>0{i + 1}</span><span className="project-status"><i />{project.status}</span></div><h3>{project.title}</h3><p className="body-copy mt-5">{project.description}</p><p className="project-role">{project.role}</p><div className="project-tech">{project.stack.map(t => <span key={t}>{t}</span>)}</div><ul className="project-features">{project.features.slice(0, 4).map(f => <li key={f}><span className="text-primary">↗</span> {f}</li>)}</ul><div className="project-links">{project.live && <Button asChild variant="link"><a href={project.live} target="_blank" rel="noreferrer">Live demo <ArrowUpRight /></a></Button>}{project.github && <Button asChild variant="link"><a href={project.github} target="_blank" rel="noreferrer"><Github /> Source</a></Button>}<Button asChild variant="link"><Link to="/projects/$slug" params={{ slug: project.slug }}>Case study <ArrowUpRight /></Link></Button></div></div>
@@ -107,62 +116,7 @@ export function PremiumPortfolio() {
           From practical engineering education and full-stack internships to real client delivery and product-oriented software development.
         </p>
 
-        <div className="space-y-6">
-          {TIMELINE.map((item, index) => {
-            const Icon = { briefcase: BriefcaseBusiness, git: Code2, cap: GraduationCap }[item.icon];
-            return (
-              <article
-                key={item.slug}
-                data-enter="up"
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-6 sm:p-8 transition-all hover:border-primary/50 hover:bg-card/70 hover:shadow-lg"
-              >
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-                      <Icon size={18} />
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="font-mono text-xs uppercase tracking-wider text-primary">
-                          {item.period}
-                        </span>
-                        <span className="rounded-full border border-border bg-background/80 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                          {item.type}
-                        </span>
-                      </div>
-                      <h3 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1 text-sm font-medium text-muted-foreground">
-                        {item.org}
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="hidden font-mono text-xs text-muted-foreground sm:inline-block">
-                    /0{index + 1}
-                  </span>
-                </div>
-
-                <p className="body-copy mt-5 max-w-3xl text-sm sm:text-base leading-relaxed">
-                  {item.description}
-                </p>
-
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-5">
-                  <span className="text-xs text-muted-foreground">
-                    Verified milestone
-                  </span>
-                  <Button asChild variant="outline" size="sm" className="rounded-full gap-2 border-border/80 hover:border-primary hover:bg-primary/10 text-xs font-semibold">
-                    <Link to="/journey/$slug" params={{ slug: item.slug }}>
-                      <span>View journey details</span>
-                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </Button>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+        <TimelineJourney />
       </section>
 
       <section id="achievements" className="certificates-section page-width">
@@ -228,6 +182,90 @@ export function PremiumPortfolio() {
 
       <Contact />
     </main>
-    <footer className="premium-footer page-width"><div className="footer-main"><div><Link to="/" className="footer-brand">N. Dhushyandh<span className="text-primary">↗</span></Link><p className="body-copy mt-3">Thoughtful websites. Connected apps. Real possibilities.</p></div><div className="footer-socials">{[{ Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' }, { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' }, { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` }, { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' }].map(({ Icon, label, href }) => <Button asChild key={label} variant="outline" size="icon"><a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}><Icon /></a></Button>)}</div></div><div className="footer-resources"><a href="#projects">Featured projects</a><a href="#experience">Journey & Experience</a><Link to="/resume">Resume</Link><a href={RESUME_URL} download="Dhushyandh_Resume.pdf">Download PDF</a><Link to="/certificates">Certifications</Link><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#home" className="ml-auto flex items-center gap-2">Back to top <ArrowUp size={14} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} N. Dhushyandh</span><span>Built with React · TypeScript · TanStack Start</span><span>Made with intention.</span></div></footer>
+    <footer className="premium-footer page-width border-t border-border pt-16 pb-12 mt-16">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 pb-12 border-b border-border">
+        {/* Brand & Bio column */}
+        <div className="lg:col-span-5">
+          <Link to="/" className="inline-flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
+            <span>N. Dhushyandh</span>
+            <span className="text-primary font-mono text-xl">↗</span>
+          </Link>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Full-Stack Web & Mobile App Developer based in Vellore, India. Turning ambitious ideas into high-performance, user-first software.
+          </p>
+
+
+          <div className="mt-6 flex items-center gap-2.5">
+            {[
+              { Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' },
+              { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' },
+              { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` },
+              { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' },
+            ].map(({ Icon, label, href }) => (
+              <Button asChild key={label} variant="outline" size="icon" className="h-9 w-9 rounded-full border-border/80 bg-background/50 hover:border-primary hover:text-primary hover:bg-primary/10 transition-all">
+                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+                  <Icon size={16} />
+                </a>
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Links Column 1: Navigation */}
+        <div className="lg:col-span-2 sm:col-span-4">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Explore</p>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li><a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About Me</a></li>
+            <li><a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Featured Projects</a></li>
+            <li><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Services</a></li>
+            <li><a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Technical Skills</a></li>
+            <li><a href="#experience" className="text-muted-foreground hover:text-foreground transition-colors">Journey & Timeline</a></li>
+            <li><a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">Frequently Asked</a></li>
+          </ul>
+        </div>
+
+        {/* Quick Links Column 2: Credentials */}
+        <div className="lg:col-span-3 sm:col-span-4">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Credentials</p>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li><Link to="/resume" className="text-muted-foreground hover:text-foreground transition-colors">Interactive Resume</Link></li>
+            <li><a href={RESUME_URL} download="Dhushyandh_Resume.pdf" className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"><span>Download PDF Resume</span><Download size={13} className="text-primary" /></a></li>
+            <li><Link to="/certificates" className="text-muted-foreground hover:text-foreground transition-colors">Verified Certifications</Link></li>
+            <li><a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Start a Project</a></li>
+          </ul>
+        </div>
+
+        {/* Quick Links Column 3: Legal & Information */}
+        <div className="lg:col-span-2 sm:col-span-4">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Legal & Site</p>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li><Link to="/sitemap" className="text-muted-foreground hover:text-foreground transition-colors">Visual Sitemap</Link></li>
+            <li><Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/terms-and-conditions" className="text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</Link></li>
+            <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">Sitemap XML</a></li>
+            <li><a href={`mailto:${RESUME.email}`} className="text-muted-foreground hover:text-foreground transition-colors">Direct Inquiries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Footer Bottom Bar */}
+      <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
+        <div>
+          <span>© {new Date().getFullYear()} N. Dhushyandh</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="hidden sm:inline">Vellore, Tamil Nadu, IN</span>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="inline-flex items-center gap-1 text-primary hover:underline focus-visible:outline-none cursor-pointer"
+            aria-label="Scroll back to top of page"
+          >
+            <span>Back to top</span>
+            <ArrowUp size={13} />
+          </button>
+        </div>
+      </div>
+    </footer>
   </div>;
 }
