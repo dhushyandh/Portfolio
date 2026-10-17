@@ -24,7 +24,7 @@ export function PortfolioMotion() {
       gsap.registerPlugin(ScrollTrigger);
       const context = gsap.context(() => {
         gsap.utils.toArray<HTMLElement>('[data-enter]').forEach((el) => {
-          const direction = el.dataset.enter;
+          const direction = el.dataset['enter'];
           gsap.from(el, { x: direction === 'left' ? -35 : direction === 'right' ? 35 : 0, y: direction === 'up' ? 35 : 0, opacity: 0, duration: .85, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 93%', once: true } });
         });
         const media = gsap.matchMedia();
