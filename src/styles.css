@@ -1506,13 +1506,71 @@ a:focus-visible {
   background-color: rgba(37, 211, 102, 0.5);
 }
 
-/* Breathing blinking glow on the main button */
+.floating-ripple-chatway {
+  background-color: rgba(24, 119, 242, 0.55);
+  z-index: 0;
+}
+
+/* Breathing blinking glow on the buttons */
 .floating-btn-blink-linkedin {
   animation: floating-blink-linkedin 3s ease-in-out infinite;
 }
 
 .floating-btn-blink-whatsapp {
   animation: floating-blink-whatsapp 3s ease-in-out infinite;
+}
+
+.floating-btn-blink-chatway,
+.chatway--container:not(.widget--open) .chatway-launcher,
+.chatway--container:not(.widget--open) #chatway_widget_trigger {
+  animation: floating-blink-chatway 3s ease-in-out infinite !important;
+  border-radius: 9999px !important;
+}
+
+/* Fallback CSS radar ripples on Chatway trigger button */
+.chatway--container:not(.widget--open) .chatway-launcher::before,
+.chatway--container:not(.widget--open) #chatway_widget_trigger:not(:has(.floating-ripple))::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background-color: rgba(24, 119, 242, 0.55);
+  animation: floating-ripple 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  z-index: -1;
+}
+
+.chatway--container:not(.widget--open) .chatway-launcher::after,
+.chatway--container:not(.widget--open) #chatway_widget_trigger:not(:has(.floating-ripple))::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background-color: rgba(24, 119, 242, 0.55);
+  animation: floating-ripple 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-delay: 1.2s;
+  z-index: -1;
+}
+
+/* If ripple DOM spans are attached, hide pseudo-elements so ripples don't double */
+.chatway-launcher:has(.floating-ripple-chatway)::before,
+.chatway-launcher:has(.floating-ripple-chatway)::after,
+#chatway_widget_trigger:has(.floating-ripple-chatway)::before,
+#chatway_widget_trigger:has(.floating-ripple-chatway)::after {
+  display: none !important;
+}
+
+/* When chat window is opened, stop blinking and hide ripples */
+.chatway--container.widget--open .floating-ripple-chatway,
+.chatway--container.widget--open .chatway-launcher,
+.chatway--container.widget--open #chatway_widget_trigger,
+.chatway--container.widget--open button.launcher-icon {
+  animation: none !important;
+}
+
+.chatway--container.widget--open .floating-ripple-chatway {
+  display: none !important;
 }
 
 @keyframes floating-ripple {
@@ -1556,6 +1614,18 @@ a:focus-visible {
   }
 }
 
+@keyframes floating-blink-chatway {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 24px -4px rgba(24, 119, 242, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 12px 32px 0px rgba(24, 119, 242, 0.8), 0 0 18px 2px rgba(24, 119, 242, 0.6);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .floating-ripple {
     animation: none;
@@ -1563,7 +1633,19 @@ a:focus-visible {
   }
 
   .floating-btn-blink-linkedin,
-  .floating-btn-blink-whatsapp {
-    animation: none;
+  .floating-btn-blink-whatsapp,
+  .floating-btn-blink-chatway,
+  .chatway--container:not(.widget--open) .chatway-launcher,
+  .chatway--container:not(.widget--open) #chatway_widget_trigger,
+  .chatway--container:not(.widget--open) button.launcher-icon {
+    animation: none !important;
+  }
+
+  .chatway--container:not(.widget--open) .chatway-launcher::before,
+  .chatway--container:not(.widget--open) .chatway-launcher::after,
+  .chatway--container:not(.widget--open) #chatway_widget_trigger::before,
+  .chatway--container:not(.widget--open) #chatway_widget_trigger::after {
+    animation: none !important;
+    display: none !important;
   }
 }
