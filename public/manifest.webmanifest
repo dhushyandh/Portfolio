@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "name": "N. Dhushyandh | Web & Mobile App Developer",
+  "short_name": "Dhushyandh",
+  "description": "Portfolio of Dhushyandh, a web and mobile app developer building modern websites, full-stack products and AI-powered applications.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101010",
+  "theme_color": "#101010",
+  "categories": [
+    "business",
+    "developer",
+    "portfolio"
+  ],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

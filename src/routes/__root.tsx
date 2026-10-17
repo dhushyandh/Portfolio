@@ -6,11 +6,11 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import favicon from "@/assets/favicon.png";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -35,10 +35,9 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -75,15 +74,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dhushyandh | MERN Stack Developer" },
+      { title: "N. Dhushyandh | Web & Mobile App Developer" },
       {
         name: "description",
         content:
-          "Dhushyandh is a MERN Stack Developer specializing in React, Node.js, Express, MongoDB, and modern web applications. View projects and get in touch.",
+          "Portfolio of N. Dhushyandh, a web and mobile app developer in Vellore, India. Explore client websites, e-commerce platforms, mobile apps and AI-powered projects.",
       },
-      { name: "theme-color", content: "#0a0a0c" },
-      { name: "color-scheme", content: "dark" },
-      { name: "author", content: "Dhushyandh" },
+      { name: "author", content: "N. Dhushyandh" },
+      { name: "theme-color", content: "#101010" },
       { name: "creator", content: "Dhushyandh" },
       { name: "publisher", content: "Dhushyandh" },
       {
@@ -94,9 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Modern full-stack web applications built using React, Next.js, Node.js, Express & MongoDB.",
+          "Websites, full-stack applications, e-commerce platforms and mobile apps built with modern technologies.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://dhushyandh.me/" },
+      { property: "og:image", content: "https://dhushyandh.me/og-image.png" },
+      { name: "twitter:image", content: "https://dhushyandh.me/og-image.png" },
       { property: "og:site_name", content: "Dhushyandh" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -106,17 +107,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: favicon, type: "image/png" },
-      { rel: "shortcut icon", href: favicon, type: "image/png" },
-      { rel: "apple-touch-icon", href: favicon },
-      { rel: "manifest", href: "/manifest.json" },
-      { rel: "dns-prefetch", href: "https://fonts.googleapis.com" },
-      { rel: "dns-prefetch", href: "https://fonts.gstatic.com" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     ],
   }),
@@ -142,6 +141,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    if (!import.meta.env.PROD || !("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register("/sw.js").catch((error) => {
+      console.error("Service worker registration failed:", error);
+    });
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

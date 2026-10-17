@@ -1,10 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Download, Mail, MapPin, Phone } from "lucide-react";
-import {
-  CERTIFICATE_SLUGS,
-  RESUME,
-  RESUME_URL,
-} from "@/components/portfolio/resume-data";
+import { RESUME, RESUME_URL } from "@/components/portfolio/resume-data";
 
 const DESCRIPTION =
   "Resume of Dhushyandh N — Full Stack Developer (MERN) from Vellore, India. B.E Computer Science 2023-2027, AWS/Google/IBM/Oracle certifications, React, Node.js, PostgreSQL and AI projects. Download the PDF.";
@@ -26,14 +22,12 @@ export const Route = createFileRoute("/resume")({
       { property: "og:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://dhushyandh.in/resume" },
-      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+      { property: "og:url", content: "https://dhushyandh.me/resume" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
     ],
-    links: [{ rel: "canonical", href: "https://dhushyandh.in/resume" }],
+    links: [{ rel: "canonical", href: "https://dhushyandh.me/resume" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -42,12 +36,12 @@ export const Route = createFileRoute("/resume")({
           "@graph": [
             {
               "@type": "Person",
-              name: "Dhushyandh N",
+              name: "Dhushyandh Neduncheziyan",
               alternateName: "Dhushyandh N",
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,
               telephone: RESUME.phone,
-              url: "https://dhushyandh.in",
+              url: "https://dhushyandh.me",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Vellore",
@@ -71,12 +65,12 @@ export const Route = createFileRoute("/resume")({
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.in/" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.me/" },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Resume",
-                  item: "https://dhushyandh.in/resume",
+                  item: "https://dhushyandh.me/resume",
                 },
               ],
             },
@@ -124,7 +118,7 @@ function ResumePage() {
           <span className="inline-flex items-center gap-2">
             <MapPin size={15} /> {RESUME.location}
           </span>
-          <a className="inline-flex items-center gap-2 hover:text-primary" href={`mailto:${RESUME.email}`}>
+          <a className="inline-flex min-w-0 items-center gap-2 break-all hover:text-primary" href={`mailto:${RESUME.email}`}>
             <Mail size={15} /> {RESUME.email}
           </a>
           <span className="inline-flex items-center gap-2">
@@ -189,14 +183,8 @@ function ResumePage() {
           <h2 className="font-display text-2xl font-bold text-foreground">Certifications</h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {RESUME.certificates.map((c) => (
-              <li key={c} className="surface-card card-hover p-4">
-                <Link
-                  to="/credentials/$slug"
-                  params={{ slug: CERTIFICATE_SLUGS[c as keyof typeof CERTIFICATE_SLUGS] }}
-                  className="block text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {c}
-                </Link>
+              <li key={c} className="surface-card card-hover p-4 text-sm text-muted-foreground">
+                {c}
               </li>
             ))}
           </ul>
