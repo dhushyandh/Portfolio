@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { PROJECTS } from "@/components/portfolio/data";
+import { PORTFOLIO_PROJECTS } from "@/components/portfolio/premium-data";
 
 export default defineTool({
   name: "list_projects",
@@ -11,12 +11,14 @@ export default defineTool({
   outputSchema: { projects: z.array(z.unknown()) },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
-    const projects = PROJECTS.map((p) => ({
+    const projects = PORTFOLIO_PROJECTS.map((p) => ({
       slug: p.slug,
       title: p.title,
       description: p.description,
-      tags: p.tags,
+      tags: p.stack,
       github: p.github,
+      live: p.live,
+      status: p.status,
     }));
     return {
       content: [{ type: "text", text: JSON.stringify(projects, null, 2) }],

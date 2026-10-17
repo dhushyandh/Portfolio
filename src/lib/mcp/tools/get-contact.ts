@@ -2,12 +2,12 @@ import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
 
 const CONTACT = {
-  name: "Dhushyandh",
-  role: "Full Stack Developer",
-  email: "dhushyandh@gmail.com",
+  name: "N. Dhushyandh",
+  role: "Web Developer & Mobile App Developer",
+  email: "dhushyandhneduncheziyan4896@gmail.com",
   linkedin: "https://linkedin.com/in/dhushyandh",
   github: "https://github.com/dhushyandh",
-  portfolio: "https://dhushyandh.dev",
+  portfolio: "https://dhushyandh.lovable.app",
 };
 
 export default defineTool({

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CASE_STUDIES } from "@/components/portfolio/case-studies";
 
-const BASE_URL = "https://dhushyandh.in";
+const BASE_URL = "https://dhushyandh.lovable.app";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
@@ -9,6 +9,7 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: () => {
         const urls = [
           { loc: `${BASE_URL}/`, priority: "1.0" },
+          { loc: `${BASE_URL}/resume`, priority: "0.8" },
           ...CASE_STUDIES.map((c) => ({
             loc: `${BASE_URL}/projects/${c.slug}`,
             priority: "0.8",

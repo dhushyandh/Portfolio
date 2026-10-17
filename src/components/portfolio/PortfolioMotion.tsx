@@ -1,0 +1,46 @@
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+
+export function PortfolioMotion() {
+  const reduce = useReducedMotion();
+  const [loading, setLoading] = useState(false);
+  const progress = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setLoading(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const timer = setTimeout(() => setLoading(false), 650);
+    const update = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress.current) progress.current.style.transform = `scaleX(${total > 0 ? window.scrollY / total : 0})`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    return () => { clearTimeout(timer); window.removeEventListener('scroll', update); };
+  }, []);
+  useEffect(() => {
+    if (reduce) return;
+    let dispose: (() => void) | undefined;
+    let cancelled = false;
+    void Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([{ gsap }, { ScrollTrigger }]) => {
+      if (cancelled) return;
+      gsap.registerPlugin(ScrollTrigger);
+      const context = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>('[data-enter]').forEach((el) => {
+          const direction = el.dataset['enter'];
+          gsap.from(el, { x: direction === 'left' ? -35 : direction === 'right' ? 35 : 0, y: direction === 'up' ? 35 : 0, opacity: 0, duration: .85, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 93%', once: true } });
+        });
+        const media = gsap.matchMedia();
+        media.add('(min-width: 1024px)', () => {
+          gsap.utils.toArray<HTMLElement>('[data-project-preview]').forEach((el) => {
+            gsap.fromTo(el, { y: 12 }, { y: -12, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 1 } });
+          });
+        });
+      });
+      dispose = () => context.revert();
+    }).catch(() => undefined);
+    return () => { cancelled = true; dispose?.(); };
+  }, [reduce]);
+  return <>
+    <div ref={progress} className="scroll-progress" aria-hidden="true" />
+    <AnimatePresence>{loading && !reduce && <motion.div className="portfolio-preloader" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .3 }} aria-hidden="true"><span>N.D<span className="text-primary">↗</span></span></motion.div>}</AnimatePresence>
+  </>;
+}

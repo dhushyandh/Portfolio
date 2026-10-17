@@ -22,14 +22,12 @@ export const Route = createFileRoute("/resume")({
       { property: "og:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://dhushyandh.in/resume" },
-      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
+      { property: "og:url", content: "https://dhushyandh.lovable.app/resume" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
     ],
-    links: [{ rel: "canonical", href: "https://dhushyandh.in/resume" }],
+    links: [{ rel: "canonical", href: "https://dhushyandh.lovable.app/resume" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -43,7 +41,7 @@ export const Route = createFileRoute("/resume")({
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,
               telephone: RESUME.phone,
-              url: "https://dhushyandh.in",
+              url: "https://dhushyandh.lovable.app",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Vellore",
@@ -67,12 +65,12 @@ export const Route = createFileRoute("/resume")({
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.in/" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.lovable.app/" },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Resume",
-                  item: "https://dhushyandh.in/resume",
+                  item: "https://dhushyandh.lovable.app/resume",
                 },
               ],
             },
@@ -120,7 +118,7 @@ function ResumePage() {
           <span className="inline-flex items-center gap-2">
             <MapPin size={15} /> {RESUME.location}
           </span>
-          <a className="inline-flex items-center gap-2 hover:text-primary" href={`mailto:${RESUME.email}`}>
+          <a className="inline-flex min-w-0 items-center gap-2 break-all hover:text-primary" href={`mailto:${RESUME.email}`}>
             <Mail size={15} /> {RESUME.email}
           </a>
           <span className="inline-flex items-center gap-2">
