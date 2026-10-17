@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { ChatwayWidget } from "@/components/portfolio/ChatwayWidget";
+import { FloatingContactButtons } from "@/components/portfolio/FloatingContactButtons";
 
 function NotFoundComponent() {
   return (
@@ -38,6 +40,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -74,14 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "N. Dhushyandh | Web & Mobile App Developer" },
+      { title: "Dhushyandh | MERN Stack Developer" },
       {
         name: "description",
         content:
-          "Portfolio of N. Dhushyandh, a web and mobile app developer in Vellore, India. Explore client websites, e-commerce platforms, mobile apps and AI-powered projects.",
+          "Dhushyandh is a MERN Stack Developer specializing in React, Node.js, Express, MongoDB, and modern web applications. View projects and get in touch.",
       },
-      { name: "author", content: "N. Dhushyandh" },
-      { name: "theme-color", content: "#101010" },
+      { name: "author", content: "Dhushyandh" },
       { name: "creator", content: "Dhushyandh" },
       { name: "publisher", content: "Dhushyandh" },
       {
@@ -92,22 +94,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Websites, full-stack applications, e-commerce platforms and mobile apps built with modern technologies.",
+          "Modern full-stack web applications built using React, Next.js, Node.js, Express & MongoDB.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://dhushyandh.me/" },
-      { property: "og:image", content: "https://dhushyandh.me/og-image.png" },
-      { name: "twitter:image", content: "https://dhushyandh.me/og-image.png" },
       { property: "og:site_name", content: "Dhushyandh" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#050508" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Dhushyandh" },
+      { name: "application-name", content: "Dhushyandh" },
+      { name: "msapplication-TileColor", content: "#050508" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "manifest", href: "/manifest.json" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
@@ -116,6 +122,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        id: "chatway",
+        async: true,
+        src: "https://cdn.chatway.app/widget.js?id=NzpsUe0eDhtD",
       },
     ],
   }),
@@ -143,10 +156,18 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   useEffect(() => {
-    if (!import.meta.env.PROD || !("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.register("/sw.js").catch((error) => {
-      console.error("Service worker registration failed:", error);
-    });
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then((registration) => {
+            console.log("[PWA] Service Worker registered with scope:", registration.scope);
+          })
+          .catch((error) => {
+            console.warn("[PWA] Service Worker registration failed:", error);
+          });
+      });
+    }
   }, []);
 
   return (
@@ -154,6 +175,8 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
+      <ChatwayWidget />
+      <FloatingContactButtons />
     </QueryClientProvider>
   );
 }

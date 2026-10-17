@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Download, Mail, MapPin, Phone } from "lucide-react";
-import { RESUME, RESUME_URL } from "@/components/portfolio/resume-data";
+import { ArrowLeft, Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { RESUME, RESUME_URL, CERTIFICATES } from "@/components/portfolio/resume-data";
 
 const DESCRIPTION =
   "Resume of Dhushyandh N — Full Stack Developer (MERN) from Vellore, India. B.E Computer Science 2023-2027, AWS/Google/IBM/Oracle certifications, React, Node.js, PostgreSQL and AI projects. Download the PDF.";
@@ -22,12 +22,12 @@ export const Route = createFileRoute("/resume")({
       { property: "og:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://dhushyandh.me/resume" },
+      { property: "og:url", content: "https://dhushyandh.in/resume" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://dhushyandh.me/resume" }],
+    links: [{ rel: "canonical", href: "https://dhushyandh.in/resume" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/resume")({
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,
               telephone: RESUME.phone,
-              url: "https://dhushyandh.me",
+              url: "https://dhushyandh.in",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Vellore",
@@ -65,12 +65,12 @@ export const Route = createFileRoute("/resume")({
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.me/" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.in/" },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Resume",
-                  item: "https://dhushyandh.me/resume",
+                  item: "https://dhushyandh.in/resume",
                 },
               ],
             },
@@ -180,11 +180,31 @@ function ResumePage() {
         </section>
 
         <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold text-foreground">Certifications</h2>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-display text-2xl font-bold text-foreground">Certifications</h2>
+            <Link
+              to="/certificates"
+              className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+            >
+              View certificates gallery <ExternalLink size={12} />
+            </Link>
+          </div>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-            {RESUME.certificates.map((c) => (
-              <li key={c} className="surface-card card-hover p-4 text-sm text-muted-foreground">
-                {c}
+            {CERTIFICATES.map((c) => (
+              <li key={c.id}>
+                <a
+                  href={c.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="surface-card card-hover flex items-center justify-between gap-3 p-4 text-sm text-foreground group transition-all"
+                >
+                  <div className="min-w-0">
+                    <span className="font-mono text-[11px] text-primary block">{c.issuer}</span>
+                    <span className="font-medium group-hover:text-primary transition-colors block truncate">{c.title}</span>
+                    <span className="text-xs text-muted-foreground">{c.category}</span>
+                  </div>
+                  <ExternalLink size={14} className="text-muted-foreground group-hover:text-primary shrink-0 transition-transform group-hover:scale-110" />
+                </a>
               </li>
             ))}
           </ul>

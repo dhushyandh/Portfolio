@@ -1,11 +1,20 @@
-# Dhushyandh Portfolio
+# Dhushyandh — Developer Portfolio
+
+Full-stack developer portfolio showcasing web, mobile, e-commerce, and AI applications.
 
 ## Development
+
+You need Node.js and npm to run this project locally.
 
 ```sh
 npm install
 npm run dev
 ```
 
-The optional portfolio assistant uses the OpenAI-compatible API. Set `OPENAI_API_KEY` before starting the server if you want to use it. `OPENAI_BASE_URL` can be used with another compatible provider.
-# Portfolio
+## Build
+
+To build for production:
+
+```sh
+npm run build
+```

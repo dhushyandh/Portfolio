@@ -1,47 +1,27 @@
-import tailwindcss from "@tailwindcss/vite";
-import viteReact from "@vitejs/plugin-react";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  resolve: {
-    tsconfigPaths: true,
-  },
-
-  build: {
-    cssMinify: true,
-    target: "esnext",
-
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (
-            id.includes("node_modules/react/") ||
-            id.includes("node_modules/react-dom/")
-          ) {
-            return "vendor-react";
-          }
-
-          if (
-            id.includes("node_modules/@tanstack/react-router") ||
-            id.includes("node_modules/@tanstack/react-start")
-          ) {
-            return "vendor-tanstack";
-          }
-
-          if (id.includes("node_modules/lucide-react")) {
-            return "vendor-icons";
-          }
-        },
-      },
-    },
-  },
-
   plugins: [
-    tanstackStart(),
-    nitro(),
+    tanstackStart({
+      server: { entry: "server" },
+    }),
     viteReact(),
     tailwindcss(),
   ],
+  resolve: {
+    tsconfigPaths: true,
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    port: 3000,
+  },
 });
