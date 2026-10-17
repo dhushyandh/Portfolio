@@ -3,9 +3,10 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 export function PortfolioMotion() {
   const reduce = useReducedMotion();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const progress = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    setLoading(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     const timer = setTimeout(() => setLoading(false), 650);
     const update = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
