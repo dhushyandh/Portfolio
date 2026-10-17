@@ -18,7 +18,7 @@ export const CLIENT_WORKS: ClientWorkItem[] = [
     label: 'Real client work',
     title: 'Sri Guru Coaching Centre',
     description:
-      'A paid education website / LMS project. I approach client work with clear scope, thoughtful implementation and direct communication.',
+      'A paid education website and student portal. Designed with clear scope, structured course information, and direct student inquiries.',
     externalLink: 'https://srigurucoaching.in/',
   },
   {
@@ -26,15 +26,16 @@ export const CLIENT_WORKS: ClientWorkItem[] = [
     label: 'Real client work',
     title: 'RenewX Crew',
     description:
-      'A Certifiedelectronics marketplace & trade-in platform. Built with transparent gadget valuation, instant buyback quotes, and WhatsApp checkout.',
-    externalLink: 'https://renewx.dhushyandh.in/',
+      'A certified pre-owned electronics marketplace & trade-in layout. Built with transparent gadget valuation, instant buyback quotes, and WhatsApp checkout.',
+    externalLink: 'https://renewx.expo.app/',
   },
   {
     slug: 'seyon-crackers',
     label: 'Real client work',
     title: 'Seyon Crackers',
     description:
-      'A seasonal commercial fireworks ordering platform engineered for high-demand periods, custom festival package bundles, and direct order dispatching.',
+      'A seasonal direct-from-factory fireworks ordering mobile layout engineered for festive demand, custom family package combos, and volume wholesale tiers.',
+    externalLink: 'https://seyonfirecrackers.expo.app',
   },
 ];
 
