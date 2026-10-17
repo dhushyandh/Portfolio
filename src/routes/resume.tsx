@@ -23,9 +23,11 @@ export const Route = createFileRoute("/resume")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://dhushyandh.in/resume" },
+      { property: "og:image", content: "https://dhushyandh.in/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Resume — Dhushyandh N | Full Stack Developer" },
       { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: "https://dhushyandh.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://dhushyandh.in/resume" }],
     scripts: [

@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUpRight, ArrowUp, Download, Code2, Globe, Smartphone, S
 import { Button } from '@/components/ui/button';
 import profile from '@/assets/profile-img.png';
 import { RESUME, RESUME_URL, CERTIFICATES } from './resume-data';
-import { PORTFOLIO_PROJECTS, PROCESS, SERVICES, TECHNOLOGIES } from './premium-data';
+import { PORTFOLIO_PROJECTS, PROCESS, SERVICES, TECHNOLOGIES, PORTFOLIO_FAQS } from './premium-data';
 import { Nav } from './Nav';
 import { Contact } from './Contact';
 import { PortfolioMotion } from './PortfolioMotion';
@@ -122,8 +122,37 @@ export function PremiumPortfolio() {
           ))}
         </div>
       </section>
+
+      <section id="faq" className="editorial-section page-width border-t border-border">
+        <SectionLabel number="07">Got questions?</SectionLabel>
+        <div className="section-header">
+          <h2 className="section-heading">Frequently asked<br /><span className="text-primary">questions.</span></h2>
+          <p className="body-copy max-w-md hidden md:block">
+            Clear answers about my development services, verified client work, tech stack, and freelance availability.
+          </p>
+        </div>
+        <div className="faq-grid mt-12 divide-y divide-border border-y border-border">
+          {PORTFOLIO_FAQS.map((faq, index) => (
+            <details key={faq.question} className="faq-item group py-6 transition-colors" open={index === 0}>
+              <summary className="flex cursor-pointer items-center justify-between gap-6 list-none font-semibold text-lg sm:text-xl text-foreground hover:text-primary transition-colors focus-visible:outline-none">
+                <span className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-primary">/0{index + 1}</span>
+                  <span>{faq.question}</span>
+                </span>
+                <span className="shrink-0 text-muted-foreground group-open:rotate-45 transition-transform duration-200">
+                  <Plus size={20} />
+                </span>
+              </summary>
+              <p className="body-copy mt-4 pl-8 sm:pl-10 max-w-3xl text-sm sm:text-base leading-relaxed">
+                {faq.answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <Contact />
     </main>
-    <footer className="premium-footer page-width"><div className="footer-main"><div><Link to="/" className="footer-brand">N. Dhushyandh<span className="text-primary">↗</span></Link><p className="body-copy mt-3">Thoughtful websites. Connected apps. Real possibilities.</p></div><div className="footer-socials">{[{ Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' }, { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' }, { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` }, { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' }].map(({ Icon, label, href }) => <Button asChild key={label} variant="outline" size="icon"><a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}><Icon /></a></Button>)}</div></div><div className="footer-resources"><a href="#projects">Featured projects</a><Link to="/resume">Resume</Link><a href={RESUME_URL} download="Dhushyandh_Resume.pdf">Download PDF</a><Link to="/certificates">Certifications</Link><a href="#contact">Contact</a><a href="#home" className="ml-auto flex items-center gap-2">Back to top <ArrowUp size={14} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} N. Dhushyandh</span><span>Built with React · TypeScript · TanStack Start</span><span>Made with intention.</span></div></footer>
+    <footer className="premium-footer page-width"><div className="footer-main"><div><Link to="/" className="footer-brand">N. Dhushyandh<span className="text-primary">↗</span></Link><p className="body-copy mt-3">Thoughtful websites. Connected apps. Real possibilities.</p></div><div className="footer-socials">{[{ Icon: Github, label: 'GitHub', href: 'https://github.com/dhushyandh' }, { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/dhushyandh' }, { Icon: Mail, label: 'Email', href: `mailto:${RESUME.email}` }, { Icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919342763553' }].map(({ Icon, label, href }) => <Button asChild key={label} variant="outline" size="icon"><a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}><Icon /></a></Button>)}</div></div><div className="footer-resources"><a href="#projects">Featured projects</a><Link to="/resume">Resume</Link><a href={RESUME_URL} download="Dhushyandh_Resume.pdf">Download PDF</a><Link to="/certificates">Certifications</Link><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#home" className="ml-auto flex items-center gap-2">Back to top <ArrowUp size={14} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} N. Dhushyandh</span><span>Built with React · TypeScript · TanStack Start</span><span>Made with intention.</span></div></footer>
   </div>;
 }

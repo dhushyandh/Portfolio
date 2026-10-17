@@ -17,11 +17,51 @@ export const Route = createFileRoute('/certificates')({
       { property: 'og:description', content: DESCRIPTION },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://dhushyandh.in/certificates' },
+      { property: 'og:image', content: 'https://dhushyandh.in/og-image.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: TITLE },
       { name: 'twitter:description', content: DESCRIPTION },
+      { name: 'twitter:image', content: 'https://dhushyandh.in/og-image.png' },
     ],
     links: [{ rel: 'canonical', href: 'https://dhushyandh.in/certificates' }],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebPage',
+              '@id': 'https://dhushyandh.in/certificates#webpage',
+              url: 'https://dhushyandh.in/certificates',
+              name: TITLE,
+              description: DESCRIPTION,
+              isPartOf: {
+                '@type': 'WebSite',
+                url: 'https://dhushyandh.in/',
+                name: 'N. Dhushyandh — Full Stack & Mobile App Developer',
+              },
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dhushyandh.in/' },
+                { '@type': 'ListItem', position: 2, name: 'Certifications', item: 'https://dhushyandh.in/certificates' },
+              ],
+            },
+            ...CERTIFICATES.map((cert) => ({
+              '@type': 'EducationalOccupationalCredential',
+              name: cert.title,
+              credentialCategory: cert.category,
+              recognizedBy: {
+                '@type': 'Organization',
+                name: cert.issuer,
+              },
+            })),
+          ],
+        }),
+      },
+    ],
   }),
   component: CertificatesPage,
 });
