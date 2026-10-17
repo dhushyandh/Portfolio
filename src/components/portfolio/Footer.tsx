@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUp, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { PROJECTS } from "./data";
 import { RESUME } from "./resume-data";
 
@@ -39,7 +39,7 @@ export function Footer() {
         <div className="grid min-w-0 gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="min-w-0">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo.url} alt="Dhushyandh logo" className="h-8 w-8 rounded-full" />
+              <img src={logo} alt="Dhushyandh logo" className="h-8 w-8 rounded-full" />
               <span className="font-display text-lg font-bold text-foreground">Dhushyandh</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">

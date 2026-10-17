@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, FileText } from "lucide-react";
-import profile from "@/assets/profile-img.png.asset.json";
+import profile from "@/assets/profile-img.png";
 import { ROLES } from "./data";
 import { Reveal } from "./Reveal";
 
@@ -68,7 +68,7 @@ export function Hero() {
         <Reveal delay={150} className="flex justify-center lg:justify-end">
           <div className="rounded-full border-[6px] border-surface p-1 ring-1 ring-border">
             <img
-              src={profile.url}
+              src={profile}
               alt="Portrait of Dhushyandh"
               loading="eager"
               className="h-48 w-48 rounded-full object-cover sm:h-64 sm:w-64 lg:h-80 lg:w-80"

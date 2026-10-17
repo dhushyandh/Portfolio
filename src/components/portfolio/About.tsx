@@ -1,4 +1,4 @@
-import profile from "@/assets/profile-img.png.asset.json";
+import profile from "@/assets/profile-img.png";
 import { STATS } from "./data";
 
 export function About() {
@@ -6,7 +6,7 @@ export function About() {
     <section id="about" className="scroll-mt-24 border-t border-border py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-14">
         <img
-          src={profile.url}
+          src={profile}
           alt="Dhushyandh, full stack developer"
           loading="lazy"
           decoding="async"

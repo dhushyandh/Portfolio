@@ -1,24 +1,20 @@
-# AI Story Weaver
+# Dhushyandh — Developer Portfolio
 
-https://airo.ai/share/NTB5YWZsbWxwMjpjNDA6U1Qybkludk90VThz
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8a66594b-3a3c-49fa-bec1-437ea601233d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Full-stack developer portfolio showcasing web, mobile, e-commerce, and AI applications.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js and npm to run this project locally.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
+```
+
+## Build
+
+To build for production:
+
+```sh
+npm run build
 ```

@@ -1,6 +1,6 @@
-import resumeFile from "@/assets/Dhushyandh_Resume.pdf.asset.json";
+import resumeFile from "@/assets/Dhushyandh_Resume.pdf";
 
-export const RESUME_URL = resumeFile.url;
+export const RESUME_URL = resumeFile;
 
 export const RESUME = {
   name: "Dhushyandh N",
@@ -68,3 +68,65 @@ export const RESUME = {
     },
   ],
 } as const;
+
+export type CertificateItem = {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate?: string;
+  category: string;
+  image: string;
+  credentialUrl?: string;
+};
+
+export const CERTIFICATES: CertificateItem[] = [
+  {
+    id: "oracle-oci-2025",
+    title: "Oracle Cloud Infrastructure 2025",
+    issuer: "Oracle",
+    issueDate: "2025",
+    category: "Cloud Infrastructure",
+    image: "/certificates/Oracle - oci.png",
+  },
+  {
+    id: "aws-technical-essentials",
+    title: "AWS Technical Essentials",
+    issuer: "Amazon Web Services (AWS)",
+    issueDate: "2024",
+    category: "Cloud Computing",
+    image: "/certificates/aws.png",
+  },
+  {
+    id: "google-cybersecurity",
+    title: "Google Cloud Cybersecurity Certificate",
+    issuer: "Google",
+    issueDate: "2024",
+    category: "Security & Cloud",
+    image: "/certificates/CyberSecurity-Google.png",
+  },
+  {
+    id: "amazon-fullstack",
+    title: "Amazon Full Stack Web Development",
+    issuer: "Amazon",
+    issueDate: "2024",
+    category: "Full Stack",
+    image: "/certificates/FullStack - Amazon.png",
+  },
+  {
+    id: "ibm-frontend",
+    title: "IBM Introduction to HTML, CSS, JavaScript",
+    issuer: "IBM",
+    issueDate: "2023",
+    category: "Frontend Development",
+    image: "/certificates/IBM-frontend.png",
+  },
+  {
+    id: "mern-internship",
+    title: "MERN Stack Development Internship",
+    issuer: "CodeBind Technologies",
+    issueDate: "2024",
+    category: "Full Stack",
+    image: "/certificates/MERN_Intern.png",
+  },
+];
+

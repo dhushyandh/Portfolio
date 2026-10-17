@@ -1,50 +1,87 @@
-import cvpilot from '@/assets/cvpilot-preview.png.asset.json';
-import smartmart from '@/assets/smartmart-preview.png.asset.json';
-import sriguru from '@/assets/sriguru-preview.png.asset.json';
-import renewx from '@/assets/renewx-preview.png.asset.json';
+import cvpilot from '@/assets/cvpilot-preview.png';
+import smartmart from '@/assets/smartmart-preview.png';
+import sriguru from '@/assets/sriguru-preview.png';
+import renewxMobile from '@/assets/renewx-mobile-preview.png';
+import seyonMobile from '@/assets/seyon-mobile-preview.png';
 
 export type PortfolioProject = {
   slug: string; title: string; category: string; description: string;
   role: string; status: string; stack: string[]; features: string[];
   image?: string; github?: string; live?: string; note?: string;
+  projectType?: 'website' | 'mobile';
 };
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    slug: 'cvpilot', title: 'CVPilot', category: 'AI-powered application',
+    slug: 'sri-guru-coaching-centre',
+    title: 'Sri Guru Coaching Centre',
+    category: 'Paid client · Website project',
+    description: 'An education website and student portal for Sri Guru Coaching Centre. Genuine paid client work focused on the centre’s digital presence with structured course catalogs, schedules, and direct student inquiry entry points.',
+    role: 'Website Development',
+    status: 'Website live',
+    image: sriguru,
+    live: 'https://srigurucoaching.in/',
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    features: ['Public course information & schedules', 'Direct student inquiry portal', 'Responsive mobile layout'],
+    projectType: 'website',
+    note: 'Project scope provided by Dhushyandh. The public education website is verified.',
+  },
+  {
+    slug: 'renewx-crew',
+    title: 'RenewX Crew',
+    category: 'Client work · Mobile App',
+    description: 'A Certifiedelectronics marketplace and trade-in mobile application layout. Built with transparent gadget valuation, instant buyback quote calculation, verified pre-owned device catalog, and WhatsApp checkout integration.',
+    role: 'Mobile App & UI Development',
+    status: 'Mobile App',
+    image: renewxMobile,
+    live: 'https://renewx.expo.app/',
+    stack: ['React Native', 'TypeScript', 'Mobile UI/UX', 'Tailwind CSS'],
+    features: ['Instant device quote valuation', 'Verified Certifiedtech catalog', 'Mobile touch-first experience', 'WhatsApp order coordination'],
+    projectType: 'mobile',
+    note: 'Mobile App and verified storefront for RenewX pre-owned electronics.',
+  },
+  {
+    slug: 'seyon-crackers',
+    title: 'Seyon Crackers',
+    live: 'https://seyonfirecrackers.expo.app',
+    category: 'Client work · Mobile App',
+    description: 'A direct-from-factory fireworks and crackers ordering mobile application layout engineered for seasonal festive demand. Features custom festival combo builders, volume discount tiers, categorized fireworks catalog, and instant dispatch booking.',
+    role: 'Mobile App & UI Development',
+    status: 'Mobile App',
+    image: seyonMobile,
+    stack: ['React Native', 'Mobile UI/UX', 'Tailwind CSS', 'TypeScript'],
+    features: ['Festive combo package builder', 'Bulk order volume discounts', 'Mobile price list & catalog', 'Direct festival order booking'],
+    projectType: 'mobile',
+    note: 'Mobile App designed for direct-from-factory fireworks ordering.',
+  },
+  {
+    slug: 'cvpilot',
+    title: 'CVPilot',
+    category: 'AI-powered application',
     description: 'A smarter starting point for your next career move. An AI-powered resume builder and ATS analyzer, bringing resume review, job matching and cover letters into one experience.',
-    role: 'Full-stack development', status: 'Live', image: cvpilot.url,
+    role: 'Full-stack development',
+    status: 'Live',
+    image: cvpilot,
     stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Gemini AI'],
     features: ['Resume editor & PDF export', 'ATS analysis', 'Job-description matching', 'AI cover letters'],
-    github: 'https://github.com/dhushyandh/AIResumeAnalyser', live: 'https://cvpilot.dhushyandh.me/',
+    github: 'https://github.com/dhushyandh/AIResumeAnalyser',
+    live: 'https://cvpilot.dhushyandh.in/',
+    projectType: 'website',
     note: 'Features documented in the project repository; the public landing page is verified.',
   },
   {
-    slug: 'smartmart', title: 'SmartMart', category: 'Full-stack e-commerce',
+    slug: 'smartmart',
+    title: 'SmartMart',
+    category: 'Full-stack e-commerce',
     description: 'From browsing to placing an order. A MERN commerce project with a product catalog, persistent cart, authentication and order management. The current public storefront is branded CampusCart.',
-    role: 'Full-stack development', status: 'Live', image: smartmart.url,
+    role: 'Full-stack development',
+    status: 'Live',
+    image: smartmart,
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
     features: ['Product search & filtering', 'Persistent shopping cart', 'Order history', 'Admin product management'],
-    github: 'https://github.com/dhushyandh/SmartMart', live: 'https://smart-mart-in.onrender.com/',
-  },
-  {
-    slug: 'sri-guru-coaching-centre', title: 'Sri Guru Coaching Centre', category: 'Paid client · Education',
-    description: 'An education website and learning-management project for Sri Guru Coaching Centre. Genuine paid client work focused on the centre’s digital presence.',
-    role: 'Website / LMS development', status: 'Website live · LMS unconfirmed', image: sriguru.url, live: 'https://srigurucoaching.in/', stack: [], features: ['Public course information', 'Contact information', 'Student login entry'],
-    note: 'Project scope provided by Dhushyandh. The public education website is verified; LMS functionality and the technology stack are not yet confirmed.',
-  },
-  {
-    slug: 'renewx-crew', title: 'RenewX Crew', category: 'E-commerce · Web & mobile',
-    description: 'An e-commerce web and mobile application project. A refurbished electronics marketplace with a verified public storefront, product discovery and a device-selling entry point.',
-    role: 'Web & mobile development', status: 'Web live · Mobile in progress', image: renewx.url, live: 'https://renewx.dhushyandh.in/', stack: [], features: ['Public marketplace', 'Shop & sell-device entry points', 'Instant quote entry'],
-    github: 'https://github.com/dhushyandh/RenewX-Crew',
-    note: 'Public web storefront verified. Mobile delivery and backend implementation details are not yet confirmed.',
-  },
-  {
-    slug: 'seyon-crackers', title: 'Seyon Crackers', category: 'E-commerce · Web & app',
-    description: 'A fireworks e-commerce website and application project. A commerce-focused addition to my web and mobile work.',
-    role: 'Web & app development', status: 'Details pending', stack: [], features: [],
-    note: 'Project scope provided by Dhushyandh. Screenshots, stack and delivery status are awaiting confirmation.',
+    github: 'https://github.com/dhushyandh/SmartMart',
+    live: 'https://smart-mart-in.onrender.com/',
+    projectType: 'website',
   },
 ];
 
