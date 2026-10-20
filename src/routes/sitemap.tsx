@@ -55,6 +55,36 @@ export const Route = createFileRoute('/sitemap')({
       { name: 'twitter:image', content: 'https://dhushyandh.in/og-image.png' },
     ],
     links: [{ rel: 'canonical', href: 'https://dhushyandh.in/sitemap' }],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebPage',
+              '@id': 'https://dhushyandh.in/sitemap#webpage',
+              url: 'https://dhushyandh.in/sitemap',
+              name: 'Sitemap — N. Dhushyandh | Web & Mobile App Developer',
+              description:
+                'Comprehensive visual sitemap for N. Dhushyandh portfolio. Explore all verified client projects, career milestones, credentials, resume, and legal policies.',
+              isPartOf: {
+                '@type': 'WebSite',
+                url: 'https://dhushyandh.in/',
+                name: 'Dhushyandh — Full-Stack Web Developer & Freelancer',
+              },
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dhushyandh.in/' },
+                { '@type': 'ListItem', position: 2, name: 'Sitemap', item: 'https://dhushyandh.in/sitemap' },
+              ],
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: SitemapComponent,
 });

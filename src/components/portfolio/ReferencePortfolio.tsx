@@ -33,7 +33,7 @@ import renewxLogo from '@/assets/renewx-logo.png';
 import savoreLogo from '@/assets/savore-logo.png';
 import forgeFitnessLogo from '@/assets/forge-fitness-logo.png';
 import { RESUME, RESUME_URL } from './resume-data';
-import { PORTFOLIO_PROJECTS, PROCESS, SERVICES } from './premium-data';
+import { PORTFOLIO_PROJECTS, PROCESS, SERVICES, PORTFOLIO_FAQS } from './premium-data';
 import { ACHIEVEMENTS, TIMELINE } from './data';
 import { Contact } from './Contact';
 import { PortfolioMotion } from './PortfolioMotion';
@@ -243,28 +243,7 @@ const EXPERIENCE_ROWS = [
   },
 ];
 
-const FAQS = [
-  {
-    question: 'What kind of projects do you take on?',
-    answer:
-      'I build responsive business websites, full-stack web applications, e-commerce stores, and cross-platform mobile apps with React Native. Whether you need an MVP from scratch or a redesign, we can shape the right solution.',
-  },
-  {
-    question: 'How do we start a project?',
-    answer:
-      'Share your idea, timeline, and key goals. We will discuss the requirements, establish milestones, and agree on clear deliverables before development begins.',
-  },
-  {
-    question: 'Do you build both web and mobile apps?',
-    answer:
-      'Yes! My expertise covers modern React and Next.js web applications, Node.js and database backends, and performant iOS & Android mobile applications built with React Native.',
-  },
-  {
-    question: 'What is your typical turnaround time?',
-    answer:
-      'Landing pages and core business websites typically launch within 1–2 weeks, while full-stack web platforms and mobile apps depend on feature scope, typically 3–6 weeks with continuous progress updates.',
-  },
-];
+const FAQS = PORTFOLIO_FAQS;
 
 export function ReferencePortfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -372,7 +351,7 @@ export function ReferencePortfolio() {
           <div className="ref-hero-left">
             <div className="ref-hero-status-pill">
               <span className="ref-status-dot" />
-              <span>Available for Oppurtunities</span>
+              <span>Available for Opportunities</span>
             </div>
 
             <div className="ref-hero-role-pill">

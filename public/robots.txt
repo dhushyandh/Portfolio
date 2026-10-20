@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Sitemap & LLM discoverability
 Sitemap: https://dhushyandh.in/sitemap.xml

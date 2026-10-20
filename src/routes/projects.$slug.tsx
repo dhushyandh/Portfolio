@@ -26,7 +26,11 @@ export const Route = createFileRoute('/projects/$slug')({
       : 'Project Unavailable — N. Dhushyandh';
     const description = study?.overview ?? 'This project could not be found.';
     const url = `https://dhushyandh.in/projects/${study?.slug ?? ''}`;
-    const ogImage = study?.image ? `https://dhushyandh.in${study.image}` : 'https://dhushyandh.in/og-image.png';
+    const ogImage = study?.image
+      ? (study.image.startsWith('http')
+          ? study.image
+          : `https://dhushyandh.in${study.image.startsWith('/') ? '' : '/'}${study.image}`)
+      : 'https://dhushyandh.in/og-image.png';
 
     const structuredData = study
       ? {
@@ -41,7 +45,7 @@ export const Route = createFileRoute('/projects/$slug')({
               isPartOf: {
                 '@type': 'WebSite',
                 url: 'https://dhushyandh.in/',
-                name: 'N. Dhushyandh — Full Stack & Mobile App Developer',
+                name: 'Dhushyandh — Full-Stack Web Developer & Freelancer',
               },
             },
             {
@@ -80,15 +84,18 @@ export const Route = createFileRoute('/projects/$slug')({
       meta: [
         { title },
         { name: 'description', content: description },
+        { property: 'og:site_name', content: 'Dhushyandh' },
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
         { property: 'og:type', content: 'article' },
         { property: 'og:url', content: url },
         { property: 'og:image', content: ogImage },
+        { property: 'og:image:alt', content: `${study?.title ?? 'Project'} — Case Study by Dhushyandh` },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: title },
         { name: 'twitter:description', content: description },
         { name: 'twitter:image', content: ogImage },
+        { name: 'twitter:image:alt', content: `${study?.title ?? 'Project'} — Case Study by Dhushyandh` },
         ...(!study ? [{ name: 'robots', content: 'noindex' }] : []),
       ],
       links: study ? [{ rel: 'canonical', href: url }] : [],

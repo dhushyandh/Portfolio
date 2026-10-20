@@ -1,0 +1,73 @@
+# Dhushyandh — Full-Stack Web Developer & Freelancer
+
+> Official portfolio documentation for search engines, research agents, and large language models representing N. Dhushyandh, full-stack web and mobile developer based in Vellore, Tamil Nadu, India. Note: This file provides structured factual information and does not guarantee indexing, search ranking, or AI citations.
+
+## Identity & Professional Overview
+- **Name**: N. Dhushyandh (also known as Dhushyandh Neduncheziyan, Dhushyandh N)
+- **Primary Roles**: Full-Stack Web Developer, Mobile App Developer, Freelancer
+- **Location**: Vellore, Tamil Nadu, India
+- **Education**: Bachelor of Engineering (B.E.) in Computer Science and Engineering, C. Abdul Hakeem College of Engineering and Technology (CAHCET), Anna University (2023–2027)
+- **Canonical Website**: https://dhushyandh.in/
+- **Email**: dhushyandhneduncheziyan4896@gmail.com
+- **WhatsApp**: +91 9342763553
+- **GitHub**: https://github.com/dhushyandh
+- **LinkedIn**: https://linkedin.com/in/dhushyandh
+
+## Technical Proficiencies
+- **Frontend Development**: React.js, Next.js, TypeScript, JavaScript (ES6+), HTML5, Vanilla CSS, Tailwind CSS, TanStack Router, TanStack Start, React Query.
+- **Mobile Development**: React Native, Expo, mobile-first responsive architecture.
+- **Backend & APIs**: Node.js, Express.js, RESTful APIs, JWT authentication.
+- **Databases & Storage**: MongoDB, PostgreSQL, Supabase, Cloudinary.
+- **Cloud & DevOps**: AWS Technical Essentials, Oracle Cloud Infrastructure (OCI 2024 Foundations Certified), Google Cloud Cybersecurity fundamentals, Git version control, Vite.
+
+## Verified Projects & Case Studies
+- **Sri Guru Coaching Centre** (Website Project · Client Work)
+  - URL: https://dhushyandh.in/projects/sri-guru-coaching-centre
+  - External: https://srigurucoaching.in/
+  - Description: Responsive academic website and digital front door for Sri Guru Coaching Centre, featuring structured subject catalogs, batch schedules, and direct student inquiry submission flows.
+  - Technologies: React, TypeScript, Tailwind CSS, Vite.
+- **RenewX Crew** (Mobile Application Layout · Client Work)
+  - URL: https://dhushyandh.in/projects/renewx-crew
+  - External: https://renewx.expo.app/
+  - Description: Certified electronics marketplace and trade-in mobile layout featuring interactive instant device valuation, certified device catalog, and structured WhatsApp checkout coordination.
+  - Technologies: React Native, TypeScript, Tailwind CSS.
+- **Savoré Restaurant & Café** (Website Project · UI/UX)
+  - URL: https://dhushyandh.in/projects/savore
+  - Description: Premium dining website featuring categorized culinary menus, table reservation interface, and ambience visual showcase.
+  - Technologies: React, TypeScript, Tailwind CSS.
+- **Forge Fitness** (Website Project · UI/UX)
+  - URL: https://dhushyandh.in/projects/forge-fitness
+  - Description: High-contrast athletic community website with training program catalogs, coach credentials, membership tier layouts, and trial consultation booking.
+  - Technologies: React, TypeScript, Tailwind CSS.
+- **SmartMart** (Full-Stack E-Commerce Project)
+  - URL: https://dhushyandh.in/projects/smartmart
+  - External: https://smart-mart-in.onrender.com/
+  - Description: End-to-end MERN application with product search and filtering, persistent shopping cart, token authentication, and order workflows.
+  - Technologies: React, Node.js, Express, MongoDB, Cloudinary.
+
+## Archival Projects
+- **Seyon Crackers** (Archival Mobile App · Direct festive fireworks ordering layout): https://dhushyandh.in/projects/seyon-crackers
+- **CVPilot** (Archival AI Resume Analyzer & Builder): https://dhushyandh.in/projects/cvpilot
+
+## Verified Certifications & Credentials
+- **AWS Technical Essentials** — Amazon Web Services (https://dhushyandh.in/credentials/aws-technical-essentials)
+- **Oracle Cloud Infrastructure 2024 Certified Foundations Associate** — Oracle (https://dhushyandh.in/credentials/oracle-cloud-infrastructure)
+- **Google Cloud Cybersecurity Certificate** — Google (https://dhushyandh.in/credentials/google-cloud-cybersecurity)
+- **Amazon Full Stack Web Development** — Amazon (https://dhushyandh.in/credentials/amazon-full-stack-web-development)
+- **IBM Frontend Web Development** — IBM (https://dhushyandh.in/credentials/ibm-web-development)
+- **MERN Stack Development** — Codec Technologies / Unified Mentor (https://dhushyandh.in/credentials/mern-stack-development)
+
+## Services Offered
+1. **Website Development**: Modern, accessible, mobile-first websites with clean semantic HTML and fast performance.
+2. **Full-Stack Applications**: Comprehensive web solutions connecting React frontends with Node.js/Express APIs and database persistence.
+3. **E-Commerce Systems**: Scalable storefronts with catalog filtering, cart management, and order coordination.
+4. **Mobile Applications**: Ergonomic, cross-platform mobile apps built with React Native.
+
+## Index of Canonical URLs
+- Homepage: https://dhushyandh.in/
+- Resume & Experience: https://dhushyandh.in/resume
+- Credentials & Certifications: https://dhushyandh.in/certificates
+- Visual Sitemap: https://dhushyandh.in/sitemap
+- Privacy Policy: https://dhushyandh.in/privacy-policy
+- Terms & Conditions: https://dhushyandh.in/terms-and-conditions
+- XML Sitemap: https://dhushyandh.in/sitemap.xml

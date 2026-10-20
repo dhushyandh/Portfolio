@@ -197,10 +197,12 @@ export const Route = createFileRoute("/credentials/$slug")({
         { property: "og:site_name", content: "Dhushyandh" },
         { property: "og:url", content: url },
         { property: "og:image", content: imageUrl },
+        { property: "og:image:alt", content: `${credential.title} — ${credential.provider} Certificate` },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: imageUrl },
+        { name: "twitter:image:alt", content: `${credential.title} — ${credential.provider} Certificate` },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
