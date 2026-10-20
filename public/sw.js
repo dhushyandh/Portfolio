@@ -1,15 +1,17 @@
 // N. Dhushyandh Portfolio — Progressive Web App Service Worker
-const CACHE_NAME = 'dhushyandh-pwa-v2';
+const CACHE_NAME = 'dhushyandh-pwa-v4';
 const PRECACHE_URLS = [
   '/',
   '/resume',
   '/certificates',
   '/manifest.json',
-  '/favicon.png',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  '/icons/icon-maskable-192x192.png',
-  '/icons/icon-maskable-512x512.png',
+  '/icons/dhushyandh-photo-favicon-32.png',
+  '/icons/dhushyandh-photo-favicon-48.png',
+  '/icons/dhushyandh-photo-favicon-180.png',
+  '/icons/dhushyandh-photo-favicon-192.png',
+  '/icons/dhushyandh-photo-favicon-512.png',
+  '/icons/dhushyandh-photo-favicon.ico',
+  '/icons/dhushyandh-photo-favicon.png',
   '/screenshots/desktop-1280x720.png',
   '/screenshots/mobile-750x1334.png',
   '/assets/Dhushyandh_Resume.pdf'
@@ -132,8 +134,8 @@ self.addEventListener('push', (event) => {
 
   const options = {
     body: data.body,
-    icon: '/icons/icon-192x192.png',
-    badge: '/favicon.png',
+    icon: '/icons/dhushyandh-photo-favicon-192.png',
+    badge: '/icons/dhushyandh-photo-favicon-32.png',
     data: { url: '/' }
   };
 

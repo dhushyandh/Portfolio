@@ -15,8 +15,8 @@
     "browser"
   ],
   "orientation": "portrait-primary",
-  "background_color": "#050508",
-  "theme_color": "#050508",
+  "background_color": "#0a0b0e",
+  "theme_color": "#0a0b0e",
   "categories": [
     "portfolio",
     "technology",
@@ -32,6 +32,25 @@
   "edge_side_panel": {
     "preferred_width": 480
   },
+  "icons": [
+    {
+      "src": "/icons/dhushyandh-photo-favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/dhushyandh-photo-favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/dhushyandh-photo-favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/icons/dhushyandh-photo-favicon-192.png",
       "sizes": "192x192",
@@ -45,34 +64,16 @@
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-maskable-192x192.png",
+      "src": "/icons/dhushyandh-photo-favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-maskable-512x512.png",
+      "src": "/icons/dhushyandh-photo-favicon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "/favicon.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
     }
   ],
   "shortcuts": [
@@ -83,7 +84,7 @@
       "url": "/resume",
       "icons": [
         {
-          "src": "/icons/icon-192x192.png",
+          "src": "/icons/dhushyandh-photo-favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
@@ -96,7 +97,7 @@
       "url": "/certificates",
       "icons": [
         {
-          "src": "/icons/icon-192x192.png",
+          "src": "/icons/dhushyandh-photo-favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
@@ -109,7 +110,7 @@
       "url": "/#contact",
       "icons": [
         {
-          "src": "/icons/icon-192x192.png",
+          "src": "/icons/dhushyandh-photo-favicon-192.png",
           "sizes": "192x192",
           "type": "image/png"
         }
