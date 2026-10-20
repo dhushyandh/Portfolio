@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { PremiumPortfolio } from '@/components/portfolio/PremiumPortfolio';
+import { ReferencePortfolio } from '@/components/portfolio/ReferencePortfolio';
 import { PORTFOLIO_FAQS } from '@/components/portfolio/premium-data';
 import { RESUME } from '@/components/portfolio/resume-data';
 
@@ -109,5 +109,5 @@ export const Route = createFileRoute('/')({
       ],
     };
   },
-  component: PremiumPortfolio,
+  component: ReferencePortfolio,
 });
