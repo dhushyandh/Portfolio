@@ -1,20 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  ArrowUpRight,
   Bot,
   BriefcaseBusiness,
+  Check,
   ChevronRight,
   FileText,
   Github,
   Mail,
+  Scale,
   ShieldCheck,
   UserCheck,
 } from "lucide-react";
+import "@/components/portfolio/ReferencePortfolio.css";
 
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
     meta: [
-      { title: "Terms & Conditions — Dhushyandh | MERN Stack Developer" },
+      { title: "Terms & Conditions — Dhushyandh | Full Stack & Mobile App Developer" },
       {
         name: "description",
         content:
@@ -71,426 +77,367 @@ export const Route = createFileRoute("/terms-and-conditions")({
 });
 
 const SECTIONS = [
-  {
-    id: "acceptance",
-    title: "Acceptance of Terms",
-    icon: FileText,
-  },
-  {
-    id: "website",
-    title: "Use of the Website",
-    icon: UserCheck,
-  },
-  {
-    id: "projects",
-    title: "Projects & Portfolio Content",
-    icon: BriefcaseBusiness,
-  },
-  {
-    id: "ai",
-    title: "AI Assistant",
-    icon: Bot,
-  },
-  {
-    id: "external",
-    title: "External Links",
-    icon: Github,
-  },
-  {
-    id: "availability",
-    title: "Availability & Accuracy",
-    icon: ShieldCheck,
-  },
-  {
-    id: "contact",
-    title: "Contact",
-    icon: Mail,
-  },
+  { id: "acceptance", title: "Acceptance of Terms", icon: Scale },
+  { id: "website", title: "Permitted Use", icon: UserCheck },
+  { id: "projects", title: "Intellectual Property", icon: BriefcaseBusiness },
+  { id: "ai", title: "AI Assistant Disclaimer", icon: Bot },
+  { id: "external", title: "External Links & Repos", icon: Github },
+  { id: "liability", title: "Warranties & Liability", icon: ShieldCheck },
+  { id: "jurisdiction", title: "Governing Law", icon: FileText },
+  { id: "contact", title: "Contact Information", icon: Mail },
 ];
 
 function TermsAndConditions() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background: `
-              radial-gradient(
-                circle at 78% 15%,
-                color-mix(in oklab, var(--color-primary) 18%, transparent),
-                transparent 38%
-              ),
-              linear-gradient(
-                180deg,
-                color-mix(in oklab, var(--color-primary) 3%, transparent),
-                transparent 70%
-              )
-            `,
-          }}
-        />
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [background-size:48px_48px]"
-        />
-
-        <div className="relative mx-auto max-w-5xl px-5 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-14">
-          <Link
-            to="/"
-            className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            <ArrowLeft size={15} />
-            Back to portfolio
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Top Header matching reference layout */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
           </Link>
 
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
-              <FileText size={23} />
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Work</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="journey">Journey</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <Link className="ref-nav-cta" to="/" hash="contact">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>Legal</li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: "var(--ink)", fontWeight: 600 }}>Terms & Conditions</li>
+            </ol>
+
+            <Link to="/" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Portfolio
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">
+            <Scale size={12} />
+            <span>Legal Agreement</span>
+          </div>
+
+          <h1 className="ref-case-title">Terms & Conditions</h1>
+
+          <p className="ref-case-overview">
+            These Terms & Conditions explain the operational terms and conditions for using
+            Dhushyandh's portfolio website, evaluating code projects, and engaging in inquiries.
+          </p>
+
+          <div className="ref-case-meta-row">
+            <div className="ref-case-meta-pill">
+              <span className="ref-case-status-dot" />
+              <span>Effective: September 11, 2026</span>
             </div>
-
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                Legal
-              </p>
-
-              <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Terms & Conditions
-              </h1>
-
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-                These terms explain the basic conditions for using
-                Dhushyandh's portfolio website and its available features.
-              </p>
-
-              <p className="mt-4 text-xs text-muted-foreground">
-                Last updated: September 11, 2026
-              </p>
+            <div className="ref-case-meta-pill">
+              <span>N. Dhushyandh · Full Stack & Mobile App Developer</span>
+            </div>
+            <div className="ref-case-meta-pill">
+              <span>Jurisdiction: Tamil Nadu, India</span>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Content */}
-      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-10 sm:px-6 sm:py-14 lg:grid-cols-[220px_1fr]">
-        {/* Contents */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-24">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              Contents
-            </p>
-
-            <nav className="mt-4 space-y-1">
+        {/* Legal Grid: Sticky Sidebar + Main Content Cards */}
+        <div className="ref-legal-grid">
+          {/* Table of Contents Sidebar */}
+          <aside className="ref-legal-sidebar">
+            <div className="ref-legal-sidebar-title">Contents</div>
+            <nav className="ref-legal-sidebar-nav">
               {SECTIONS.map(({ id, title }) => (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-primary/5 hover:text-primary"
-                >
+                <a key={id} href={`#${id}`} className="ref-legal-sidebar-link">
                   <span>{title}</span>
-
-                  <ChevronRight
-                    size={14}
-                    className="opacity-0 transition-opacity group-hover:opacity-100"
-                  />
+                  <ChevronRight size={13} />
                 </a>
               ))}
             </nav>
-          </div>
-        </aside>
+          </aside>
 
-        {/* Terms */}
-        <article className="min-w-0">
-          <div className="surface-card rounded-2xl p-6 sm:p-8 lg:p-10">
-            {/* Introduction */}
-            <div className="mb-10">
-              <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary">
-                <FileText size={14} />
-                Terms
-              </div>
-
-              <p className="text-[15px] leading-7 text-muted-foreground">
-                Welcome to Dhushyandh's portfolio website. By accessing or
-                using this website, you agree to use it responsibly and in
-                accordance with these Terms & Conditions.
-              </p>
-
-              <p className="mt-4 text-[15px] leading-7 text-muted-foreground">
-                If you do not agree with these terms, please discontinue use
-                of the website.
-              </p>
-            </div>
-
+          {/* Legal Content Cards */}
+          <div className="ref-legal-content">
             {/* 01 */}
-            <TermsSection
-              id="acceptance"
-              number="01"
-              title="Acceptance of Terms"
-            >
-              <p>
-                By accessing this website, you acknowledge that you have read,
-                understood, and agreed to these Terms & Conditions.
-              </p>
-
-              <p>
-                These terms apply to visitors and users of the portfolio,
-                including people viewing projects, using the AI assistant, or
-                contacting Dhushyandh through the website.
-              </p>
-            </TermsSection>
-
-            {/* 02 */}
-            <TermsSection
-              id="website"
-              number="02"
-              title="Use of the Website"
-            >
-              <p>
-                This website is provided primarily as a personal professional
-                portfolio for presenting Dhushyandh's skills, projects,
-                experience, education, and professional information.
-              </p>
-
-              <p>
-                You agree not to misuse the website, interfere with its
-                operation, attempt to gain unauthorised access, or use its
-                functionality for unlawful purposes.
-              </p>
-
-              <ul>
-                <li>
-                  Do not attempt to disrupt or damage the website.
-                </li>
-                <li>
-                  Do not attempt to access restricted systems or credentials.
-                </li>
-                <li>
-                  Do not use the website for fraudulent or unlawful activity.
-                </li>
-                <li>
-                  Do not abuse automated or interactive features.
-                </li>
-              </ul>
-            </TermsSection>
-
-            {/* 03 */}
-            <TermsSection
-              id="projects"
-              number="03"
-              title="Projects & Portfolio Content"
-            >
-              <p>
-                Project descriptions, images, technologies, designs, and
-                other portfolio materials are presented for informational and
-                demonstration purposes.
-              </p>
-
-              <p>
-                Some projects may represent academic work, personal work,
-                internship work, freelance work, or client-related work.
-              </p>
-
-              <p>
-                Portfolio content should not automatically be interpreted as
-                an offer, guarantee, specification, or contractual commitment
-                unless explicitly agreed in writing.
-              </p>
-
-              <p>
-                Client-owned or third-party materials remain subject to their
-                respective ownership and usage rights.
-              </p>
-            </TermsSection>
-
-            {/* 04 */}
-            <TermsSection
-              id="ai"
-              number="04"
-              title="AI Assistant"
-            >
-              <div className="rounded-xl border border-primary/15 bg-primary/[0.04] p-4">
-                <div className="flex gap-3">
-                  <Bot
-                    size={18}
-                    className="mt-0.5 shrink-0 text-primary"
-                  />
-
-                  <div className="space-y-3 text-sm leading-6 text-muted-foreground">
-                    <p>
-                      The portfolio includes an AI-powered assistant intended
-                      to help visitors learn about Dhushyandh's professional
-                      background.
-                    </p>
-
-                    <p>
-                      AI-generated responses may contain mistakes,
-                      omissions, or outdated information. The assistant should
-                      therefore be treated as an informational convenience,
-                      not as an authoritative source.
-                    </p>
-
-                    <p>
-                      Do not rely on the assistant for legal, financial,
-                      medical, security, employment, or other high-stakes
-                      decisions.
-                    </p>
-
-                    <p>
-                      Do not submit passwords, payment information,
-                      confidential documents, or sensitive personal
-                      information to the AI assistant.
-                    </p>
-                  </div>
+            <article id="acceptance" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Scale size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 01</span>
+                  <h2 className="ref-legal-card-title">Acceptance of Terms</h2>
                 </div>
               </div>
-            </TermsSection>
-
-            {/* 05 */}
-            <TermsSection
-              id="external"
-              number="05"
-              title="External Links"
-            >
-              <p>
-                The portfolio may contain links to external websites and
-                services, including GitHub, LinkedIn, email services, hosting
-                platforms, and other third-party resources.
-              </p>
-
-              <p>
-                These external websites are operated independently and are
-                subject to their own terms, policies, and practices.
-              </p>
-
-              <p>
-                Dhushyandh is not responsible for the content, availability,
-                security, or privacy practices of external websites.
-              </p>
-            </TermsSection>
-
-            {/* 06 */}
-            <TermsSection
-              id="availability"
-              number="06"
-              title="Availability & Accuracy"
-            >
-              <p>
-                Reasonable effort is made to keep the information on this
-                website accurate and up to date. However, portfolio content,
-                project availability, links, technologies, and professional
-                information may change over time.
-              </p>
-
-              <p>
-                The website and its features may occasionally be unavailable
-                because of maintenance, deployment, hosting issues, network
-                problems, or circumstances outside reasonable control.
-              </p>
-
-              <p>
-                No guarantee is made that the website will always be
-                available, error-free, or completely up to date.
-              </p>
-            </TermsSection>
-
-            {/* 07 */}
-            <TermsSection
-              id="contact"
-              number="07"
-              title="Contact"
-              last
-            >
-              <p>
-                Questions about these Terms & Conditions, the portfolio, or
-                potential professional opportunities can be directed to
-                Dhushyandh using the email address below.
-              </p>
-
-              <a
-                href="mailto:dhushyandhneduncheziyan4896@gmail.com"
-                className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
-              >
-                <Mail size={16} />
-                dhushyandhneduncheziyan4896@gmail.com
-              </a>
-            </TermsSection>
-
-            {/* Agreement note */}
-            <div className="mt-10 rounded-xl border border-border bg-background/60 p-4">
-              <div className="flex gap-3">
-                <ShieldCheck
-                  size={18}
-                  className="mt-0.5 shrink-0 text-primary"
-                />
-
-                <p className="text-sm leading-6 text-muted-foreground">
-                  These terms may be updated when the website or its features
-                  change. The latest version published on this page will apply
-                  to future use of the website.
+              <div className="ref-legal-card-body">
+                <p>
+                  By accessing, browsing, or utilizing any features of this website, you acknowledge that you
+                  have read, understood, and agree to be bound by these Terms & Conditions and the accompanying
+                  Privacy Policy.
+                </p>
+                <p>
+                  These terms govern all visitors, prospective clients, hiring managers, and recruiters reviewing
+                  case studies, inspecting code repositories, and initiating communication.
                 </p>
               </div>
-            </div>
-          </div>
+            </article>
 
-          {/* Bottom navigation */}
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <ArrowLeft size={15} />
-              Back to portfolio
-            </Link>
+            {/* 02 */}
+            <article id="website" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <UserCheck size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 02</span>
+                  <h2 className="ref-legal-card-title">Permitted Use & Conduct</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This website is provided as an engineering portfolio and client showcase. When interacting with
+                  this domain, you agree to:
+                </p>
+                <ul className="ref-legal-list">
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Browse case studies and documentation for evaluation, recruitment, or commercial collaboration.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Never attempt to probe, bypass, disrupt, or compromise server security or origin endpoints.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Never submit spam, automated abusive queries, or fraudulent inquiries through contact channels.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Never reverse-engineer private assets or misrepresent Dhushyandh's project credentials.</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
 
-            <Link
-              to="/privacy-policy"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-80"
-            >
-              Privacy Policy
-              <ChevronRight size={15} />
-            </Link>
-          </div>
-        </article>
-      </div>
-    </main>
-  );
-}
+            {/* 03 */}
+            <article id="projects" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <BriefcaseBusiness size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 03</span>
+                  <h2 className="ref-legal-card-title">Intellectual Property & Portfolio Content</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  All custom interface designs, animations, written case study narratives, and code snippets
+                  created specifically for this portfolio remain the intellectual property of N. Dhushyandh.
+                </p>
+                <p>
+                  Client logos, trademarks, and brand assets (including Sri Guru Coaching Centre, RenewX Crew,
+                  Savoré, and Forge Fitness) belong to their respective registered owners and are displayed here
+                  solely to showcase genuine development services and technical contributions.
+                </p>
+                <p>
+                  Open-source projects linked via GitHub remain governed by their explicit open-source licenses
+                  (e.g., MIT, Apache 2.0).
+                </p>
+              </div>
+            </article>
 
-function TermsSection({
-  id,
-  number,
-  title,
-  children,
-  last = false,
-}: {
-  id: string;
-  number: string;
-  title: string;
-  children: React.ReactNode;
-  last?: boolean;
-}) {
-  return (
-    <section
-      id={id}
-      className={!last ? "border-b border-border pb-9 pt-9" : "pt-9"}
-    >
-      <div className="flex items-start gap-4">
-        <span className="shrink-0 pt-1 font-mono text-xs text-primary/70">
-          {number}
-        </span>
+            {/* 04 */}
+            <article id="ai" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Bot size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 04</span>
+                  <h2 className="ref-legal-card-title">AI Assistant Informational Disclaimer</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  The interactive chatbot assistant is designed to provide rapid informational guidance regarding
+                  Dhushyandh's engineering background, certifications, and technical projects.
+                </p>
+                <div className="ref-legal-callout">
+                  <strong>Disclaimer:</strong> AI-generated statements are provided for convenience only and do not
+                  constitute formal contractual warranties, binding price quotes, or legal commitments. For official
+                  project proposals and contract terms, please confirm directly via email.
+                </div>
+              </div>
+            </article>
 
-        <div className="min-w-0">
-          <h2 className="font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            {title}
-          </h2>
+            {/* 05 */}
+            <article id="external" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Github size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 05</span>
+                  <h2 className="ref-legal-card-title">External Links & Repositories</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This site includes outbound hyperlinks to third-party services (such as GitHub, LinkedIn,
+                  and live client websites). These links are provided solely for professional verification.
+                </p>
+                <p>
+                  Dhushyandh does not control third-party site contents and accepts no liability for third-party
+                  modifications or external platform outages.
+                </p>
+              </div>
+            </article>
 
-          <div className="mt-4 space-y-4 text-[15px] leading-7 text-muted-foreground [&_li]:ml-5 [&_li]:list-disc [&_ul]:space-y-2">
-            {children}
+            {/* 06 */}
+            <article id="liability" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <ShieldCheck size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 06</span>
+                  <h2 className="ref-legal-card-title">Warranties & Limitation of Liability</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This portfolio and its demonstrations are provided on an "as is" and "as available" basis
+                  without warranties of uninterrupted uptime or error-free continuous operation.
+                </p>
+                <p>
+                  To the maximum extent permitted by applicable law, Dhushyandh will not be liable for any indirect,
+                  incidental, or consequential damages arising from the use or inability to access this showcase.
+                </p>
+              </div>
+            </article>
+
+            {/* 07 */}
+            <article id="jurisdiction" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <FileText size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 07</span>
+                  <h2 className="ref-legal-card-title">Governing Law & Jurisdiction</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  These Terms & Conditions are governed by and construed in accordance with the laws of the
+                  Republic of India.
+                </p>
+                <p>
+                  Any disputes arising out of or related to the usage of this portfolio shall be subject to the
+                  competent courts having jurisdiction in Vellore, Tamil Nadu, India.
+                </p>
+              </div>
+            </article>
+
+            {/* 08 */}
+            <article id="contact" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 08</span>
+                  <h2 className="ref-legal-card-title">Contact Information</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  If you have inquiries regarding these Terms & Conditions or wish to discuss an engineering
+                  collaboration, please reach out directly:
+                </p>
+                <div className="ref-case-actions-row" style={{ marginBottom: 0, marginTop: 14 }}>
+                  <a
+                    href="mailto:dhushyandhneduncheziyan4896@gmail.com"
+                    className="ref-btn-primary"
+                  >
+                    <Mail size={15} /> dhushyandhneduncheziyan4896@gmail.com
+                  </a>
+                  <a
+                    href="https://wa.me/919342763553"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ref-btn-secondary"
+                  >
+                    WhatsApp Inquiry <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* Bottom Pagination Card */}
+        <Link to="/privacy-policy" className="ref-case-next-card">
+          <div>
+            <div className="ref-case-next-label">Previous Legal Document</div>
+            <div className="ref-case-next-title">Privacy Policy</div>
+          </div>
+          <div className="ref-case-next-arrow">
+            <ArrowRight size={20} />
+          </div>
+        </Link>
+      </main>
+
+      {/* Footer matching reference layout */}
+      <footer className="ref-footer">
+        <div className="ref-footer-wordmark-wrap">
+          <div className="ref-footer-wordmark-glow" aria-hidden="true" />
+          <div className="ref-footer-wordmark" aria-hidden="true">
+            Dhushyandh
+          </div>
+        </div>
+
+        <div className="ref-footer-bottom ref-wrap">
+          <span>© {new Date().getFullYear()} N. Dhushyandh. All rights reserved.</span>
+          <div className="ref-footer-legal-links">
+            <Link to="/privacy-policy" className="ref-legal-link">Privacy Policy</Link>
+            <span className="ref-legal-dot" aria-hidden="true">·</span>
+            <Link to="/terms-and-conditions" className="ref-legal-link">Terms & Conditions</Link>
+          </div>
+          <span>Designed with intent. Engineered with code.</span>
+          <button
+            type="button"
+            className="ref-footer-top-btn"
+            onClick={scrollToTop}
+            aria-label="Scroll to top of page"
+          >
+            <span>Back to top</span>
+            <ArrowUp size={13} />
+          </button>
+        </div>
+      </footer>
+    </div>
   );
 }

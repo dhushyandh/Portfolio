@@ -1,8 +1,17 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router';
-import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Nav } from '@/components/portfolio/Nav';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  ExternalLink,
+  Github,
+  Sparkles,
+  Zap,
+} from 'lucide-react';
 import { getCaseStudy, getNextCaseStudy } from '@/components/portfolio/case-studies';
+import '@/components/portfolio/ReferencePortfolio.css';
+
 export const Route = createFileRoute('/projects/$slug')({
   loader: ({ params }) => {
     const study = getCaseStudy(params.slug);
@@ -11,10 +20,12 @@ export const Route = createFileRoute('/projects/$slug')({
   },
   head: ({ loaderData }) => {
     const study = loaderData?.study;
-    const title = study ? `${study.title} — Case Study & Project Details | N. Dhushyandh` : 'Project Unavailable — N. Dhushyandh';
+    const title = study
+      ? `${study.title} — Case Study & Project Details | N. Dhushyandh`
+      : 'Project Unavailable — N. Dhushyandh';
     const description = study?.overview ?? 'This project could not be found.';
     const url = `https://dhushyandh.in/projects/${study?.slug ?? ''}`;
-    const ogImage = 'https://dhushyandh.in/og-image.png';
+    const ogImage = study?.image ? `https://dhushyandh.in${study.image}` : 'https://dhushyandh.in/og-image.png';
 
     const structuredData = study
       ? {
@@ -85,144 +96,247 @@ export const Route = createFileRoute('/projects/$slug')({
   },
   component: ProjectPage,
   notFoundComponent: () => (
-    <div className="page-width py-24 text-center">
-      <h1 className="section-heading">Project not found.</h1>
-      <p className="body-copy mt-4">The requested project case study could not be located.</p>
-      <Link to="/" className="text-primary mt-6 inline-flex items-center gap-2">
-        <ArrowLeft size={16} /> Back to portfolio
-      </Link>
+    <div className="reference-portfolio ref-case-study-page">
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
+          </Link>
+          <div className="ref-nav-links">
+            <Link to="/" hash="projects">Work</Link>
+            <Link to="/" hash="contact" className="ref-nav-cta">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
+      <main className="ref-wrap py-24 text-center">
+        <h1 className="ref-section-title">Project not found</h1>
+        <p className="ref-muted mt-4">The requested project case study could not be located.</p>
+        <Link to="/" hash="projects" className="ref-btn-primary mt-6 inline-flex">
+          <ArrowLeft size={16} /> Back to all projects
+        </Link>
+      </main>
     </div>
   ),
 });
 
 function ProjectPage() {
   const { study, next } = Route.useLoaderData();
+
   return (
-    <>
-      <Nav />
-      <main className="page-width editorial-section">
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-sm text-muted-foreground">
-            <li>
-              <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link to="/" hash="projects" className="hover:text-foreground transition-colors">Work</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-foreground font-medium truncate" aria-current="page">{study.title}</li>
-          </ol>
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Top Header matching reference layout */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
+          </Link>
+
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects" className="active font-semibold">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <Link className="ref-nav-cta" to="/" hash="contact">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
         </nav>
+      </header>
 
-        <p className="section-label mt-8">{study.tagline}</p>
-        <h1 className="section-heading">{study.title}</h1>
-        <p className="large-copy mt-6 max-w-3xl">{study.overview}</p>
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/" hash="projects">Work</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: 'var(--ink)', fontWeight: 600 }}>{study.title}</li>
+            </ol>
 
-        <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">{study.role}</span>
-          <span>·</span>
-          <span className="inline-flex items-center gap-1.5"><i className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />{study.status}</span>
-          <span>·</span>
-          <span>{study.year}</span>
+            <Link to="/" hash="projects" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Selected Works
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">
+            <Zap size={11} fill="#489a14" stroke="#489a14" />
+            <span>{study.tagline}</span>
+          </div>
+
+          <h1 className="ref-case-title">{study.title}</h1>
+          <p className="ref-case-overview">{study.overview}</p>
+
+          <div className="ref-case-meta-row">
+            <div className="ref-case-meta-pill">
+              <span className="ref-case-status-dot" />
+              <span>{study.status}</span>
+            </div>
+            <div className="ref-case-meta-pill">
+              <span style={{ color: 'var(--muted)', fontSize: 11, textTransform: 'uppercase' }}>Role:</span>
+              <span>{study.role}</span>
+            </div>
+            <div className="ref-case-meta-pill">
+              <span style={{ color: 'var(--muted)', fontSize: 11, textTransform: 'uppercase' }}>Timeline:</span>
+              <span>{study.year}</span>
+            </div>
+          </div>
+
+          <div className="ref-case-actions-row">
+            {study.live && (
+              <a
+                href={study.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ref-btn-primary"
+              >
+                Live Project <ArrowUpRight size={15} />
+              </a>
+            )}
+            {study.github && (
+              <a
+                href={study.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ref-btn-outline-sm"
+              >
+                <Github size={15} /> Source Code
+              </a>
+            )}
+            <Link to="/" hash="contact" className="ref-btn-secondary">
+              Discuss a Project <ArrowUpRight size={15} />
+            </Link>
+          </div>
         </div>
 
+        {/* High-Resolution Showcase Preview Image */}
         {study.image && (
-          <div className="browser-preview mt-12">
+          <div className="ref-case-preview-frame">
             <img
               src={study.image}
-              alt={`${study.title} interface screenshot and interactive layout demonstration`}
-              width="1280"
-              height="900"
-              className="w-full object-cover"
+              alt={`${study.title} interface preview and mockup`}
               loading="eager"
+              decoding="async"
             />
           </div>
         )}
 
-        <div className="grid gap-10 py-14 md:grid-cols-2">
+        {/* Detailed Grid Content: Scope & Features + Technical Architecture */}
+        <div className="ref-case-grid-content">
+          {/* Left Column: Scope & Key Features */}
           <section aria-labelledby="scope-heading">
-            <h2 id="scope-heading" className="text-2xl font-semibold">Project Scope & Key Features</h2>
-            <ul className="mt-6 space-y-6">
+            <h2 id="scope-heading" className="ref-case-section-heading">
+              Project Scope & Key Features
+            </h2>
+            <div className="ref-case-features-list">
               {study.features.length ? (
-                study.features.map((f) => (
-                  <li key={f.title} className="border-b border-border/50 pb-5 last:border-b-0">
-                    <h3 className="text-base font-medium text-primary flex items-center gap-2">
-                      <span>↗</span> {f.title}
-                    </h3>
-                    <p className="body-copy mt-2">{f.description}</p>
-                  </li>
+                study.features.map((f, i) => (
+                  <article key={f.title} className="ref-case-feature-card">
+                    <div className="ref-case-feature-header">
+                      <span className="ref-case-feature-icon">
+                        <Check size={14} strokeWidth={2.6} />
+                      </span>
+                      <h3 className="ref-case-feature-title">{f.title}</h3>
+                    </div>
+                    <p className="ref-case-feature-desc">{f.description}</p>
+                  </article>
                 ))
               ) : (
-                <li className="body-copy">
-                  Implemented features have not been confirmed. Contact me for an up-to-date walkthrough.
-                </li>
+                <p className="ref-case-callout-text">
+                  Implemented features are documented in Dhushyandh’s engineering repository.
+                </p>
               )}
-            </ul>
+            </div>
           </section>
 
+          {/* Right Column: Technologies & Engineering Insights */}
           <section aria-labelledby="tech-heading">
-            <h2 id="tech-heading" className="text-2xl font-semibold">Technologies & Engineering Details</h2>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {study.stack.length ? (
-                study.stack.map((t) => (
-                  <span key={t} className="chip font-mono text-xs">
-                    {t}
-                  </span>
-                ))
-              ) : (
-                <p className="body-copy">Technology stack awaiting confirmation.</p>
-              )}
+            <h2 id="tech-heading" className="ref-case-section-heading">
+              Technologies & Architecture
+            </h2>
+
+            <div className="ref-case-tech-chips">
+              {study.stack.map((t) => (
+                <span key={t} className="ref-case-tech-chip">
+                  {t}
+                </span>
+              ))}
             </div>
 
-            <div className="mt-8 rounded-lg border border-border/60 bg-surface/50 p-6">
-              <h3 className="text-sm font-mono text-primary uppercase tracking-wider">Engineering Challenges</h3>
-              <p className="body-copy mt-3">{study.challenges}</p>
-            </div>
+            <article className="ref-case-callout-card">
+              <h3 className="ref-case-callout-title">
+                <Sparkles size={14} />
+                Engineering Challenges
+              </h3>
+              <p className="ref-case-callout-text">{study.challenges}</p>
+            </article>
 
-            <div className="mt-6 rounded-lg border border-border/60 bg-surface/50 p-6">
-              <h3 className="text-sm font-mono text-primary uppercase tracking-wider">Outcomes & Key Learnings</h3>
-              <p className="body-copy mt-3">{study.learnings}</p>
-            </div>
+            <article className="ref-case-callout-card">
+              <h3 className="ref-case-callout-title" style={{ color: '#2563eb' }}>
+                <Zap size={14} fill="#2563eb" stroke="#2563eb" />
+                Outcomes & Key Learnings
+              </h3>
+              <p className="ref-case-callout-text">{study.learnings}</p>
+            </article>
           </section>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border">
-          {study.live && (
-            <Button asChild className="premium-button">
-              <a href={study.live} target="_blank" rel="noreferrer">
-                Live demo <ArrowUpRight />
-              </a>
-            </Button>
-          )}
-          {study.github && (
-            <Button asChild variant="outline" className="premium-button">
-              <a href={study.github} target="_blank" rel="noreferrer">
-                <Github /> Source code
-              </a>
-            </Button>
-          )}
-          <Button asChild variant="outline" className="premium-button">
-            <Link to="/" hash="contact">
-              Discuss a project <ArrowUpRight />
-            </Link>
-          </Button>
-        </div>
-
+        {/* Next Case Study Navigation */}
         {next && (
           <Link
             to="/projects/$slug"
             params={{ slug: next.slug }}
-            className="mt-16 flex items-center justify-between gap-6 border-t border-border pt-8 group transition-colors"
+            className="ref-case-next-card"
           >
             <div>
-              <p className="section-label mb-2">Next project</p>
-              <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors">{next.title}</h3>
+              <p className="ref-case-next-label">Next Project Case Study</p>
+              <h3 className="ref-case-next-title">{next.title}</h3>
+              <p style={{ margin: '6px 0 0', fontSize: 13, color: 'var(--muted)' }}>
+                {next.tagline}
+              </p>
             </div>
-            <ArrowUpRight className="text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={24} />
+            <div className="ref-case-next-arrow">
+              <ArrowRight size={22} />
+            </div>
           </Link>
         )}
       </main>
-    </>
+
+      {/* Footer matching reference layout */}
+      <footer className="ref-footer" style={{ marginTop: 80 }}>
+        <div className="ref-footer-top ref-wrap">
+          <div className="ref-footer-nav">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+          </div>
+          <div className="ref-footer-tagline">
+            Dhushyandh Neduncheziyan — Portfolio
+          </div>
+        </div>
+
+        <div className="ref-footer-wordmark" aria-hidden="true">
+          Dhushyandh
+        </div>
+
+        <div className="ref-footer-bottom ref-wrap">
+          <span>© {new Date().getFullYear()} Dhushyandh. All rights reserved.</span>
+          <span>Designed with intent. Engineered with code.</span>
+        </div>
+      </footer>
+    </div>
   );
 }

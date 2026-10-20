@@ -2,16 +2,17 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Award,
   BookOpen,
+  Check,
   CheckCircle2,
-  ChevronRight,
   Cloud,
-  ExternalLink,
   Github,
   Trophy,
+  Zap,
 } from "lucide-react";
-import { ACHIEVEMENTS } from "@/components/portfolio/data";
+import "@/components/portfolio/ReferencePortfolio.css";
 
 type CredentialDetail = {
   slug: string;
@@ -140,46 +141,42 @@ const CREDENTIAL_DETAILS: CredentialDetail[] = [
   },
 ];
 
-function getCredential(slug: string) {
-  return CREDENTIAL_DETAILS.find((credential) => credential.slug === slug);
-}
-
-function getNextCredential(slug: string) {
-  const index = CREDENTIAL_DETAILS.findIndex(
-    (credential) => credential.slug === slug,
-  );
-
-  if (index === -1) return undefined;
-
-  return CREDENTIAL_DETAILS[(index + 1) % CREDENTIAL_DETAILS.length];
-}
-
 export const Route = createFileRoute("/credentials/$slug")({
   loader: ({ params }) => {
-    const credential = getCredential(params.slug);
+    const credential = CREDENTIAL_DETAILS.find((c) => c.slug === params.slug);
+    if (!credential) throw notFound();
+
+    const currentIndex = CREDENTIAL_DETAILS.findIndex(
+      (c) => c.slug === params.slug,
+    );
+    const next =
+      currentIndex < CREDENTIAL_DETAILS.length - 1
+        ? CREDENTIAL_DETAILS[currentIndex + 1]
+        : undefined;
+
+    return { credential, next };
+  },
+
+  head: ({ loaderData }) => {
+    const credential = loaderData?.credential;
 
     if (!credential) {
-      throw notFound();
-    }
-
-    return {
-      credential,
-      next: getNextCredential(params.slug),
-    };
-  },
-  head: ({ loaderData }) => {
-    if (!loaderData) {
       return {
-        meta: [{ title: "Credential Not Found" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Credential Not Found | Dhushyandh" },
+          {
+            name: "description",
+            content: "The requested credential details could not be found.",
+          },
+          { name: "robots", content: "noindex, nofollow" },
+        ],
       };
     }
-    const { credential } = loaderData;
-    const title = `${credential.title} (${credential.provider}) — Credentials | Dhushyandh`;
+
+    const title = `${credential.title} | ${credential.provider} Certificate — N. Dhushyandh`;
+    const description = credential.overview;
     const url = `https://dhushyandh.in/credentials/${credential.slug}`;
-    const description = `${credential.title} credential from ${credential.provider}. ${credential.description}`;
-    const imageUrl = credential.image
-      ? `https://dhushyandh.in${credential.image}`
-      : "https://dhushyandh.in/og-image.png";
+    const imageUrl = `https://dhushyandh.in${credential.image || "/og-image.png"}`;
 
     return {
       meta: [
@@ -236,7 +233,7 @@ export const Route = createFileRoute("/credentials/$slug")({
                     "@type": "ListItem",
                     position: 2,
                     name: "Credentials",
-                    item: "https://dhushyandh.in/#achievements",
+                    item: "https://dhushyandh.in/#credentials",
                   },
                   {
                     "@type": "ListItem",
@@ -254,169 +251,200 @@ export const Route = createFileRoute("/credentials/$slug")({
   },
 
   component: CredentialPage,
+  notFoundComponent: () => (
+    <div className="reference-portfolio ref-case-study-page">
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
+          </Link>
+          <div className="ref-nav-links">
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact" className="ref-nav-cta">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
+      <main className="ref-wrap py-24 text-center">
+        <h1 className="ref-section-title">Credential Not Found</h1>
+        <p className="ref-muted mt-4">The requested certification could not be located.</p>
+        <Link to="/" hash="credentials" className="ref-btn-primary mt-6 inline-flex">
+          <ArrowLeft size={16} /> Back to Credentials
+        </Link>
+      </main>
+    </div>
+  ),
 });
 
 function CredentialPage() {
   const { credential, next } = Route.useLoaderData();
-
   const Icon = ICONS[credential.icon];
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(
-                circle at 78% 18%,
-                color-mix(in oklab, var(--color-primary) 22%, transparent),
-                transparent 42%
-              ),
-              linear-gradient(
-                180deg,
-                oklch(0.14 0.02 260) 0%,
-                oklch(0.08 0.01 260) 55%,
-                var(--background) 100%
-              )
-            `,
-          }}
-        />
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [background-size:48px_48px]"
-        />
-
-        <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
-          <Link
-            to="/"
-            hash="achievements"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            <ArrowLeft size={15} />
-            Back to credentials
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Top Header matching reference layout */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
           </Link>
 
-          <div className="mt-12 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
-                <Icon size={22} strokeWidth={1.8} />
-              </div>
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials" className="active font-semibold">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <Link className="ref-nav-cta" to="/" hash="contact">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
 
-              <span className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {credential.category}
-              </span>
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/" hash="credentials">Credentials</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: 'var(--ink)', fontWeight: 600 }}>{credential.title}</li>
+            </ol>
+
+            <Link to="/" hash="credentials" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Credentials
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">
+            <Icon size={12} />
+            <span>{credential.provider} · {credential.category}</span>
+          </div>
+
+          <h1 className="ref-case-title">{credential.title}</h1>
+          <p className="ref-case-overview">{credential.description}</p>
+
+          <div className="ref-case-meta-row">
+            <div className="ref-case-meta-pill">
+              <span className="ref-case-status-dot" />
+              <span>Verified Industry Certificate</span>
             </div>
-
-            <p className="mt-7 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-              {credential.provider}
-            </p>
-
-            <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
-              {credential.title}
-            </h1>
-
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
-              {credential.description}
-            </p>
+            <div className="ref-case-meta-pill">
+              <span style={{ color: 'var(--muted)', fontSize: 11, textTransform: 'uppercase' }}>Issuer:</span>
+              <span>{credential.provider}</span>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Content */}
-      <section className="mx-auto max-w-5xl px-5 py-12 sm:px-6 sm:py-16">
+        {/* Certificate Image Frame */}
         {credential.image && (
-          <figure className="surface-card mb-8 overflow-hidden rounded-2xl p-3 sm:p-5">
+          <div className="ref-case-preview-frame" style={{ background: '#ffffff', padding: '28px 18px', textAlign: 'center' }}>
             <img
               src={credential.image}
-              alt={`${credential.title} certificate`}
-              loading="lazy"
+              alt={`${credential.title} certificate issued by ${credential.provider}`}
+              loading="eager"
               decoding="async"
-              className="mx-auto h-auto max-h-[620px] w-full object-contain"
+              style={{ maxHeight: 680, objectFit: 'contain', margin: '0 auto', display: 'block' }}
             />
-            <figcaption className="mt-3 text-center text-xs text-muted-foreground">
-              Certificate issued by {credential.provider}
-            </figcaption>
-          </figure>
+            <p style={{ margin: '18px 0 0', fontSize: 13, fontWeight: 500, color: 'var(--muted)' }}>
+              Verified credential issued by {credential.provider}
+            </p>
+          </div>
         )}
 
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          {/* Overview */}
-          <article className="surface-card rounded-2xl p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-primary">
-                01
-              </span>
+        {/* Detailed Grid Content: Overview & Key Competencies */}
+        <div className="ref-case-grid-content">
+          {/* Left Column: Overview */}
+          <section aria-labelledby="overview-heading">
+            <h2 id="overview-heading" className="ref-case-section-heading">
+              Certification Overview
+            </h2>
+            <article className="ref-case-feature-card">
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: 'var(--ink-secondary)' }}>
+                {credential.overview}
+              </p>
+            </article>
+          </section>
 
-              <h2 className="font-display text-xl font-bold text-foreground">
-                Overview
-              </h2>
-            </div>
+          {/* Right Column: Highlights & Key Competencies */}
+          <section aria-labelledby="highlights-heading">
+            <h2 id="highlights-heading" className="ref-case-section-heading">
+              Core Competencies
+            </h2>
 
-            <p className="mt-6 text-[15px] leading-8 text-muted-foreground">
-              {credential.overview}
-            </p>
-          </article>
-
-          {/* Details */}
-          <aside className="surface-card rounded-2xl p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-primary">
-                02
-              </span>
-
-              <h2 className="font-display text-xl font-bold text-foreground">
-                Highlights
-              </h2>
-            </div>
-
-            <ul className="mt-6 space-y-4">
+            <div className="ref-case-features-list">
               {credential.highlights.map((highlight) => (
-                <li
-                  key={highlight}
-                  className="flex items-start gap-3 text-sm leading-6 text-muted-foreground"
-                >
-                  <CheckCircle2
-                    size={17}
-                    className="mt-1 shrink-0 text-primary"
-                  />
-
-                  <span>{highlight}</span>
-                </li>
+                <article key={highlight} className="ref-case-feature-card" style={{ padding: '16px 20px' }}>
+                  <div className="ref-case-feature-header" style={{ margin: 0 }}>
+                    <span className="ref-case-feature-icon">
+                      <Check size={14} strokeWidth={2.6} />
+                    </span>
+                    <p style={{ margin: 0, fontSize: 14, fontWeight: 550, color: 'var(--ink)' }}>
+                      {highlight}
+                    </p>
+                  </div>
+                </article>
               ))}
-            </ul>
-          </aside>
+            </div>
+          </section>
         </div>
 
-        {/* Navigation */}
-        <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        {/* Next Credential Navigation */}
+        {next && (
           <Link
-            to="/"
-            hash="achievements"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+            to="/credentials/$slug"
+            params={{ slug: next.slug }}
+            className="ref-case-next-card"
           >
-            <ArrowLeft size={15} />
-            Back to credentials
+            <div>
+              <p className="ref-case-next-label">Next Certification</p>
+              <h3 className="ref-case-next-title">{next.title}</h3>
+              <p style={{ margin: '6px 0 0', fontSize: 13, color: 'var(--muted)' }}>
+                {next.provider} · {next.category}
+              </p>
+            </div>
+            <div className="ref-case-next-arrow">
+              <ArrowRight size={22} />
+            </div>
           </Link>
+        )}
+      </main>
 
-          {next && (
-            <Link
-              to="/credentials/$slug"
-              params={{ slug: next.slug }}
-              className="group inline-flex items-center gap-2 text-sm font-medium text-primary"
-            >
-              Next credential
-              <ArrowRight
-                size={15}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          )}
+      {/* Footer matching reference layout */}
+      <footer className="ref-footer" style={{ marginTop: 80 }}>
+        <div className="ref-footer-top ref-wrap">
+          <div className="ref-footer-nav">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+          </div>
+          <div className="ref-footer-tagline">
+            Dhushyandh Neduncheziyan — Portfolio
+          </div>
         </div>
-      </section>
-    </main>
+
+        <div className="ref-footer-wordmark" aria-hidden="true">
+          Dhushyandh
+        </div>
+
+        <div className="ref-footer-bottom ref-wrap">
+          <span>© {new Date().getFullYear()} Dhushyandh. All rights reserved.</span>
+          <span>Designed with intent. Engineered with code.</span>
+        </div>
+      </footer>
+    </div>
   );
 }

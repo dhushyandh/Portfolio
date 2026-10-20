@@ -3,6 +3,8 @@ import smartmart from '@/assets/smartmart-preview.png';
 import sriguru from '@/assets/sriguru-preview.png';
 import renewxMobile from '@/assets/renewx-mobile-preview.png';
 import seyonMobile from '@/assets/seyon-mobile-preview.png';
+import savorePreview from '@/assets/savore-preview.png';
+import forgeFitnessPreview from '@/assets/forge-fitness-preview.png';
 
 export type ProjectFeature = {
   title: string;
@@ -37,7 +39,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: 'An education website and student portal for Sri Guru Coaching Centre. Genuine paid client work focused on the centre’s digital presence with structured course catalogs, schedules, and direct student inquiry entry points.',
     role: 'Website Development & Frontend Architecture',
     status: 'Website live',
-    year: '2024–2026',
+    year: 'August - 2026',
     image: sriguru,
     live: 'https://srigurucoaching.in/',
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
@@ -72,7 +74,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: 'A certified electronics marketplace and trade-in mobile application layout. Built with transparent gadget valuation, instant buyback quote calculation, verified pre-owned device catalog, and WhatsApp checkout integration.',
     role: 'Mobile App & UI Development',
     status: 'Mobile App',
-    year: '2024–2026',
+    year: 'September - 2026',
     image: renewxMobile,
     live: 'https://renewx.expo.app/',
     stack: ['React Native', 'TypeScript', 'Mobile UI/UX', 'Tailwind CSS'],
@@ -101,75 +103,94 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     note: 'Mobile App and verified storefront for RenewX pre-owned electronics.',
   },
   {
-    slug: 'seyon-crackers',
-    title: 'Seyon Crackers',
-    live: 'https://seyonfirecrackers.expo.app',
-    category: 'Client work · Mobile App',
-    description: 'A direct-from-factory fireworks and crackers ordering mobile application layout engineered for seasonal festive demand. Features custom festival combo builders, volume discount tiers, categorized fireworks catalog, and instant dispatch booking.',
-    role: 'Mobile App & UI Development',
-    status: 'Mobile App',
-    year: '2024–2026',
-    image: seyonMobile,
-    stack: ['React Native', 'Mobile UI/UX', 'Tailwind CSS', 'TypeScript'],
-    features: ['Festive combo package builder', 'Bulk order volume discounts', 'Mobile price list & catalog', 'Direct festival order booking'],
+    slug: 'savore',
+    title: 'Savoré Restaurant & Café',
+    category: 'Restaurant Website · UI/UX',
+    description: 'A premium restaurant and café website designed to bring the dining experience online through an elegant visual identity, immersive food photography, menu discovery, table reservations, and an ambience gallery.',
+    role: 'Website Design & Frontend Development',
+    status: 'Website project',
+    year: 'October - 2026',
+    live:'https://savore.dhushyandh,in',
+    image: savorePreview,
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Responsive Design', 'Animations', 'SEO'],
+    features: [
+      'Premium, responsive restaurant landing page',
+      'Categorized menu and signature dish showcases',
+      'Table reservation interface',
+      'Restaurant ambience, gallery, and event sections',
+      'Mobile-friendly navigation and contact options',
+    ],
     detailedFeatures: [
       {
-        title: 'Festive Combo Package Builder',
-        description: 'Interactive package configurator that helps customers customize family and community celebration bundles with instant price updates.',
+        title: 'Premium, Responsive Restaurant Landing Page',
+        description: 'An elegant, atmospheric dining presentation that captures the warmth, culinary craft, and sophisticated ambiance of Savoré across desktop and mobile devices.',
       },
       {
-        title: 'Bulk Order Volume Discount Tiers',
-        description: 'Dynamic price calculations supporting automated wholesale and corporate tier savings based on order volume.',
+        title: 'Categorized Menu & Signature Dish Showcases',
+        description: 'Interactive menu catalog with dietary filtering, price listings, chef recommendations, and high-resolution photography for starters, mains, and desserts.',
       },
       {
-        title: 'Categorized Mobile Price Catalog',
-        description: 'Structured product breakdown across sparklers, ground chakkars, flower pots, and sound crackers with safety guidelines.',
+        title: 'Table Reservation Interface',
+        description: 'Streamlined online booking flow allowing guests to select date, time slot, and party size with instant reservation confirmation.',
       },
       {
-        title: 'Seasonal Booking & Dispatch Inquiry',
-        description: 'Streamlined seasonal order submission flow designed to handle concentrated festive ordering traffic with clear dispatch confirmations.',
+        title: 'Restaurant Ambience, Gallery & Events',
+        description: 'Immersive visual showcases highlighting the warm architectural interiors, intimate private dining rooms, and celebratory event hosting capabilities.',
+      },
+      {
+        title: 'Mobile-Friendly Navigation & Contact Options',
+        description: 'Touch-optimized navigation with quick table booking triggers, opening hour badges, venue location directions, and social dining links.',
       },
     ],
-    challenges: 'Displaying extensive multi-category seasonal inventories on mobile screens with real-time price tiering while preserving high rendering performance.',
-    learnings: 'Architected a clean direct-to-consumer mobile shopping layout tailored for the Sivakasi fireworks seasonal wholesale and retail market.',
-    projectType: 'mobile',
-    note: 'Mobile App designed for direct-from-factory fireworks ordering.',
+    challenges: 'Balancing image-rich culinary and ambience photography with fast mobile loading times while building an effortless table reservation flow.',
+    learnings: 'Crafted a conversion-focused restaurant digital presence that blends warm hospitality aesthetics with high-performance modern frontend architecture.',
+    projectType: 'website',
+    note: 'Client project · Website design & frontend development for Savoré Restaurant & Café.',
   },
   {
-    slug: 'cvpilot',
-    title: 'CVPilot',
-    category: 'AI-powered application',
-    description: 'A smarter starting point for your next career move. An AI-powered resume builder and ATS analyzer, bringing resume review, job matching and cover letters into one experience.',
-    role: 'Full-stack development & AI Integration',
-    status: 'Live',
-    year: '2024–2026',
-    image: cvpilot,
-    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Gemini AI'],
-    features: ['Resume editor & PDF export', 'ATS analysis', 'Job-description matching', 'AI cover letters'],
+    slug: 'forge-fitness',
+    title: 'Forge Fitness',
+    category: 'Fitness Website · UI/UX',
+    description: 'A bold fitness website built around strength, discipline, and community. The experience showcases training programs, trainer profiles, membership options, and clear calls to action for people ready to start their fitness journey.',
+    role: 'Website Design & Frontend Development',
+    status: 'Website project',
+    year: 'October - 2026',
+    live:'https://forge-fitness.dhushyandh,in',
+    image: forgeFitnessPreview,
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Responsive Design', 'Animations', 'Booking System'],
+    features: [
+      'Bold, responsive fitness landing page',
+      'Workout programs and training categories',
+      'Trainer profiles and expertise',
+      'Membership plans and pricing layouts',
+      'Join-now and demo-booking interfaces',
+    ],
     detailedFeatures: [
       {
-        title: 'AI Resume Analysis & ATS Scoring',
-        description: 'Parses resume content and benchmarks it against ATS criteria to identify missing keywords, readability issues, and structural weaknesses.',
+        title: 'Bold, Responsive Fitness Landing Page',
+        description: 'High-energy, high-contrast dark visual identity built around strength, motivation, and community engagement with responsive layout choreography.',
       },
       {
-        title: 'Real-Time Resume Editor & PDF Export',
-        description: 'Live interactive editor with standardized professional typography, instant preview, and high-fidelity PDF output.',
+        title: 'Workout Programs & Training Categories',
+        description: 'Comprehensive program catalogs covering strength training, fat loss, personal coaching, group fitness, and nutritional guidance.',
       },
       {
-        title: 'Job Description Alignment',
-        description: 'Analyzes target job postings to recommend role-specific skill additions and phrasing refinements.',
+        title: 'Trainer Profiles & Coaching Expertise',
+        description: 'Coach introduction showcases with training credentials, specializations, years of experience, and direct session booking touchpoints.',
       },
       {
-        title: 'AI Cover Letter Generation',
-        description: 'Generates tailored, professional cover letters that highlight relevant candidate experience for specific positions.',
+        title: 'Membership Plans & Pricing Layouts',
+        description: 'Transparent monthly and annual membership tiers with feature checklists, popular tier badges, and seamless onboarding flows.',
+      },
+      {
+        title: 'Join-Now & Demo-Booking Interfaces',
+        description: 'Frictionless interactive booking forms enabling prospective members to schedule complimentary consultation sessions and gym tours.',
       },
     ],
-    challenges: 'Integrating Google Gemini LLM API calls with deterministic JSON response parsing while keeping client-side editing responsive and providing immediate ATS feedback.',
-    learnings: 'Gained in-depth full-stack experience combining Node.js backends, PostgreSQL relational schemas, and practical AI application pipelines.',
-    github: 'https://github.com/dhushyandh/AIResumeAnalyser',
-    live: 'https://cvpilot.dhushyandh.in/',
+    challenges: 'Designing a high-contrast athletic aesthetic with kinetic visual energy while maintaining clean typography hierarchy and instant plan comparison across mobile screens.',
+    learnings: 'Delivered an engaging fitness community platform that turns browsing athletes and beginners into active gym members through intuitive conversion funnels.',
     projectType: 'website',
-    note: 'Features documented in the project repository; the public landing page is verified.',
+    note: 'Client project · Website design & frontend development for Forge Fitness.',
   },
   {
     slug: 'smartmart',
@@ -178,7 +199,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: 'From browsing to placing an order. A MERN commerce project with a product catalog, persistent cart, authentication and order management. The current public storefront is branded CampusCart.',
     role: 'Full-stack development',
     status: 'Live',
-    year: '2024–2026',
+    year: '2026',
     image: smartmart,
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
     features: ['Product search & filtering', 'Persistent shopping cart', 'Order history', 'Admin product management'],
@@ -208,6 +229,80 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
 ];
 
+export const ARCHIVED_PROJECTS: PortfolioProject[] = [
+  {
+    slug: 'seyon-crackers',
+    title: 'Seyon Crackers',
+    live: 'https://seyonfirecrackers.expo.app',
+    category: 'Archival · Mobile App',
+    description: 'A direct-from-factory fireworks and crackers ordering mobile application layout engineered for seasonal festive demand. Features custom festival combo builders, volume discount tiers, categorized fireworks catalog, and instant dispatch booking.',
+    role: 'Mobile App & UI Development',
+    status: 'Archival Mobile App',
+    year: '2026',
+    image: seyonMobile,
+    stack: ['React Native', 'Mobile UI/UX', 'Tailwind CSS', 'TypeScript'],
+    features: ['Festive combo package builder', 'Bulk order volume discounts', 'Mobile price list & catalog', 'Direct festival order booking'],
+    detailedFeatures: [
+      {
+        title: 'Festive Combo Package Builder',
+        description: 'Interactive package configurator that helps customers customize family and community celebration bundles with instant price updates.',
+      },
+      {
+        title: 'Bulk Order Volume Discount Tiers',
+        description: 'Dynamic price calculations supporting automated wholesale and corporate tier savings based on order volume.',
+      },
+      {
+        title: 'Categorized Mobile Price Catalog',
+        description: 'Structured product breakdown across sparklers, ground chakkars, flower pots, and sound crackers with safety guidelines.',
+      },
+      {
+        title: 'Seasonal Booking & Dispatch Inquiry',
+        description: 'Streamlined seasonal order submission flow designed to handle concentrated festive ordering traffic with clear dispatch confirmations.',
+      },
+    ],
+    challenges: 'Displaying extensive multi-category seasonal inventories on mobile screens with real-time price tiering while preserving high rendering performance.',
+    learnings: 'Architected a clean direct-to-consumer mobile shopping layout tailored for the Sivakasi fireworks seasonal wholesale and retail market.',
+    projectType: 'mobile',
+    note: 'Archival project entry preserved for link continuity.',
+  },
+  {
+    slug: 'cvpilot',
+    title: 'CVPilot',
+    category: 'Archival · AI Application',
+    description: 'A smarter starting point for your next career move. An AI-powered resume builder and ATS analyzer, bringing resume review, job matching and cover letters into one experience.',
+    role: 'Full-stack development & AI Integration',
+    status: 'Archival project',
+    year: '2026',
+    image: cvpilot,
+    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Gemini AI'],
+    features: ['Resume editor & PDF export', 'ATS analysis', 'Job-description matching', 'AI cover letters'],
+    detailedFeatures: [
+      {
+        title: 'AI Resume Analysis & ATS Scoring',
+        description: 'Parses resume content and benchmarks it against ATS criteria to identify missing keywords, readability issues, and structural weaknesses.',
+      },
+      {
+        title: 'Real-Time Resume Editor & PDF Export',
+        description: 'Live interactive editor with standardized professional typography, instant preview, and high-fidelity PDF output.',
+      },
+      {
+        title: 'Job Description Alignment',
+        description: 'Analyzes target job postings to recommend role-specific skill additions and phrasing refinements.',
+      },
+      {
+        title: 'AI Cover Letter Generation',
+        description: 'Generates tailored, professional cover letters that highlight relevant candidate experience for specific positions.',
+      },
+    ],
+    challenges: 'Integrating Google Gemini LLM API calls with deterministic JSON response parsing while keeping client-side editing responsive and providing immediate ATS feedback.',
+    learnings: 'Gained in-depth full-stack experience combining Node.js backends, PostgreSQL relational schemas, and practical AI application pipelines.',
+    github: 'https://github.com/dhushyandh/AIResumeAnalyser',
+    live: 'https://cvpilot.dhushyandh.in/',
+    projectType: 'website',
+    note: 'Archival project entry preserved for link continuity.',
+  },
+];
+
 export const SERVICES = [
   { number: '01', title: 'Websites that make an impression.', label: 'Website development', description: 'Thoughtful, responsive websites that bring your business online with a clear identity and a fast, accessible experience.', icon: 'web' },
   { number: '02', title: 'Ideas, engineered end to end.', label: 'Full-stack applications', description: 'From the interface to the API and data layer. Connected applications built around the way your users actually work.', icon: 'code' },
@@ -231,7 +326,7 @@ export const PORTFOLIO_FAQS = [
   },
   {
     question: 'What verified client and production projects have you delivered?',
-    answer: 'My active portfolio includes: (1) Sri Guru Coaching Centre — a responsive web portal and course catalog for a paid education client; (2) RenewX Crew — a mobile app layout and certified pre-owned electronics marketplace with instant valuation and WhatsApp checkout; (3) Seyon Crackers — a factory-direct fireworks ordering mobile application layout with festive bulk tiers; (4) CVPilot — an AI-powered resume builder and ATS analyzer; and (5) SmartMart — a full-stack MERN e-commerce application.',
+    answer: 'My active portfolio includes: (1) Sri Guru Coaching Centre — a responsive web portal and course catalog for a paid education client; (2) RenewX Crew — a mobile app layout and certified pre-owned electronics marketplace with instant valuation and WhatsApp checkout; (3) Savoré Restaurant & Café — an elegant restaurant website with menu discovery, table reservation interface, and ambience gallery; (4) Forge Fitness — a bold fitness community website with workout programs, trainer profiles, and booking system; and (5) SmartMart — a full-stack MERN e-commerce application.',
   },
   {
     question: 'What technologies, frameworks, and cloud platforms do you use?',
@@ -249,4 +344,4 @@ export const PORTFOLIO_FAQS = [
     question: 'How can potential clients or recruiters get in touch with you?',
     answer: 'You can email me directly at dhushyandhneduncheziyan4896@gmail.com, connect on LinkedIn at linkedin.com/in/dhushyandh, message on WhatsApp at +91 9342763553, or submit the contact inquiry form on this website. I review inquiries daily and respond promptly.',
   },
-] as const;
+] as const;

@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  ArrowUpRight,
   Bot,
+  Check,
   ChevronRight,
   Cookie,
-  Database,
   ExternalLink,
   FileText,
   Lock,
@@ -12,11 +15,12 @@ import {
   ShieldCheck,
   UserCheck,
 } from "lucide-react";
+import "@/components/portfolio/ReferencePortfolio.css";
 
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Dhushyandh | MERN Stack Developer" },
+      { title: "Privacy Policy — Dhushyandh | Full Stack & Mobile App Developer" },
       {
         name: "description",
         content:
@@ -73,415 +77,382 @@ export const Route = createFileRoute("/privacy-policy")({
 });
 
 const SECTIONS = [
-  {
-    id: "information",
-    title: "Information We Collect",
-    icon: Database,
-  },
-  {
-    id: "usage",
-    title: "How Information Is Used",
-    icon: UserCheck,
-  },
-  {
-    id: "ai",
-    title: "AI Assistant",
-    icon: Bot,
-  },
-  {
-    id: "cookies",
-    title: "Cookies & Analytics",
-    icon: Cookie,
-  },
-  {
-    id: "third-party",
-    title: "Third-Party Services",
-    icon: ExternalLink,
-  },
-  {
-    id: "security",
-    title: "Security",
-    icon: Lock,
-  },
-  {
-    id: "rights",
-    title: "Your Rights",
-    icon: ShieldCheck,
-  },
-  {
-    id: "contact",
-    title: "Contact",
-    icon: Mail,
-  },
+  { id: "information", title: "Information Collected", icon: FileText },
+  { id: "usage", title: "How Information Is Used", icon: UserCheck },
+  { id: "ai", title: "AI Assistant", icon: Bot },
+  { id: "cookies", title: "Cookies & Analytics", icon: Cookie },
+  { id: "third-party", title: "Third-Party Services", icon: ExternalLink },
+  { id: "security", title: "Security & Retention", icon: Lock },
+  { id: "rights", title: "Your Rights", icon: ShieldCheck },
+  { id: "contact", title: "Contact Information", icon: Mail },
 ];
 
 function PrivacyPolicy() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background: `
-              radial-gradient(
-                circle at 78% 15%,
-                color-mix(in oklab, var(--color-primary) 18%, transparent),
-                transparent 38%
-              ),
-              linear-gradient(
-                180deg,
-                color-mix(in oklab, var(--color-primary) 3%, transparent),
-                transparent 70%
-              )
-            `,
-          }}
-        />
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [background-size:48px_48px]"
-        />
-
-        <div className="relative mx-auto max-w-5xl px-5 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-14">
-          <Link
-            to="/"
-            className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            <ArrowLeft size={15} />
-            Back to portfolio
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Top Header matching reference layout */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
           </Link>
 
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
-              <ShieldCheck size={23} />
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Work</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="journey">Journey</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <Link className="ref-nav-cta" to="/" hash="contact">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>Legal</li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: "var(--ink)", fontWeight: 600 }}>Privacy Policy</li>
+            </ol>
+
+            <Link to="/" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Portfolio
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">
+            <ShieldCheck size={12} />
+            <span>Legal Policy</span>
+          </div>
+
+          <h1 className="ref-case-title">Privacy Policy</h1>
+
+          <p className="ref-case-overview">
+            This Privacy Policy explains how information is handled when you visit and interact
+            with Dhushyandh's portfolio website, contact forms, and interactive features.
+          </p>
+
+          <div className="ref-case-meta-row">
+            <div className="ref-case-meta-pill">
+              <span className="ref-case-status-dot" />
+              <span>Effective: September 11, 2026</span>
             </div>
-
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                Legal
-              </p>
-
-              <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Privacy Policy
-              </h1>
-
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-                This Privacy Policy explains how information is handled when
-                you visit and interact with Dhushyandh's portfolio website.
-              </p>
-
-              <p className="mt-4 text-xs text-muted-foreground">
-                Last updated: September 11, 2026
-              </p>
+            <div className="ref-case-meta-pill">
+              <span>N. Dhushyandh · Full Stack & Mobile App Developer</span>
+            </div>
+            <div className="ref-case-meta-pill">
+              <span>Jurisdiction: Tamil Nadu, India</span>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Content */}
-      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-10 sm:px-6 sm:py-14 lg:grid-cols-[220px_1fr]">
-        {/* Contents */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-24">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              Contents
-            </p>
-
-            <nav className="mt-4 space-y-1">
+        {/* Legal Grid: Sticky Sidebar + Main Content Cards */}
+        <div className="ref-legal-grid">
+          {/* Table of Contents Sidebar */}
+          <aside className="ref-legal-sidebar">
+            <div className="ref-legal-sidebar-title">Contents</div>
+            <nav className="ref-legal-sidebar-nav">
               {SECTIONS.map(({ id, title }) => (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-primary/5 hover:text-primary"
-                >
+                <a key={id} href={`#${id}`} className="ref-legal-sidebar-link">
                   <span>{title}</span>
-                  <ChevronRight
-                    size={14}
-                    className="opacity-0 transition-opacity group-hover:opacity-100"
-                  />
+                  <ChevronRight size={13} />
                 </a>
               ))}
             </nav>
-          </div>
-        </aside>
+          </aside>
 
-        {/* Policy */}
-        <article className="min-w-0">
-          <div className="surface-card rounded-2xl p-6 sm:p-8 lg:p-10">
-            {/* Introduction */}
-            <div className="mb-10">
-              <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary">
-                <FileText size={14} />
-                Privacy
-              </div>
-
-              <p className="text-[15px] leading-7 text-muted-foreground">
-                Your privacy matters. This website is a personal developer
-                portfolio created by Dhushyandh Neduncheziyan. This policy
-                describes the types of information that may be provided
-                through the website and how that information is handled.
-              </p>
-            </div>
-
+          {/* Legal Content Cards */}
+          <div className="ref-legal-content">
             {/* 01 */}
-            <PolicySection
-              id="information"
-              number="01"
-              title="Information We Collect"
-            >
-              <p>
-                You can browse most of this portfolio without providing
-                personal information.
-              </p>
-
-              <p>
-                If you choose to contact Dhushyandh through the contact form,
-                email links, or other communication channels, you may provide
-                information such as your name, email address, and the contents
-                of your message.
-              </p>
-
-              <p>
-                Basic technical information may also be processed by hosting,
-                security, or infrastructure providers when you access a
-                website. The exact information collected depends on the
-                services used to operate the website.
-              </p>
-            </PolicySection>
-
-            {/* 02 */}
-            <PolicySection
-              id="usage"
-              number="02"
-              title="How Information Is Used"
-            >
-              <p>
-                Information provided through this website may be used to:
-              </p>
-
-              <ul>
-                <li>Respond to enquiries and messages.</li>
-                <li>
-                  Discuss freelance work, employment, internships, or
-                  collaborations.
-                </li>
-                <li>Provide information requested through the website.</li>
-                <li>
-                  Maintain, secure, and improve the website and its
-                  functionality.
-                </li>
-              </ul>
-
-              <p>
-                Information will not be used for unrelated purposes without an
-                appropriate reason or permission where required.
-              </p>
-            </PolicySection>
-
-            {/* 03 */}
-            <PolicySection
-              id="ai"
-              number="03"
-              title="AI Assistant"
-            >
-              <div className="rounded-xl border border-primary/15 bg-primary/[0.04] p-4">
-                <div className="flex gap-3">
-                  <Bot
-                    size={18}
-                    className="mt-0.5 shrink-0 text-primary"
-                  />
-
-                  <div className="space-y-2 text-sm leading-6 text-muted-foreground">
-                    <p>
-                      This portfolio includes an AI-powered assistant that can
-                      answer questions about Dhushyandh's projects, skills,
-                      experience, education, and professional background.
-                    </p>
-
-                    <p>
-                      Messages entered into the AI assistant may be sent to
-                      the configured AI service provider, such as Google's
-                      Gemini API, in order to generate a response.
-                    </p>
-
-                    <p>
-                      Please avoid entering passwords, payment information,
-                      confidential business information, or other sensitive
-                      personal information into the AI assistant.
-                    </p>
-                  </div>
+            <article id="information" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <FileText size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 01</span>
+                  <h2 className="ref-legal-card-title">Information We Collect</h2>
                 </div>
               </div>
-            </PolicySection>
+              <div className="ref-legal-card-body">
+                <p>
+                  You can browse the majority of this portfolio website freely without submitting any
+                  personally identifiable information.
+                </p>
+                <p>
+                  When you voluntarily initiate contact through the inquiry form, direct email links, or
+                  messaging channels, you may choose to provide details such as your name, email address,
+                  organization, and the specific details of your project or inquiry.
+                </p>
+                <p>
+                  Standard technical information (such as anonymized IP addresses, browser types, and
+                  general device characteristics) may be logged by hosting infrastructure and CDN providers
+                  strictly for security, DDoS mitigation, and reliable site delivery.
+                </p>
+              </div>
+            </article>
+
+            {/* 02 */}
+            <article id="usage" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <UserCheck size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 02</span>
+                  <h2 className="ref-legal-card-title">How Information Is Used</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>Information collected through this website is utilized strictly to:</p>
+                <ul className="ref-legal-list">
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Respond promptly to business inquiries, freelance opportunities, and project requests.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Discuss contract engineering roles, software development collaborations, or full-time opportunities.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Provide requested project specifications, technical documentation, or client estimates.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span>Maintain the security, uptime, and accessibility of the portfolio website.</span>
+                  </li>
+                </ul>
+                <p>Your details are never sold, rented, or shared with third-party advertisers or data brokers.</p>
+              </div>
+            </article>
+
+            {/* 03 */}
+            <article id="ai" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Bot size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 03</span>
+                  <h2 className="ref-legal-card-title">AI Assistant & Gemini Processing</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This portfolio features an interactive AI assistant powered by Google Gemini to help
+                  prospective clients and recruiters explore Dhushyandh's project case studies, tech stack,
+                  credentials, and background.
+                </p>
+                <div className="ref-legal-callout">
+                  <strong>Important Notice:</strong> Queries entered into the AI assistant are processed in
+                  real time solely to synthesize contextual answers. Please avoid entering sensitive personal data,
+                  passwords, financial information, or proprietary business secrets into chat prompts.
+                </div>
+              </div>
+            </article>
 
             {/* 04 */}
-            <PolicySection
-              id="cookies"
-              number="04"
-              title="Cookies & Analytics"
-            >
-              <p>
-                This website may use cookies, local storage, analytics, or
-                similar technologies if they are enabled as part of the
-                website's functionality or third-party services.
-              </p>
-
-              <p>
-                Where analytics or similar services are used, they may process
-                information about how visitors interact with the website,
-                such as pages viewed, device information, or general usage
-                information.
-              </p>
-
-              <p>
-                The specific technologies used may change as the website is
-                updated.
-              </p>
-            </PolicySection>
+            <article id="cookies" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Cookie size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 04</span>
+                  <h2 className="ref-legal-card-title">Cookies & Local Storage</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This website prioritizes privacy and does not utilize invasive tracking or third-party
+                  advertising cookies.
+                </p>
+                <p>
+                  Lightweight local storage or session cookies may be utilized strictly for essential UI
+                  state (such as remembering reduced motion preferences or chat session state during an active visit).
+                </p>
+              </div>
+            </article>
 
             {/* 05 */}
-            <PolicySection
-              id="third-party"
-              number="05"
-              title="Third-Party Services"
-            >
-              <p>
-                This website may use third-party services to provide hosting,
-                authentication, AI functionality, analytics, deployment, or
-                other technical capabilities.
-              </p>
-
-              <p>
-                Those services may process information according to their own
-                privacy policies and terms. Examples may include hosting
-                providers, AI service providers, and external platforms linked
-                from this portfolio.
-              </p>
-
-              <p>
-                External websites such as GitHub and LinkedIn are governed by
-                their respective privacy policies when you visit or interact
-                with them.
-              </p>
-            </PolicySection>
+            <article id="third-party" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <ExternalLink size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 05</span>
+                  <h2 className="ref-legal-card-title">Third-Party Services & Links</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  This portfolio contains outbound links to verified third-party platforms, including:
+                </p>
+                <ul className="ref-legal-list">
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span><strong>GitHub:</strong> Hosting open-source code repositories and project commits.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span><strong>LinkedIn:</strong> Professional networking and employment verification.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span><strong>WhatsApp:</strong> Direct client communication and instant messaging channel.</span>
+                  </li>
+                  <li>
+                    <span className="ref-legal-bullet-icon"><Check size={11} /></span>
+                    <span><strong>Client Websites:</strong> Live demonstrations of deployed applications (e.g., Sri Guru Coaching, Savoré, RenewX).</span>
+                  </li>
+                </ul>
+                <p>
+                  External platforms operate under their own independent privacy terms. Visiting these links is
+                  governed by their respective privacy policies.
+                </p>
+              </div>
+            </article>
 
             {/* 06 */}
-            <PolicySection
-              id="security"
-              number="06"
-              title="Security"
-            >
-              <p>
-                Reasonable technical and organisational measures are used to
-                protect information handled through this website.
-              </p>
-
-              <p>
-                However, no website, internet transmission, or electronic
-                storage system can be guaranteed to be completely secure.
-              </p>
-            </PolicySection>
+            <article id="security" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Lock size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 06</span>
+                  <h2 className="ref-legal-card-title">Security & Data Retention</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  Standard modern security protocols, including HTTPS (TLS 1.3) encryption in transit,
+                  are enforced throughout the entire domain.
+                </p>
+                <p>
+                  Inquiries and communications received via email or contact forms are retained only for the
+                  duration necessary to conduct professional business discussions and maintain project correspondence.
+                </p>
+              </div>
+            </article>
 
             {/* 07 */}
-            <PolicySection
-              id="rights"
-              number="07"
-              title="Your Rights"
-            >
-              <p>
-                Depending on your location and applicable law, you may have
-                rights relating to your personal information, including rights
-                to request access, correction, deletion, or information about
-                how your data is handled.
-              </p>
-
-              <p>
-                To make a privacy-related request, contact Dhushyandh using
-                the email address provided below.
-              </p>
-            </PolicySection>
+            <article id="rights" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <ShieldCheck size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 07</span>
+                  <h2 className="ref-legal-card-title">Your Rights & Choices</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  You have the right to request access to, correction of, or permanent deletion of any personal
+                  information you have voluntarily submitted through this website.
+                </p>
+                <p>
+                  To exercise your rights or request removal of past email correspondence, please contact
+                  Dhushyandh directly via the email listed below.
+                </p>
+              </div>
+            </article>
 
             {/* 08 */}
-            <PolicySection
-              id="contact"
-              number="08"
-              title="Contact"
-              last
-            >
-              <p>
-                If you have questions about this Privacy Policy or how
-                information is handled on this website, you can contact:
-              </p>
-
-              <a
-                href="mailto:dhushyandhneduncheziyan4896@gmail.com"
-                className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
-              >
-                <Mail size={16} />
-                dhushyandhneduncheziyan4896@gmail.com
-              </a>
-            </PolicySection>
-          </div>
-
-          {/* Bottom navigation */}
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <ArrowLeft size={15} />
-              Back to portfolio
-            </Link>
-
-            <Link
-              to="/terms-and-conditions"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-80"
-            >
-              Terms & Conditions
-              <ChevronRight size={15} />
-            </Link>
-          </div>
-        </article>
-      </div>
-    </main>
-  );
-}
-
-function PolicySection({
-  id,
-  number,
-  title,
-  children,
-  last = false,
-}: {
-  id: string;
-  number: string;
-  title: string;
-  children: React.ReactNode;
-  last?: boolean;
-}) {
-  return (
-    <section
-      id={id}
-      className={!last ? "border-b border-border pb-9 pt-9" : "pt-9"}
-    >
-      <div className="flex items-start gap-4">
-        <span className="shrink-0 pt-1 font-mono text-xs text-primary/70">
-          {number}
-        </span>
-
-        <div className="min-w-0">
-          <h2 className="font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            {title}
-          </h2>
-
-          <div className="mt-4 space-y-4 text-[15px] leading-7 text-muted-foreground [&_li]:ml-5 [&_li]:list-disc [&_ul]:space-y-2">
-            {children}
+            <article id="contact" className="ref-legal-card">
+              <div className="ref-legal-card-header">
+                <div className="ref-legal-card-icon">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <span className="ref-legal-card-num">Section 08</span>
+                  <h2 className="ref-legal-card-title">Contact Information</h2>
+                </div>
+              </div>
+              <div className="ref-legal-card-body">
+                <p>
+                  For questions regarding this Privacy Policy or data handling practices, please write directly to:
+                </p>
+                <div className="ref-case-actions-row" style={{ marginBottom: 0, marginTop: 14 }}>
+                  <a
+                    href="mailto:dhushyandhneduncheziyan4896@gmail.com"
+                    className="ref-btn-primary"
+                  >
+                    <Mail size={15} /> dhushyandhneduncheziyan4896@gmail.com
+                  </a>
+                  <a
+                    href="https://wa.me/919342763553"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ref-btn-secondary"
+                  >
+                    WhatsApp Inquiry <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* Bottom Pagination Card */}
+        <Link to="/terms-and-conditions" className="ref-case-next-card">
+          <div>
+            <div className="ref-case-next-label">Next Legal Document</div>
+            <div className="ref-case-next-title">Terms & Conditions</div>
+          </div>
+          <div className="ref-case-next-arrow">
+            <ArrowRight size={20} />
+          </div>
+        </Link>
+      </main>
+
+      {/* Footer matching reference layout */}
+      <footer className="ref-footer">
+        <div className="ref-footer-wordmark-wrap">
+          <div className="ref-footer-wordmark-glow" aria-hidden="true" />
+          <div className="ref-footer-wordmark" aria-hidden="true">
+            Dhushyandh
+          </div>
+        </div>
+
+        <div className="ref-footer-bottom ref-wrap">
+          <span>© {new Date().getFullYear()} N. Dhushyandh. All rights reserved.</span>
+          <div className="ref-footer-legal-links">
+            <Link to="/privacy-policy" className="ref-legal-link">Privacy Policy</Link>
+            <span className="ref-legal-dot" aria-hidden="true">·</span>
+            <Link to="/terms-and-conditions" className="ref-legal-link">Terms & Conditions</Link>
+          </div>
+          <span>Designed with intent. Engineered with code.</span>
+          <button
+            type="button"
+            className="ref-footer-top-btn"
+            onClick={scrollToTop}
+            aria-label="Scroll to top of page"
+          >
+            <span>Back to top</span>
+            <ArrowUp size={13} />
+          </button>
+        </div>
+      </footer>
+    </div>
   );
 }

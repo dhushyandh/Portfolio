@@ -29,12 +29,18 @@ export const CLIENT_WORKS: ClientWorkItem[] = [
     externalLink: 'https://renewx.expo.app/',
   },
   {
-    slug: 'seyon-crackers',
-    label: 'Real client work',
-    title: 'Seyon Crackers',
+    slug: 'savore',
+    label: 'Website project',
+    title: 'Savoré Restaurant & Café',
     description:
-      'A seasonal direct-from-factory fireworks ordering mobile layout engineered for festive demand, custom family package combos, and volume wholesale tiers.',
-    externalLink: 'https://seyonfirecrackers.expo.app',
+      'A premium restaurant and café website designed with an elegant visual identity, menu discovery, table reservations, and ambience gallery.',
+  },
+  {
+    slug: 'forge-fitness',
+    label: 'Website project',
+    title: 'Forge Fitness',
+    description:
+      'A bold fitness website built around strength, workout programs, trainer profiles, membership options, and trial booking interfaces.',
   },
 ];
 
