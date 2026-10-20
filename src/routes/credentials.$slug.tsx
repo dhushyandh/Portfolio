@@ -12,6 +12,7 @@ import {
   Trophy,
   Zap,
 } from "lucide-react";
+import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
 import "@/components/portfolio/ReferencePortfolio.css";
 
 type CredentialDetail = {
@@ -420,31 +421,7 @@ function CredentialPage() {
         )}
       </main>
 
-      {/* Footer matching reference layout */}
-      <footer className="ref-footer" style={{ marginTop: 80 }}>
-        <div className="ref-footer-top ref-wrap">
-          <div className="ref-footer-nav">
-            <Link to="/" hash="home">Home</Link>
-            <Link to="/" hash="about">About</Link>
-            <Link to="/" hash="projects">Projects</Link>
-            <Link to="/" hash="services">Services</Link>
-            <Link to="/" hash="credentials">Credentials</Link>
-            <Link to="/" hash="contact">Contact</Link>
-          </div>
-          <div className="ref-footer-tagline">
-            Dhushyandh Neduncheziyan — Portfolio
-          </div>
-        </div>
-
-        <div className="ref-footer-wordmark" aria-hidden="true">
-          Dhushyandh
-        </div>
-
-        <div className="ref-footer-bottom ref-wrap">
-          <span>© {new Date().getFullYear()} Dhushyandh. All rights reserved.</span>
-          <span>Designed with intent. Engineered with code.</span>
-        </div>
-      </footer>
+      <PortfolioFooter />
     </div>
   );
 }

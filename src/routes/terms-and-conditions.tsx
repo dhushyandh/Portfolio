@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   UserCheck,
 } from "lucide-react";
+import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
 import "@/components/portfolio/ReferencePortfolio.css";
 
 export const Route = createFileRoute("/terms-and-conditions")({
@@ -410,34 +411,7 @@ function TermsAndConditions() {
         </Link>
       </main>
 
-      {/* Footer matching reference layout */}
-      <footer className="ref-footer">
-        <div className="ref-footer-wordmark-wrap">
-          <div className="ref-footer-wordmark-glow" aria-hidden="true" />
-          <div className="ref-footer-wordmark" aria-hidden="true">
-            Dhushyandh
-          </div>
-        </div>
-
-        <div className="ref-footer-bottom ref-wrap">
-          <span>© {new Date().getFullYear()} N. Dhushyandh. All rights reserved.</span>
-          <div className="ref-footer-legal-links">
-            <Link to="/privacy-policy" className="ref-legal-link">Privacy Policy</Link>
-            <span className="ref-legal-dot" aria-hidden="true">·</span>
-            <Link to="/terms-and-conditions" className="ref-legal-link">Terms & Conditions</Link>
-          </div>
-          <span>Designed with intent. Engineered with code.</span>
-          <button
-            type="button"
-            className="ref-footer-top-btn"
-            onClick={scrollToTop}
-            aria-label="Scroll to top of page"
-          >
-            <span>Back to top</span>
-            <ArrowUp size={13} />
-          </button>
-        </div>
-      </footer>
+      <PortfolioFooter />
     </div>
   );
 }
