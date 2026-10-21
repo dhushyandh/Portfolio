@@ -2,13 +2,16 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   BriefcaseBusiness,
+  Check,
   Code2,
-  ExternalLink,
   GraduationCap,
+  Linkedin,
 } from "lucide-react";
-import { Nav } from "@/components/portfolio/Nav";
+import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
 import { TIMELINE, type ExperienceItem } from "@/components/portfolio/data";
+import "@/components/portfolio/ReferencePortfolio.css";
 
 const ICONS = {
   briefcase: BriefcaseBusiness,
@@ -58,78 +61,75 @@ const JOURNEY_DETAILS: Record<
       "Applying development practices in an internship environment",
     ],
     highlights: [
-      "3-month internship",
-      "Full-stack development",
-      "Frontend and backend workflows",
-      "Practical project experience",
+      "Three-month internship",
+      "Practical full-stack development",
+      "Frontend + backend workflows",
+      "Database and API practical experience",
     ],
     learnings:
-      "The internship helped me connect individual technologies into complete application workflows and gain experience working within a professional development environment.",
+      "This internship reinforced the value of structured code, consistent workflows, and understanding how data flows from user interface to database.",
   },
 
   "codec-technologies-mern-internship": {
-    tagline: "Hands-on MERN stack development internship.",
+    tagline: "Focused MERN stack development practice.",
     overview:
-      "At Codec Technologies, I gained practical experience working with the MERN stack and understanding how frontend, backend, API, and database layers work together.",
+      "At Codec Technologies, I focused on MERN stack development, gaining hands-on experience in building full-stack web applications using React, Node.js, Express, and MongoDB.",
     responsibilities: [
-      "React frontend development",
-      "Node.js and Express backend development",
-      "MongoDB data workflows",
-      "REST API implementation",
-      "Full-stack application development",
+      "React component development",
+      "Backend API routes with Express",
+      "MongoDB database integration",
+      "Connecting frontend with backend services",
+      "Understanding full-stack application architecture",
     ],
     highlights: [
-      "MERN stack experience",
-      "React development",
-      "Node.js & Express",
-      "MongoDB",
-      "REST APIs",
+      "Hands-on MERN stack development",
+      "Component-based UI design",
+      "REST API integration",
+      "Database schema and querying",
     ],
     learnings:
-      "This internship strengthened my practical MERN stack foundation and gave me experience thinking about applications as connected frontend, backend, and data systems.",
+      "Working with the MERN stack deepened my understanding of full-stack JavaScript development and showed me how modern web stacks fit together seamlessly.",
   },
 
   "project-based-software-development": {
-    tagline: "Continuous learning through building serious software.",
+    tagline: "Learning by building complete projects.",
     overview:
-      "Alongside my formal education and internships, I have consistently used project-based development to learn modern software engineering concepts by building applications.",
+      "A core part of my developer journey has been personal project building — exploring technologies, solving real challenges, and building complete applications from scratch.",
     responsibilities: [
-      "Designing application architectures",
-      "Building frontend interfaces",
-      "Developing backend APIs",
-      "Working with databases and authentication",
-      "Exploring cloud and AI-assisted development",
+      "Ideating and planning project architectures",
+      "Building responsive interfaces from scratch",
+      "Integrating APIs, authentication, and database models",
+      "Testing, deploying, and refining features",
+      "Exploring new tools, cloud services, and AI workflows",
     ],
     highlights: [
-      "Full-stack applications",
-      "API development",
-      "Database design",
-      "Authentication",
-      "Cloud technologies",
-      "AI-assisted workflows",
+      "Full project lifecycles",
+      "Self-directed engineering",
+      "Broad technology exploration",
+      "Practical problem solving",
     ],
     learnings:
-      "Building projects continuously has helped me move from learning individual technologies to understanding how they fit together in complete software systems.",
+      "Building personal projects is where real learning happens. It forces you to solve unexpected problems, read documentation carefully, and understand software end-to-end.",
   },
 
   "be-computer-science-engineering": {
-    tagline: "Computer Science Engineering · 2023 — 2027",
+    tagline: "Strong engineering and computer science fundamentals.",
     overview:
-      "I am pursuing a B.E. in Computer Science Engineering while complementing academic learning with internships, freelance work, and project-based software development.",
+      "Pursuing a Bachelor of Engineering in Computer Science and Engineering at C. Abdul Hakeem College of Engineering and Technology (Anna University) provides the theoretical foundation for my practical development work.",
     responsibilities: [
-      "Studying core computer science concepts",
-      "Developing software through academic projects",
-      "Building practical web development skills",
-      "Applying classroom concepts through independent development",
+      "Studying core computer science subjects (Data Structures, Algorithms, DBMS, Networks, OS)",
+      "Applying theoretical concepts to practical coding projects",
+      "Participating in academic projects and technical events",
+      "Maintaining strong academic performance alongside practical development",
     ],
     highlights: [
-      "B.E. Computer Science Engineering",
-      "2023 — 2027",
-      "Anna University",
-      "Project-based learning",
+      "Anna University affiliated",
+      "Computer Science Engineering (2023 — 2027)",
+      "Core CS fundamentals",
+      "Balancing academia with real-world development",
     ],
     learnings:
-      "My degree provides the foundation in computer science while my projects and professional experiences help me apply that knowledge to practical software development.",
+      "A solid theoretical foundation in computer science makes learning new technologies, debugging complex issues, and designing software architectures much faster and more intuitive.",
   },
 };
 
@@ -229,8 +229,8 @@ export const Route = createFileRoute("/journey/$slug")({
                   {
                     "@type": "ListItem",
                     position: 2,
-                    name: "Experience",
-                    item: "https://dhushyandh.in/#experience",
+                    name: "Journey",
+                    item: "https://dhushyandh.in/journey",
                   },
                   {
                     "@type": "ListItem",
@@ -254,25 +254,32 @@ export const Route = createFileRoute("/journey/$slug")({
 
 function JourneyMissing() {
   return (
-    <div className="min-h-screen bg-background">
-      <Nav />
+    <div className="reference-portfolio ref-case-study-page">
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
+          </Link>
+          <div className="ref-nav-links">
+            <Link to="/">Home</Link>
+            <Link to="/journey">Journey</Link>
+            <Link to="/resume">Resume</Link>
+          </div>
+        </nav>
+      </header>
 
-      <div className="mx-auto max-w-3xl px-6 pt-40 pb-24 text-center">
-        <p className="eyebrow">404</p>
-
-        <h1 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">
-          This journey doesn&apos;t exist.
-        </h1>
-
-        <Link
-          to="/"
-          hash="experience"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[15px] text-foreground transition-colors hover:bg-accent"
-        >
-          <ArrowLeft size={16} />
-          Back to experience
+      <main id="main-content" className="ref-wrap" style={{ minHeight: "50vh", paddingTop: "80px", textAlign: "center" }}>
+        <div className="ref-case-hero-tag">404 Error</div>
+        <h1 className="ref-case-title">Milestone Not Found</h1>
+        <p className="ref-case-overview" style={{ maxWidth: "500px", margin: "0 auto 30px" }}>
+          The requested career journey milestone could not be located.
+        </p>
+        <Link to="/journey" className="ref-back-pill">
+          <ArrowLeft size={14} /> Back to All Milestones
         </Link>
-      </div>
+      </main>
+
+      <PortfolioFooter />
     </div>
   );
 }
@@ -287,209 +294,166 @@ function JourneyPage() {
   const Icon = ICONS[item.icon];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Nav />
-
-      {/* Hero */}
-      <section
-        className="relative overflow-hidden border-b border-border"
-        style={{
-          background: `
-            radial-gradient(
-              circle at 78% 18%,
-              ${item.tint},
-              transparent 42%
-            ),
-            linear-gradient(
-              180deg,
-              oklch(0.14 0.02 260) 0%,
-              oklch(0.08 0.01 260) 55%,
-              var(--background) 100%
-            )
-          `,
-        }}
-      >
-        {/* subtle grid */}
-        <div className="pointer-events-none absolute inset-0 opacity-25">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                linear-gradient(
-                  to right,
-                  oklch(1 0 0 / 4%) 1px,
-                  transparent 1px
-                ),
-                linear-gradient(
-                  to bottom,
-                  oklch(1 0 0 / 4%) 1px,
-                  transparent 1px
-                )
-              `,
-              backgroundSize: "42px 42px",
-            }}
-          />
-        </div>
-
-        {/* bottom fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-background to-transparent" />
-
-        <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-36">
-          <Link
-            to="/"
-            hash="experience"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft size={15} />
-            Back to experience
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Sticky Header */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
           </Link>
 
-          <div className="mt-20 max-w-4xl sm:mt-28">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background/60 text-primary backdrop-blur">
-                <Icon size={19} />
-              </div>
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/resume">Resume</Link>
+            <Link to="/journey" className="active font-semibold">Journey</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <Link className="ref-nav-cta" to="/" hash="contact">
+              Let’s Talk <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </nav>
+      </header>
 
-              <div>
-                <p className="eyebrow">{item.type}</p>
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/journey">Journey</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: "var(--ink)", fontWeight: 600 }}>{item.title}</li>
+            </ol>
 
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                  {item.period}
-                </p>
-              </div>
+            <Link to="/journey" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Journey
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">
+            <Icon size={12} />
+            <span>{item.type} · {item.period}</span>
+          </div>
+
+          <h1 className="ref-case-title">{item.title}</h1>
+          <p className="ref-case-overview">{details.tagline}</p>
+
+          <div className="ref-case-meta-row">
+            <div className="ref-case-meta-pill">
+              <span className="ref-case-status-dot" />
+              <span>{item.type} Experience</span>
             </div>
-
-            <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl">
-              {item.title}
-            </h1>
-
-            <p className="mt-4 text-base font-medium text-primary sm:text-lg">
-              {item.org}
-            </p>
-
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-xl sm:leading-8">
-              {details.tagline}
-            </p>
+            <div className="ref-case-meta-pill">
+              <span style={{ color: "var(--muted)", fontSize: 11, textTransform: "uppercase" }}>Organization:</span>
+              <span>{item.org}</span>
+            </div>
+            <div className="ref-case-meta-pill">
+              <span style={{ color: "var(--muted)", fontSize: 11, textTransform: "uppercase" }}>Timeline:</span>
+              <span>{item.period}</span>
+            </div>
           </div>
         </div>
-      </section>
 
-      <main className="mx-auto max-w-5xl px-5 pb-20 sm:px-6">
-        {/* Overview */}
-        <section className="pt-16 sm:pt-20">
-          <p className="eyebrow">01 / Overview</p>
+        {/* Detailed Grid Content */}
+        <div className="ref-case-grid-content">
+          {/* Left Column: Overview & Responsibilities */}
+          <div>
+            <section aria-labelledby="overview-heading">
+              <h2 id="overview-heading" className="ref-case-section-heading">
+                01 / Milestone Overview
+              </h2>
+              <article className="ref-case-feature-card">
+                <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: "var(--ink-secondary)" }}>
+                  {details.overview}
+                </p>
+              </article>
+            </section>
 
-          <h2 className="mt-3 text-2xl font-bold text-foreground sm:text-3xl">
-            The journey
-          </h2>
+            <section aria-labelledby="resp-heading" style={{ marginTop: 36 }}>
+              <h2 id="resp-heading" className="ref-case-section-heading">
+                02 / Key Responsibilities & Workflows
+              </h2>
+              <div className="ref-case-features-list">
+                {details.responsibilities.map((resp, index) => (
+                  <article key={resp} className="ref-case-feature-card" style={{ padding: "16px 20px" }}>
+                    <div className="ref-case-feature-header" style={{ margin: 0 }}>
+                      <span className="ref-case-feature-icon">
+                        <span style={{ fontSize: 11, fontWeight: 700 }}>{index + 1}</span>
+                      </span>
+                      <p style={{ margin: 0, fontSize: 14, fontWeight: 550, color: "var(--ink)" }}>
+                        {resp}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
 
-          <p className="mt-5 max-w-3xl text-[16px] leading-8 text-muted-foreground sm:text-[17px]">
-            {details.overview}
-          </p>
-        </section>
+          {/* Right Column: Highlights & Outcomes */}
+          <div>
+            <section aria-labelledby="highlights-heading">
+              <h2 id="highlights-heading" className="ref-case-section-heading">
+                03 / Key Highlights
+              </h2>
+              <div className="ref-case-tech-chips">
+                {details.highlights.map((h) => (
+                  <span key={h} className="ref-case-tech-chip">
+                    {h}
+                  </span>
+                ))}
+              </div>
+            </section>
 
-        {/* Responsibilities */}
-        <section className="mt-16 sm:mt-20">
-          <p className="eyebrow">02 / Responsibilities</p>
-
-          <h2 className="mt-3 text-2xl font-bold text-foreground sm:text-3xl">
-            What I worked on
-          </h2>
-
-          <div className="mt-7 grid gap-4 sm:grid-cols-2">
-            {details.responsibilities.map((item, index) => (
-              <div
-                key={item}
-                className="surface-card card-hover p-6"
-              >
-                <span className="font-mono text-[10px] text-primary">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <p className="mt-3 text-[15px] leading-7 text-foreground">
-                  {item}
+            <section aria-labelledby="learnings-heading" style={{ marginTop: 28 }}>
+              <h2 id="learnings-heading" className="ref-case-section-heading">
+                04 / Growth & Outcomes
+              </h2>
+              <div className="ref-case-callout-card">
+                <div className="ref-case-callout-title">
+                  <Check size={14} strokeWidth={2.6} /> Key Takeaway
+                </div>
+                <p className="ref-case-callout-text">
+                  {details.learnings}
                 </p>
               </div>
-            ))}
+            </section>
           </div>
-        </section>
-
-        {/* Highlights */}
-        <section className="mt-16 sm:mt-20">
-          <p className="eyebrow">03 / Highlights</p>
-
-          <h2 className="mt-3 text-2xl font-bold text-foreground sm:text-3xl">
-            What stands out
-          </h2>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {details.highlights.map((highlight) => (
-              <span
-                key={highlight}
-                className="chip chip-hover"
-              >
-                {highlight}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* Learnings */}
-        <section className="mt-16 sm:mt-20">
-          <div className="surface-card p-6 sm:p-8">
-            <p className="eyebrow">04 / Learnings</p>
-
-            <h2 className="mt-3 text-2xl font-bold text-foreground sm:text-3xl">
-              What I gained
-            </h2>
-
-            <p className="mt-5 max-w-3xl text-[15px] leading-7 text-muted-foreground sm:text-[16px]">
-              {details.learnings}
-            </p>
-          </div>
-        </section>
-
-        {/* Next */}
-        <Link
-          to="/journey/$slug"
-          params={{ slug: next.slug }}
-          className="surface-card card-hover mt-16 flex flex-col gap-3 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8"
-        >
-          <div>
-            <p className="eyebrow">Next Journey</p>
-
-            <h3 className="mt-2 text-xl font-bold text-foreground sm:text-2xl">
-              {next.title}
-            </h3>
-
-            <p className="mt-2 text-[15px] text-muted-foreground">
-              {next.org} · {next.period}
-            </p>
-          </div>
-
-          <ArrowRight
-            size={20}
-            className="shrink-0 text-primary"
-          />
-        </Link>
-
-        <div className="mt-10">
-          <Link
-            to="/"
-            hash="experience"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft size={15} />
-            Back to experience
-          </Link>
         </div>
+
+        {/* Next Milestone Card */}
+        {next && (
+          <Link
+            to="/journey/$slug"
+            params={{ slug: next.slug }}
+            className="ref-case-next-card"
+            style={{ marginBottom: 60 }}
+          >
+            <div>
+              <p className="ref-case-next-label">Next Career Milestone</p>
+              <h3 className="ref-case-next-title">{next.title}</h3>
+              <p style={{ margin: "6px 0 0", fontSize: 13, color: "var(--muted)" }}>
+                {next.org} · {next.period}
+              </p>
+            </div>
+            <div className="ref-case-next-arrow">
+              <ArrowRight size={22} />
+            </div>
+          </Link>
+        )}
       </main>
 
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-5xl px-6 text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Dhushyandh. All rights reserved.
-        </div>
-      </footer>
+      <PortfolioFooter />
     </div>
   );
 }

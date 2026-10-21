@@ -150,22 +150,38 @@
   color: var(--ink);
 }
 
-.reference-portfolio .ref-nav-cta {
+.reference-portfolio .ref-nav-cta,
+.reference-portfolio .ref-nav-linkedin {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
+  gap: 7px;
+  padding: 8px 18px;
   border-radius: 999px;
-  background: var(--ink);
+  background: #0a66c2;
   color: #ffffff !important;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  transition: transform 0.2s, background 0.2s;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.25);
+  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.reference-portfolio .ref-nav-cta:hover {
-  background: #2b2e22;
+.reference-portfolio .ref-nav-cta:hover,
+.reference-portfolio .ref-nav-linkedin:hover {
+  background: #004182;
+  color: #ffffff !important;
   transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.38);
+}
+
+.reference-portfolio .ref-nav-linkedin-arrow {
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.reference-portfolio .ref-nav-linkedin:hover .ref-nav-linkedin-arrow {
+  opacity: 1;
+  transform: translate(1.5px, -1.5px);
 }
 
 .reference-portfolio .ref-menu-button {
@@ -645,6 +661,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -1510,7 +1527,7 @@
   place-items: center;
 }
 
-.reference-portfolio .ref-timeline-node > span {
+.reference-portfolio .ref-timeline-node>span {
   display: block;
   width: 6px;
   height: 6px;
@@ -1592,7 +1609,7 @@
   flex: 0 0 auto;
 }
 
-.reference-portfolio .ref-timeline-card > p:last-of-type {
+.reference-portfolio .ref-timeline-card>p:last-of-type {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -3071,3 +3088,439 @@
   line-height: 1.6;
   color: var(--ink);
 }
+
+/* ==========================================================================
+   Reference Resume Styles
+   ========================================================================== */
+.reference-portfolio .ref-resume-contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+}
+
+.reference-portfolio .ref-resume-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-secondary);
+  transition: color 0.2s;
+}
+
+.reference-portfolio .ref-resume-contact-item a:hover,
+.reference-portfolio a.ref-resume-contact-item:hover {
+  color: var(--ink);
+}
+
+.reference-portfolio .ref-resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  margin-bottom: 40px;
+}
+
+.reference-portfolio .ref-resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(23, 24, 17, 0.12);
+}
+
+.reference-portfolio .ref-resume-download-btn:hover {
+  background: #2a2c20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(23, 24, 17, 0.18);
+}
+
+.reference-portfolio .ref-resume-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(23, 24, 17, 0.12);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.reference-portfolio .ref-resume-secondary-btn:hover {
+  background: #f4f5ec;
+  border-color: rgba(23, 24, 17, 0.25);
+  transform: translateY(-1px);
+}
+
+.reference-portfolio .ref-resume-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.reference-portfolio .ref-resume-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.reference-portfolio .ref-resume-chip:hover {
+  background: #f2f3e8;
+  border-color: rgba(23, 24, 17, 0.18);
+  transform: translateY(-1px);
+}
+
+.reference-portfolio .ref-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.reference-portfolio .ref-cert-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.reference-portfolio .ref-cert-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 24, 17, 0.2);
+  box-shadow: 0 8px 24px rgba(23, 24, 17, 0.06);
+}
+
+.reference-portfolio .ref-resume-section {
+  margin-bottom: 48px;
+}
+
+.reference-portfolio .ref-resume-section-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 650;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reference-portfolio .ref-resume-card {
+  padding: 24px 28px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 24, 17, 0.02);
+  margin-bottom: 16px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.reference-portfolio .ref-resume-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 24, 17, 0.16);
+  box-shadow: 0 8px 26px rgba(23, 24, 17, 0.05);
+}
+
+.reference-portfolio .ref-resume-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.reference-portfolio .ref-resume-card-title {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0;
+}
+
+.reference-portfolio .ref-resume-card-body {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   Reference Journey Styles
+   ========================================================================== */
+.reference-portfolio .ref-journey-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.reference-portfolio .ref-journey-card {
+  padding: 32px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.reference-portfolio .ref-journey-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 24, 17, 0.18);
+  box-shadow: 0 12px 32px rgba(23, 24, 17, 0.06);
+}
+
+.reference-portfolio .ref-journey-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.reference-portfolio .ref-journey-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(168, 255, 53, 0.2);
+  color: #2e5a0e;
+  border: 1px solid rgba(132, 204, 22, 0.3);
+}
+
+.reference-portfolio .ref-journey-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  font-feature-settings: "tnum";
+}
+
+.reference-portfolio .ref-journey-role {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.reference-portfolio .ref-journey-org {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 14px;
+}
+
+.reference-portfolio .ref-journey-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-secondary);
+  margin: 0 0 20px;
+}
+
+.reference-portfolio .ref-journey-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(23, 24, 17, 0.06);
+}
+
+.reference-portfolio .ref-journey-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: gap 0.2s, color 0.2s;
+}
+
+.reference-portfolio .ref-journey-link-btn:hover {
+  gap: 10px;
+  color: #2e5a0e;
+}
+
+/* ==========================================================================
+   Reference Sitemap Styles
+   ========================================================================== */
+.reference-portfolio .ref-sitemap-toolbar {
+  margin-top: 36px;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reference-portfolio .ref-sitemap-search-wrap {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+}
+
+.reference-portfolio .ref-sitemap-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px 0 42px;
+  border-radius: 12px;
+  background: #fbfcf6;
+  border: 1px solid rgba(23, 24, 17, 0.12);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reference-portfolio .ref-sitemap-search-input:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(23, 24, 17, 0.08);
+}
+
+.reference-portfolio .ref-sitemap-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+.reference-portfolio .ref-sitemap-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reference-portfolio .ref-sitemap-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #fbfcf6;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reference-portfolio .ref-sitemap-tab:hover {
+  background: #f0f1e6;
+  color: var(--ink);
+}
+
+.reference-portfolio .ref-sitemap-tab.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+
+.reference-portfolio .ref-sitemap-tab-badge {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.reference-portfolio .ref-sitemap-tab.active .ref-sitemap-tab-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.reference-portfolio .ref-sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.reference-portfolio .ref-sitemap-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(23, 24, 17, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.reference-portfolio .ref-sitemap-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 24, 17, 0.2);
+  box-shadow: 0 10px 28px rgba(23, 24, 17, 0.06);
+}
+
+.reference-portfolio .ref-sitemap-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.reference-portfolio .ref-sitemap-card-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reference-portfolio .ref-sitemap-card-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin: 0 0 18px;
+  flex-grow: 1;
+}
+
+.reference-portfolio .ref-sitemap-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(23, 24, 17, 0.06);
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--font-mono, monospace);
+}

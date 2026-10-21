@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CertificatesRouteImport } from './routes/certificates'
+import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as SitemapRouteImport } from './routes/sitemap'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const CertificatesRoute = CertificatesRouteImport.update({
   id: '/certificates',
   path: '/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JourneyRoute = JourneyRouteImport.update({
+  id: '/journey',
+  path: '/journey',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -61,9 +67,9 @@ const CredentialsSlugRoute = CredentialsSlugRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const JourneySlugRoute = JourneySlugRouteImport.update({
-  id: '/journey/$slug',
-  path: '/journey/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => JourneyRoute,
 } as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/projects/$slug',
@@ -74,6 +80,7 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/journey': typeof JourneyRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
   '/sitemap': typeof SitemapRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/journey': typeof JourneyRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
   '/sitemap': typeof SitemapRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/journey': typeof JourneyRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resume': typeof ResumeRoute
   '/sitemap': typeof SitemapRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/certificates'
+    | '/journey'
     | '/privacy-policy'
     | '/resume'
     | '/sitemap'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/certificates'
+    | '/journey'
     | '/privacy-policy'
     | '/resume'
     | '/sitemap'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/certificates'
+    | '/journey'
     | '/privacy-policy'
     | '/resume'
     | '/sitemap'
@@ -150,13 +162,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CertificatesRoute: typeof CertificatesRoute
+  JourneyRoute: typeof JourneyRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ResumeRoute: typeof ResumeRoute
   SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   CredentialsSlugRoute: typeof CredentialsSlugRoute
-  JourneySlugRoute: typeof JourneySlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
 }
 
@@ -174,6 +186,13 @@ declare module '@tanstack/react-router' {
       path: '/certificates'
       fullPath: '/certificates'
       preLoaderRoute: typeof CertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journey': {
+      id: '/journey'
+      path: '/journey'
+      fullPath: '/journey'
+      preLoaderRoute: typeof JourneyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -220,10 +239,10 @@ declare module '@tanstack/react-router' {
     }
     '/journey/$slug': {
       id: '/journey/$slug'
-      path: '/journey/$slug'
+      path: '/$slug'
       fullPath: '/journey/$slug'
       preLoaderRoute: typeof JourneySlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof JourneyRoute
     }
     '/projects/$slug': {
       id: '/projects/$slug'
@@ -235,16 +254,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface JourneyRouteChildren {
+  JourneySlugRoute: typeof JourneySlugRoute
+}
+
+const JourneyRouteChildren: JourneyRouteChildren = {
+  JourneySlugRoute: JourneySlugRoute,
+}
+
+const JourneyRouteWithChildren =
+  JourneyRoute._addFileChildren(JourneyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CertificatesRoute: CertificatesRoute,
+  JourneyRoute: JourneyRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ResumeRoute: ResumeRoute,
   SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   CredentialsSlugRoute: CredentialsSlugRoute,
-  JourneySlugRoute: JourneySlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
 }
 export const routeTree = rootRouteImport

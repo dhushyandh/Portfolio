@@ -11,6 +11,7 @@ import {
   Github,
   Trophy,
   Zap,
+  Linkedin,
 } from "lucide-react";
 import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
 import "@/components/portfolio/ReferencePortfolio.css";
@@ -263,9 +264,17 @@ export const Route = createFileRoute("/credentials/$slug")({
           </Link>
           <div className="ref-nav-links">
             <Link to="/" hash="credentials">Credentials</Link>
-            <Link to="/" hash="contact" className="ref-nav-cta">
-              Let’s Talk <ArrowUpRight size={14} />
-            </Link>
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
+            >
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
+            </a>
           </div>
         </nav>
       </header>
@@ -300,9 +309,17 @@ function CredentialPage() {
             <Link to="/" hash="services">Services</Link>
             <Link to="/" hash="credentials" className="active font-semibold">Credentials</Link>
             <Link to="/" hash="contact">Contact</Link>
-            <Link className="ref-nav-cta" to="/" hash="contact">
-              Let’s Talk <ArrowUpRight size={14} />
-            </Link>
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
+            >
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
+            </a>
           </div>
         </nav>
       </header>

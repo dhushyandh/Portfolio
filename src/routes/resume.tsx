@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, ExternalLink, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, Code2, Linkedin } from "lucide-react";
 import { RESUME, RESUME_URL, CERTIFICATES } from "@/components/portfolio/resume-data";
+import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
+import "@/components/portfolio/ReferencePortfolio.css";
 
 const DESCRIPTION =
   "Resume of Dhushyandh N — Full Stack Developer (MERN) from Vellore, India. B.E Computer Science 2023-2027, AWS/Google/IBM/Oracle certifications, React, Node.js, PostgreSQL and AI projects. Download the PDF.";
@@ -38,7 +40,7 @@ export const Route = createFileRoute("/resume")({
           "@graph": [
             {
               "@type": "Person",
-              name: "Dhushyandh Neduncheziyan",
+              name: "Dhushyandh N",
               alternateName: "Dhushyandh N",
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,
@@ -84,134 +86,232 @@ export const Route = createFileRoute("/resume")({
   component: ResumePage,
 });
 
-function Chips({ items }: { items: readonly string[] }) {
-  return (
-    <div className="mt-4 flex flex-wrap gap-2">
-      {items.map((i) => (
-        <span key={i} className="chip chip-hover">
-          {i}
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function ResumePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto max-w-4xl px-5 py-16 sm:px-6 sm:py-24">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft size={15} /> Back to portfolio
-        </Link>
+    <div className="reference-portfolio ref-case-study-page">
+      {/* Sticky Header */}
+      <header className="ref-header">
+        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
+          <Link className="ref-brand" to="/">
+            Dhushyandh
+          </Link>
 
-        <p className="eyebrow mt-8">Resume</p>
-        <h1 className="mt-3 text-4xl font-extrabold leading-tight text-foreground sm:text-5xl">
-          {RESUME.name}
-        </h1>
-        <p className="mt-3 font-display text-xl font-bold text-primary">{RESUME.title}</p>
-        <p className="mt-4 max-w-2xl text-[16px] leading-7 text-muted-foreground sm:text-[17px]">
-          {RESUME.profile}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-2">
-            <MapPin size={15} /> {RESUME.location}
-          </span>
-          <a className="inline-flex min-w-0 items-center gap-2 break-all hover:text-primary" href={`mailto:${RESUME.email}`}>
-            <Mail size={15} /> {RESUME.email}
-          </a>
-          <span className="inline-flex items-center gap-2">
-            <Phone size={15} /> {RESUME.phone}
-          </span>
-        </div>
-
-        <a
-          href={RESUME_URL}
-          download="Dhushyandh_Resume.pdf"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-[15px] font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:opacity-90"
-        >
-          <Download size={16} /> Download PDF resume
-        </a>
-
-        <section className="mt-14 border-t border-border pt-10">
-          <h2 className="font-display text-2xl font-bold text-foreground">Education</h2>
-          <div className="surface-card card-hover mt-5 p-6">
-            <p className="font-display text-lg font-bold text-foreground">
-              {RESUME.education.degree}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">{RESUME.education.school}</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {RESUME.education.place} · {RESUME.education.period}
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold text-foreground">Skills</h2>
-          <h3 className="mt-6 text-sm uppercase tracking-[0.14em] text-muted-foreground">
-            Technical
-          </h3>
-          <Chips items={RESUME.technicalSkills} />
-          <h3 className="mt-8 text-sm uppercase tracking-[0.14em] text-muted-foreground">Soft</h3>
-          <Chips items={RESUME.softSkills} />
-        </section>
-
-        <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold text-foreground">Projects</h2>
-          <div className="mt-5 grid gap-4">
-            {RESUME.projects.map((p) => (
-              <article key={p.title} className="surface-card card-hover p-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-display text-lg font-bold text-foreground">{p.title}</h3>
-                  <span className="text-xs text-muted-foreground">{p.date}</span>
-                </div>
-                <p className="mt-3 text-[15px] leading-7 text-muted-foreground">{p.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.stack.map((t) => (
-                    <span key={t} className="chip text-[11px]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-12">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-display text-2xl font-bold text-foreground">Certifications</h2>
-            <Link
-              to="/certificates"
-              className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+          <div className="ref-nav-links">
+            <Link to="/" hash="home">Home</Link>
+            <Link to="/" hash="about">About</Link>
+            <Link to="/" hash="projects">Projects</Link>
+            <Link to="/" hash="services">Services</Link>
+            <Link to="/" hash="credentials">Credentials</Link>
+            <Link to="/resume" className="active font-semibold">Resume</Link>
+            <Link to="/journey">Journey</Link>
+            <Link to="/" hash="contact">Contact</Link>
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
             >
-              View certificates gallery <ExternalLink size={12} />
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main-content" className="ref-wrap">
+        {/* Hero Section */}
+        <div className="ref-case-study-hero">
+          {/* Breadcrumb Navigation Bar */}
+          <nav aria-label="Breadcrumb" className="ref-breadcrumb-bar">
+            <ol className="ref-breadcrumb-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li style={{ color: "var(--ink)", fontWeight: 600 }}>Resume</li>
+            </ol>
+
+            <Link to="/" className="ref-back-pill">
+              <ArrowLeft size={14} /> Back to Portfolio
+            </Link>
+          </nav>
+
+          <div className="ref-case-hero-tag">Curriculum Vitae</div>
+          <h1 className="ref-case-title">{RESUME.name}</h1>
+          <p className="ref-case-overview" style={{ marginBottom: 20 }}>
+            {RESUME.title}
+          </p>
+
+          <div className="ref-resume-contact-bar">
+            <span className="ref-resume-contact-item">
+              <MapPin size={15} /> {RESUME.location}
+            </span>
+            <a className="ref-resume-contact-item" href={`mailto:${RESUME.email}`}>
+              <Mail size={15} /> {RESUME.email}
+            </a>
+            <span className="ref-resume-contact-item">
+              <Phone size={15} /> {RESUME.phone}
+            </span>
+          </div>
+
+          <div className="ref-resume-actions">
+            <a
+              href={RESUME_URL}
+              download="Dhushyandh_Resume.pdf"
+              className="ref-resume-download-btn"
+            >
+              <Download size={16} /> Download PDF Resume
+            </a>
+            <Link to="/certificates" className="ref-resume-secondary-btn">
+              <Award size={15} /> View Certificates Gallery
             </Link>
           </div>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-            {CERTIFICATES.map((c) => (
-              <li key={c.id}>
-                <a
-                  href={c.image}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="surface-card card-hover flex items-center justify-between gap-3 p-4 text-sm text-foreground group transition-all"
-                >
-                  <div className="min-w-0">
-                    <span className="font-mono text-[11px] text-primary block">{c.issuer}</span>
-                    <span className="font-medium group-hover:text-primary transition-colors block truncate">{c.title}</span>
-                    <span className="text-xs text-muted-foreground">{c.category}</span>
+        </div>
+
+        {/* Profile Summary */}
+        <section className="ref-resume-section">
+          <h2 className="ref-resume-section-title">Professional Summary</h2>
+          <div className="ref-resume-card">
+            <div className="ref-resume-card-body">
+              <p style={{ margin: 0, fontSize: "15px", lineHeight: "1.75" }}>
+                {RESUME.profile}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="ref-resume-section">
+          <h2 className="ref-resume-section-title">
+            <GraduationCap size={18} className="text-[#2e5a0e]" />
+            Education
+          </h2>
+          <div className="ref-resume-card">
+            <div className="ref-resume-card-header">
+              <h3 className="ref-resume-card-title">{RESUME.education.degree}</h3>
+              <span className="font-mono text-xs text-[var(--muted)] font-semibold">
+                {RESUME.education.period}
+              </span>
+            </div>
+            <div className="ref-resume-card-body">
+              <p style={{ fontWeight: 600, color: "var(--ink)", margin: "0 0 4px" }}>
+                {RESUME.education.school}
+              </p>
+              <p style={{ margin: 0 }}>
+                {RESUME.education.place}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section className="ref-resume-section">
+          <h2 className="ref-resume-section-title">
+            <Code2 size={18} className="text-[#2e5a0e]" />
+            Core Technical & Soft Skills
+          </h2>
+          <div className="ref-resume-card">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)] font-semibold">
+                Engineering & Frameworks
+              </span>
+              <div className="ref-resume-chips-wrap">
+                {RESUME.technicalSkills.map((s) => (
+                  <span key={s} className="ref-resume-chip">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginTop: "24px" }}>
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)] font-semibold">
+                Professional Competencies
+              </span>
+              <div className="ref-resume-chips-wrap">
+                {RESUME.softSkills.map((s) => (
+                  <span key={s} className="ref-resume-chip">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Projects */}
+        <section className="ref-resume-section">
+          <h2 className="ref-resume-section-title">
+            <Briefcase size={18} className="text-[#2e5a0e]" />
+            Notable Projects
+          </h2>
+          <div className="grid gap-3">
+            {RESUME.projects.map((p) => (
+              <div key={p.title} className="ref-resume-card">
+                <div className="ref-resume-card-header">
+                  <h3 className="ref-resume-card-title">{p.title}</h3>
+                  <span className="font-mono text-xs text-[var(--muted)]">{p.date}</span>
+                </div>
+                <div className="ref-resume-card-body">
+                  <p style={{ margin: "0 0 16px" }}>{p.description}</p>
+                  <div className="ref-resume-chips-wrap">
+                    {p.stack.map((t) => (
+                      <span key={t} className="ref-resume-chip text-xs">
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                  <ExternalLink size={14} className="text-muted-foreground group-hover:text-primary shrink-0 transition-transform group-hover:scale-110" />
-                </a>
-              </li>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section className="ref-resume-section" style={{ marginBottom: "60px" }}>
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
+            <h2 className="ref-resume-section-title" style={{ margin: 0 }}>
+              <Award size={18} className="text-[#2e5a0e]" />
+              Industry Credentials & Badges
+            </h2>
+            <Link
+              to="/certificates"
+              className="text-xs font-semibold text-[var(--ink)] hover:underline inline-flex items-center gap-1"
+            >
+              Full Gallery ({CERTIFICATES.length} credentials) <ArrowUpRight size={13} />
+            </Link>
+          </div>
+
+          <div className="ref-cert-grid">
+            {CERTIFICATES.map((c) => (
+              <a
+                key={c.id}
+                href={c.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ref-cert-card"
+              >
+                <div className="min-w-0">
+                  <span className="font-mono text-[11px] text-[#2e5a0e] font-semibold block uppercase">
+                    {c.issuer}
+                  </span>
+                  <span className="font-semibold text-sm text-[var(--ink)] block truncate mt-0.5">
+                    {c.title}
+                  </span>
+                  <span className="text-xs text-[var(--muted)] block mt-0.5">
+                    {c.category}
+                  </span>
+                </div>
+                <ExternalLink size={14} className="text-[var(--muted)] shrink-0" />
+              </a>
+            ))}
+          </div>
         </section>
       </main>
+
+      <PortfolioFooter />
     </div>
   );
 }

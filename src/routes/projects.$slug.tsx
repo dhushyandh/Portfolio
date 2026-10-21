@@ -8,6 +8,7 @@ import {
   Github,
   Sparkles,
   Zap,
+  Linkedin,
 } from 'lucide-react';
 import { getCaseStudy, getNextCaseStudy } from '@/components/portfolio/case-studies';
 import { PortfolioFooter } from '@/components/portfolio/PortfolioFooter';
@@ -112,9 +113,17 @@ export const Route = createFileRoute('/projects/$slug')({
           </Link>
           <div className="ref-nav-links">
             <Link to="/" hash="projects">Work</Link>
-            <Link to="/" hash="contact" className="ref-nav-cta">
-              Let’s Talk <ArrowUpRight size={14} />
-            </Link>
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
+            >
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
+            </a>
           </div>
         </nav>
       </header>
@@ -148,9 +157,17 @@ function ProjectPage() {
             <Link to="/" hash="services">Services</Link>
             <Link to="/" hash="credentials">Credentials</Link>
             <Link to="/" hash="contact">Contact</Link>
-            <Link className="ref-nav-cta" to="/" hash="contact">
-              Let’s Talk <ArrowUpRight size={14} />
-            </Link>
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
+            >
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
+            </a>
           </div>
         </nav>
       </header>

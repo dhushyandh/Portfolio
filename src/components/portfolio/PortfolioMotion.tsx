@@ -12,15 +12,16 @@ export function PortfolioMotion() {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hasShownThisTab = false;
     try {
-      hasShownThisTab = sessionStorage.getItem("portfolio_splash_shown") === "true";
+      hasShownThisTab = sessionStorage.getItem("portfolio_intro_shown") === "true";
     } catch {
       hasShownThisTab = false;
     }
 
-    if (!prefersReduced && !hasShownThisTab) {
+    // In development mode, always show so edits can be previewed; in production, show once per tab
+    if (!prefersReduced && (!hasShownThisTab || import.meta.env.DEV)) {
       setLoading(true);
       try {
-        sessionStorage.setItem("portfolio_splash_shown", "true");
+        sessionStorage.setItem("portfolio_intro_shown", "true");
       } catch {
         // ignore
       }

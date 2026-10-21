@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import refCss from "@/components/portfolio/ReferencePortfolio.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { ChatwayWidget } from "@/components/portfolio/ChatwayWidget";
 import { FloatingContactButtons } from "@/components/portfolio/FloatingContactButtons";
@@ -130,6 +131,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "stylesheet",
+        href: refCss,
       },
       { rel: "icon", href: "/icons/dhushyandh-photo-favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "icon", href: "/icons/dhushyandh-photo-favicon-48.png", type: "image/png", sizes: "48x48" },

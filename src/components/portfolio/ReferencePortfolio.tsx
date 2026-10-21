@@ -327,8 +327,17 @@ export function ReferencePortfolio() {
             <a href="#projects" onClick={closeMenu}>Projects</a>
             <a href="#services" onClick={closeMenu}>Services</a>
             <a href="#contact" onClick={closeMenu}>Contact</a>
-            <a className="ref-nav-cta" href="#contact" onClick={closeMenu}>
-              Let’s Talk <ArrowUpRight size={14} />
+            <a
+              className="ref-nav-cta ref-nav-linkedin"
+              href="https://linkedin.com/in/dhushyandh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dhushyandh on LinkedIn"
+              onClick={closeMenu}
+            >
+              <Linkedin size={15} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
             </a>
           </div>
 
@@ -525,35 +534,6 @@ export function ReferencePortfolio() {
           </div>
         </section>
 
-        {/* Big Lime Bento Showcase Box (Matching the reference's vibrant green container) */}
-        <section id="work" className="ref-work-wall ref-wrap" aria-label="Featured work collage">
-          <div className="ref-work-wall-frame">
-            {PROJECTS.map((project, index) => (
-              <a
-                className={'ref-wall-card ref-wall-card-' + (index + 1)}
-                href={project.live || ('/projects/' + project.slug)}
-                target={project.live ? '_blank' : undefined}
-                rel={project.live ? 'noopener noreferrer' : undefined}
-                key={project.slug}
-                aria-label={'Preview ' + project.title}
-              >
-                {project.image && (
-                  <img src={project.image} alt={project.title + ' preview'} loading="lazy" decoding="async" />
-                )}
-                <span className="ref-wall-card-label">
-                  <span>{project.title}</span>
-                  <ArrowUpRight size={14} />
-                </span>
-              </a>
-            ))}
-            <div className="ref-wall-caption">
-              <span>SELECTED WORK / 2024—2026</span>
-              <a href="#projects" className="ref-wall-caption-link">
-                View All Case Studies <ArrowUpRight size={16} />
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* Philosophy / Manifesto Section with floating feature badges matching reference image */}
         <section className="ref-manifesto ref-wrap">
