@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import refCss from "@/components/portfolio/ReferencePortfolio.css?url";
@@ -183,6 +184,7 @@ function RootComponent() {
       <Toaster />
       <ChatwayWidget />
       <FloatingContactButtons />
+      <Analytics />
     </QueryClientProvider>
   );
 }
