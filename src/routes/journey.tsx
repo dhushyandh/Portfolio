@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, BriefcaseBusiness, Code2, GraduationCap, Compass, Linkedin } from "lucide-react";
 import { TIMELINE } from "@/components/portfolio/data";
+import { RESUME } from "@/components/portfolio/resume-data";
 import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
 import "@/components/portfolio/ReferencePortfolio.css";
 
@@ -11,7 +12,7 @@ const ICONS = {
 };
 
 const DESCRIPTION =
-  "Explore the engineering journey and milestones of Dhushyandh N — freelance full-stack developer, software internships at Unified Mentor and Codec Technologies, and computer science engineering foundations.";
+  "Explore the engineering journey and milestones of Dhushyandh N — freelance full-stack developer, software internships at Unified Mentor and Codec Technologies, and computer science engineering foundations at C. Abdul Hakeem College of Engineering and Technology (CAHCET).";
 
 export const Route = createFileRoute("/journey")({
   head: () => ({
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/journey")({
       {
         name: "keywords",
         content:
-          "Dhushyandh career, full stack developer journey, software internship, freelance developer experience, CAHCET computer science",
+          "Dhushyandh career, full stack developer journey, C. Abdul Hakeem College of Engineering and Technology, CAHCET computer science student, CAHCET engineering, software internship, freelance developer experience Vellore",
       },
       {
         name: "robots",
@@ -43,14 +44,31 @@ export const Route = createFileRoute("/journey")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.in/" },
+          "@graph": [
             {
-              "@type": "ListItem",
-              position: 2,
-              name: "Journey",
-              item: "https://dhushyandh.in/journey",
+              "@type": "Person",
+              name: "Dhushyandh N",
+              alternateName: ["Dhushyandh", "Dhushyandh N", "Dhushyandh Neduncheziyan"],
+              jobTitle: RESUME.title,
+              url: "https://dhushyandh.in",
+              alumniOf: RESUME.collegeEntity,
+              affiliation: RESUME.collegeEntity,
+              sameAs: [
+                "https://github.com/dhushyandh",
+                "https://linkedin.com/in/dhushyandh",
+              ],
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://dhushyandh.in/" },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Journey",
+                  item: "https://dhushyandh.in/journey",
+                },
+              ],
             },
           ],
         }),

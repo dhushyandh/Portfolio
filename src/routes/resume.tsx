@@ -15,7 +15,7 @@ export const Route = createFileRoute("/resume")({
       {
         name: "keywords",
         content:
-          "Dhushyandh resume, Dhushyandh N CV, MERN stack developer resume, full stack developer resume India, React Node.js PostgreSQL resume, CAHCET computer science",
+          "Dhushyandh resume, Dhushyandh N CV, MERN stack developer resume, C. Abdul Hakeem College of Engineering and Technology, CAHCET computer science, CAHCET student resume, full stack developer resume India, React Node.js PostgreSQL resume",
       },
       {
         name: "robots",
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/resume")({
             {
               "@type": "Person",
               name: "Dhushyandh N",
-              alternateName: "Dhushyandh N",
+              alternateName: ["Dhushyandh", "Dhushyandh N", "Dhushyandh Neduncheziyan"],
               jobTitle: RESUME.title,
               email: `mailto:${RESUME.email}`,
               telephone: RESUME.phone,
@@ -52,10 +52,8 @@ export const Route = createFileRoute("/resume")({
                 addressRegion: "Tamil Nadu",
                 addressCountry: "IN",
               },
-              alumniOf: {
-                "@type": "CollegeOrUniversity",
-                name: RESUME.education.school,
-              },
+              alumniOf: RESUME.collegeEntity,
+              affiliation: RESUME.collegeEntity,
               knowsAbout: [...RESUME.technicalSkills],
               hasCredential: RESUME.certificates.map((c) => ({
                 "@type": "EducationalOccupationalCredential",

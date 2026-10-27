@@ -10,6 +10,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
+import { NotFoundView } from "@/components/portfolio/NotFoundView";
 import { TIMELINE, type ExperienceItem } from "@/components/portfolio/data";
 import "@/components/portfolio/ReferencePortfolio.css";
 
@@ -254,33 +255,18 @@ export const Route = createFileRoute("/journey/$slug")({
 
 function JourneyMissing() {
   return (
-    <div className="reference-portfolio ref-case-study-page">
-      <header className="ref-header">
-        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
-          <Link className="ref-brand" to="/">
-            Dhushyandh
-          </Link>
-          <div className="ref-nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/journey">Journey</Link>
-            <Link to="/resume">Resume</Link>
-          </div>
-        </nav>
-      </header>
-
-      <main id="main-content" className="ref-wrap" style={{ minHeight: "50vh", paddingTop: "80px", textAlign: "center" }}>
-        <div className="ref-case-hero-tag">404 Error</div>
-        <h1 className="ref-case-title">Milestone Not Found</h1>
-        <p className="ref-case-overview" style={{ maxWidth: "500px", margin: "0 auto 30px" }}>
-          The requested career journey milestone could not be located.
-        </p>
-        <Link to="/journey" className="ref-back-pill">
-          <ArrowLeft size={14} /> Back to All Milestones
-        </Link>
-      </main>
-
-      <PortfolioFooter />
-    </div>
+    <NotFoundView
+      code="404"
+      badge="Milestone Not Found"
+      title={
+        <>
+          Timeline Milestone <em>Not Located</em>
+        </>
+      }
+      message="The requested career journey milestone could not be located. You can explore all milestones chronologically on the journey index."
+      backTo="/journey"
+      backLabel="Back to All Milestones"
+    />
   );
 }
 

@@ -30,7 +30,7 @@ export const Route = createFileRoute('/')({
           '@type': 'Person',
           '@id': `${siteUrl}#person`,
           name: 'N. Dhushyandh',
-          alternateName: ['Dhushyandh Neduncheziyan', 'Dhushyandh N'],
+          alternateName: ['Dhushyandh', 'Dhushyandh N', 'Dhushyandh Neduncheziyan'],
           jobTitle: 'Full Stack Web & Mobile App Developer',
           url: siteUrl,
           image: `${siteUrl}dhushyandh_prof.png`,
@@ -42,10 +42,8 @@ export const Route = createFileRoute('/')({
             addressRegion: 'Tamil Nadu',
             addressCountry: 'IN',
           },
-          alumniOf: {
-            '@type': 'CollegeOrUniversity',
-            name: RESUME.education.school,
-          },
+          alumniOf: RESUME.collegeEntity,
+          affiliation: RESUME.collegeEntity,
           knowsAbout: [
             'React',
             'Next.js',
@@ -89,6 +87,11 @@ export const Route = createFileRoute('/')({
       meta: [
         { title },
         { name: 'description', content: description },
+        {
+          name: 'keywords',
+          content:
+            'Dhushyandh,Dhushyandh N,Dhushy,dhushyandh,dhushyandh n,N. Dhushyandh, Dhushyandh portfolio, full stack developer Vellore, C. Abdul Hakeem College of Engineering and Technology, CAHCET computer science developer, React Next.js Node.js engineer India',
+        },
         { property: 'og:site_name', content: 'Dhushyandh' },
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },

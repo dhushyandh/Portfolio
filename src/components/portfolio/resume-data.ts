@@ -16,6 +16,27 @@ export const RESUME = {
     place: "Ranipet, Tamil Nadu",
     period: "2023 — 2027",
   },
+  collegeEntity: {
+    "@type": "CollegeOrUniversity",
+    name: "C. Abdul Hakeem College of Engineering and Technology",
+    alternateName: [
+      "CAHCET",
+      "C. Abdul Hakeem College of Engineering & Technology",
+      "C Abdul Hakeem College of Engineering and Technology",
+    ],
+    url: "https://cahcet.edu.in/",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Melvisharam",
+      addressRegion: "Tamil Nadu",
+      postalCode: "632509",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://en.wikipedia.org/wiki/C._Abdul_Hakeem_College_of_Engineering_and_Technology",
+      "https://www.wikidata.org/wiki/Q5006001",
+    ],
+  },
   technicalSkills: [
     "Full Stack Development",
     "JavaScript",

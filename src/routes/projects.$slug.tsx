@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { getCaseStudy, getNextCaseStudy } from '@/components/portfolio/case-studies';
 import { PortfolioFooter } from '@/components/portfolio/PortfolioFooter';
+import { NotFoundView } from '@/components/portfolio/NotFoundView';
 import '@/components/portfolio/ReferencePortfolio.css';
 
 export const Route = createFileRoute('/projects/$slug')({
@@ -105,36 +106,18 @@ export const Route = createFileRoute('/projects/$slug')({
   },
   component: ProjectPage,
   notFoundComponent: () => (
-    <div className="reference-portfolio ref-case-study-page">
-      <header className="ref-header">
-        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
-          <Link className="ref-brand" to="/">
-            Dhushyandh
-          </Link>
-          <div className="ref-nav-links">
-            <Link to="/" hash="projects">Work</Link>
-            <a
-              className="ref-nav-cta ref-nav-linkedin"
-              href="https://linkedin.com/in/dhushyandh"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Dhushyandh on LinkedIn"
-            >
-              <Linkedin size={15} />
-              <span>LinkedIn</span>
-              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
-            </a>
-          </div>
-        </nav>
-      </header>
-      <main className="ref-wrap py-24 text-center">
-        <h1 className="ref-section-title">Project not found</h1>
-        <p className="ref-muted mt-4">The requested project case study could not be located.</p>
-        <Link to="/" hash="projects" className="ref-btn-primary mt-6 inline-flex">
-          <ArrowLeft size={16} /> Back to all projects
-        </Link>
-      </main>
-    </div>
+    <NotFoundView
+      code="404"
+      badge="Case Study Not Found"
+      title={
+        <>
+          Project <em>Not Located</em>
+        </>
+      }
+      message="The requested project case study could not be located or may have been archived. You can explore active full-stack projects below."
+      backTo="/"
+      backLabel="Back to Projects"
+    />
   ),
 });
 

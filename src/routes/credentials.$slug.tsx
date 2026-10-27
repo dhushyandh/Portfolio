@@ -14,6 +14,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { PortfolioFooter } from "@/components/portfolio/PortfolioFooter";
+import { NotFoundView } from "@/components/portfolio/NotFoundView";
 import "@/components/portfolio/ReferencePortfolio.css";
 
 type CredentialDetail = {
@@ -256,36 +257,18 @@ export const Route = createFileRoute("/credentials/$slug")({
 
   component: CredentialPage,
   notFoundComponent: () => (
-    <div className="reference-portfolio ref-case-study-page">
-      <header className="ref-header">
-        <nav className="ref-nav ref-wrap" aria-label="Main navigation">
-          <Link className="ref-brand" to="/">
-            Dhushyandh
-          </Link>
-          <div className="ref-nav-links">
-            <Link to="/" hash="credentials">Credentials</Link>
-            <a
-              className="ref-nav-cta ref-nav-linkedin"
-              href="https://linkedin.com/in/dhushyandh"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Dhushyandh on LinkedIn"
-            >
-              <Linkedin size={15} />
-              <span>LinkedIn</span>
-              <ArrowUpRight size={13} className="ref-nav-linkedin-arrow" />
-            </a>
-          </div>
-        </nav>
-      </header>
-      <main className="ref-wrap py-24 text-center">
-        <h1 className="ref-section-title">Credential Not Found</h1>
-        <p className="ref-muted mt-4">The requested certification could not be located.</p>
-        <Link to="/" hash="credentials" className="ref-btn-primary mt-6 inline-flex">
-          <ArrowLeft size={16} /> Back to Credentials
-        </Link>
-      </main>
-    </div>
+    <NotFoundView
+      code="404"
+      badge="Credential Not Found"
+      title={
+        <>
+          Certification <em>Not Located</em>
+        </>
+      }
+      message="The requested certification credential could not be located or may have been updated. You can review verified credentials below."
+      backTo="/"
+      backLabel="Back to Credentials"
+    />
   ),
 });
 
